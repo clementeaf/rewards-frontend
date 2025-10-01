@@ -1,0 +1,58 @@
+<div class="col s12" id="asignador-a-segmentos">
+  <div class="row msr-form">
+    <div class="card darken-1">
+      <div class="card-content">
+        <div class="row">
+          <div class="col s12">
+            {{#if (not-null segmentosConDetalle)}}
+              {{#if segmentosConDetalle}}
+                <table class="striped bordered">
+                  <thead>
+                  <tr>
+                    <th>Seleccionar</th>
+                    <th>Nombre</th>
+                    <th>Cantidad de Miembros</th>
+                  </tr>
+                  </thead>
+                  <tbody class="linkeable">
+                  {{#each segmentosConDetalle as |segmentoConDetalle|}}
+                    <tr>
+                      <td>{{tenpines/check-box value=segmentoConDetalle.seleccionado col="s3" valueEsNull=false}}</td>
+                      <td>{{segmentoConDetalle.segmento.nombre}}</td>
+                      <td>{{segmentoConDetalle.cantidadDeMiembros}}</td>
+                    </tr>
+                  {{/each}}
+                  </tbody>
+                </table>
+              {{else}}
+                <div class="row text-center">
+                  <em>No se encontraron segmentos</em>
+                </div>
+              {{/if}}
+            {{else}}
+              <div class="row text-center">
+                <em>Indique el criterio de busqueda</em>
+              </div>
+            {{/if}}
+          </div>
+        </div>
+
+        {{mensaje-de-error texto=mensajeDeError}}
+
+        <div class="row">
+          <div class="col offset-s10 s2">
+            {{tenpines/material-button label='Asignar' action='validar' col="s12"}}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{{tenpines/modal-de-confirmacion
+  open=mostrarModalDeConfirmacionDeEntregaASegmentos
+  titulo='Asignar Vouchers'
+  descripcion=descripcionModal
+  accionAceptar=(action 'asignar')
+}}

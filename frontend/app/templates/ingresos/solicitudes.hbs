@@ -1,0 +1,77 @@
+{{bread-crumbs list="Solicitudes"}}
+
+{{filtro/de-solicitudes solicitudesEncontradas=solicitudes }}
+
+{{#if (not-empty solicitudes)}}
+  {{#if solicitudes}}
+    <table class="striped bordered">
+      <thead>
+      <tr>
+        {{#if puedeEditarSolicitudes}}
+          <th {{action 'seleccionarTodasToggle'}}>
+            {{tenpines/check-box value=(not-empty solicitudesSeleccionadas) col="s1"}}
+          </th>
+        {{/if}}
+        <th>ID</th>
+        <th>Status</th>
+        <th>Ingreso</th>
+        <th>Tienda</th>
+        <th>Dni</th>
+        <th>Apellido</th>
+        <th>Nombre</th>
+        <th>E-Mail</th>
+        <th>Habilitado</th>
+        <th>Instante de cambio de estado</th>
+        {{#if puedeEditarSolicitudes}}
+          <th>Acciones</th>
+        {{/if}}
+      </tr>
+      </thead>
+
+      <tbody class="linkeable">
+      {{#each solicitudes as |solicitud|}}
+        <tr>
+          {{#if puedeEditarSolicitudes}}
+            <td>
+              {{solicitudes/checkbox-de-solicitudes-no-aprobadas solicitud=solicitud}}
+            </td>
+          {{/if}}
+          <td {{action 'verDetalleDeSolicitud' solicitud}}>{{solicitud.id}}</td>
+          <td {{action 'verDetalleDeSolicitud' solicitud}}>{{status-label status=solicitud.status}}</td>
+          <td {{action 'verDetalleDeSolicitud' solicitud}}>{{as-datetime solicitud.instanteDeIngreso}}</td>
+          <td {{action 'verDetalleDeSolicitud' solicitud}}>{{solicitud.tiendaDondeFirmoElContrato}}</td>
+          <td {{action 'verDetalleDeSolicitud' solicitud}}>{{solicitud.dni}}</td>
+          <td {{action 'verDetalleDeSolicitud' solicitud}}>{{solicitud.apellido}}</td>
+          <td {{action 'verDetalleDeSolicitud' solicitud}}>{{solicitud.nombre}}</td>
+          <td {{action 'verDetalleDeSolicitud' solicitud}}>{{solicitud.email}}</td>
+          <td {{action 'verDetalleDeSolicitud' solicitud}}>{{habilitado-label value=solicitud.miembroHabilitado}}</td>
+          <td {{action 'verDetalleDeSolicitud' solicitud}}>{{as-datetime solicitud.instanteDelUltimoStatus}}</td>
+          {{#if puedeEditarSolicitudes}}
+            <td class="valign-wrapper">
+              {{solicitudes/postergar-solicitud-button solicitud=solicitud}}
+              {{solicitudes/reimprimir-solicitud-button solicitud=solicitud}}
+            </td>
+          {{/if}}
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+
+    {{solicitudes/aprobacion-masiva-form solicitudes=solicitudes}}
+
+  {{else}}
+    <div class="row text-center">
+      <em>No se encontraron solicitudes</em>
+    </div>
+  {{/if}}
+{{else}}
+  <div class="row text-center">
+    <em>Indique el criterio de busqueda</em>
+  </div>
+{{/if}}
+
+
+<div id="detalleDeSolicitud">
+  {{outlet}}
+</div>
+

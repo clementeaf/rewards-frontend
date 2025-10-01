@@ -1,0 +1,20 @@
+<table class="striped">
+  <thead>
+    <tr>
+      <th>Código y Nombre</th>
+      <th>Nivel Micros</th>
+      <th>Borrar</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each items as |item|}}
+      <tr class="linkeable">
+        <td>{{item.itemMicros.codigoYNombre}}</td>
+        <td>{{item.nivel.descripcion}}</td>
+        <td>{{materialize/icon-component value='delete' click=(action "borrarItem" item bubbles=false)}}</td>
+      </tr>
+    {{else}}
+      <em>No tiene items</em>
+    {{/each}}
+  </tbody>
+</table>

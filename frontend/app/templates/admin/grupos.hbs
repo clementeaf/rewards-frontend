@@ -1,0 +1,37 @@
+{{bread-crumbs list="Administracion|Grupos"}}
+
+{{#if model}}
+  <table class="striped bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre de Grupo</th>
+        <th>Roles</th>
+      </tr>
+    </thead>
+
+    <tbody class="linkeable">
+      {{#each model as |grupo|}}
+        <tr {{action "quiereEditar" grupo}}>
+          <td>{{grupo.id}}</td>
+          <td>{{grupo.nombre}}</td>
+          <td>
+            {{#each grupo.roles as |rol|}}
+              - {{rol.nombre}}
+            {{/each}}
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+<div class="row text-center">
+  <em>No se encontraron grupos</em>
+</div>
+{{/if}}
+
+{{tenpines/material-button action="quiereCrearNuevo" icon='add' floating=true right=true classNames='btn-medium crud-add-button'}}
+
+<div id="gruposCrud">
+  {{outlet}}
+</div>

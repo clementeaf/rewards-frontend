@@ -1,0 +1,57 @@
+{
+  "name": "msr-backoffice-frontend",
+  "version": "0.0.0",
+  "description": "Projecto ember para el frontend del backoffice MST",
+  "private": true,
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
+  "scripts": {
+    "build": "ember build --environment=production",
+    "start": "ember server --port 4203 --live-reload-port 49153 --environment=development",
+    "test": "ember test"
+  },
+  "repository": "",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "bootstrap": "3.3.6",
+    "bower": "^1.8.14",
+    "broccoli-asset-rev": "^2.4.2",
+    "ember-ajax": "^2.0.1",
+    "ember-cli": "2.8.0",
+    "ember-cli-app-version": "^1.0.0",
+    "ember-cli-babel": "^5.1.6",
+    "ember-cli-dependency-checker": "^1.2.0",
+    "ember-cli-flash": "1.3.15",
+    "ember-cli-htmlbars": "^1.0.3",
+    "ember-cli-htmlbars-inline-precompile": "^0.3.1",
+    "ember-cli-inject-live-reload": "^1.4.0",
+    "ember-cli-jshint": "^1.0.0",
+    "ember-cli-jstree": "1.0.1",
+    "ember-cli-moment-range": "0.1.4",
+    "ember-cli-moment-shim": "1.3.0",
+    "ember-cli-qunit": "^2.1.0",
+    "ember-cli-release": "^0.2.9",
+    "ember-cli-sass": "^10.0.1",
+    "ember-cli-sri": "^2.1.0",
+    "ember-cli-test-loader": "^1.1.0",
+    "ember-cli-uglify": "^1.2.0",
+    "ember-export-application-global": "^1.0.5",
+    "ember-load-initializers": "^0.5.1",
+    "ember-moment": "7.0.0-beta.3",
+    "ember-resolver": "^2.0.3",
+    "ember-scroll-to": "^0.5.3",
+    "ember-spin-spinner": "^0.3.1",
+    "loader.js": "^4.0.1",
+    "sass": "^1.93.2",
+    "tenpines-material-components": "0.2.2"
+  },
+  "dependencies": {
+    "broccoli-babel-transpiler": "^6.1.2"
+  }
+}

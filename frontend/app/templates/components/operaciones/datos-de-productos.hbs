@@ -1,0 +1,28 @@
+{{#if (any-not-empty model.productosComprados model.productosRedimidos)}}
+  <div class="card-content row">
+    {{#if (not-empty model.productosComprados)}}
+      <div class="col s6 no-margin">
+        <span class="card-subtitle">Productos comprados</span>
+        <ul class="col s12">
+          {{#each model.productosComprados as |producto|}}
+            <li>
+              {{materialize/icon-component value='label_outline' sizeClass='tiny'}} {{producto.nombre}} ({{producto.cantidad}})
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+    {{/if}}
+    {{#if (not-empty model.productosRedimidos)}}
+      <div class="col s6 no-margin">
+        <span class="card-subtitle">Productos redimidos</span>
+        <ul class="col s12">
+          {{#each model.productosRedimidos as |productoRedimido|}}
+            <li>
+              {{materialize/icon-component value='label_outline' sizeClass='tiny'}} {{productoRedimido.nombre}} ({{productoRedimido.cantidad}})
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+    {{/if}}
+  </div>
+{{/if}}

@@ -1,0 +1,18 @@
+<div class="col s12" id="configuracion-de-periodos">
+  <div class="row msr-form">
+    <div class="card darken-1">
+      <div class="card-content">
+        <span class="card-title">Limite de monto por tarjeta rewards</span>
+        <p>Determina el monto maximo que puede tener de saldo una tarjeta rewards</p>
+        <div class="row">
+          {{tenpines/input-number value=model.limiteDeMontoPorTarjeta min=0 required=true label="Limite de monto" col="s4" disabled=noPuedeEditarLimiteDeMontoPorTarjeta}}
+        </div>
+      </div>
+      {{#if puedeEditarLimiteDeMontoPorTarjeta}}
+        <div class="card-action">
+          {{tenpines/material-button label='Guardar configuracion' action='actualizarLimiteDeMonto'}}
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</div>

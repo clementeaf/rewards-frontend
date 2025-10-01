@@ -1,0 +1,18 @@
+<div class="col s12" id="configuracion-de-control-de-fraude">
+  <div class="row msr-form">
+    <div class="card darken-1">
+      <div class="card-content">
+        <span class="card-title">Control de fraude</span>
+        <p>Esta configuracion permite que se pueda activar y desactivar el control de fraude</p><br>
+        <div class="row">
+          {{tenpines/toggle-component value=model.activado labelParaTrue='ACTIVADO' labelParaFalse='DESACTIVADO' col="s4" disabled=noPuedeEditarControlDeFraude}}
+        </div>
+      </div>
+      {{#if puedeEditarControlDeFraude}}
+        <div class="card-action">
+          {{tenpines/material-button label='Guardar configuracion' action='actualizarControlDeFraude'}}
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</div>

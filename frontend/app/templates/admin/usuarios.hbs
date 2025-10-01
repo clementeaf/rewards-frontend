@@ -1,0 +1,32 @@
+{{bread-crumbs list="Administracion|Usuarios"}}
+
+{{#if model}}
+  <table class="striped bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Grupo de usuario</th>
+      </tr>
+    </thead>
+    <tbody class="linkeable">
+      {{#each model as |usuario|}}
+        <tr {{action 'quiereEditar' usuario }}>
+          <td>{{usuario.id}}</td>
+          <td>{{usuario.nombreCompleto}}</td>
+          <td>{{usuario.userGroup.nombre}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <div class="row text-center">
+    <em>No se encontraron usuarios</em>
+  </div>
+{{/if}}
+
+{{tenpines/material-button action="quiereCrearNuevo" icon='add' floating=true right=true classNames='btn-medium crud-add-button'}}
+
+<div id="usuariosCrud">
+  {{outlet}}
+</div>

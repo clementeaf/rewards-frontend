@@ -1,0 +1,125 @@
+<nav>
+  <div class="nav-wrapper container">
+    <a {{action 'quiereIrAHome'}} class="brand-logo left">
+      <img src="/msr-backoffice/web/assets/images/starbucks.svg"/>
+    </a>
+
+    <ul class="left">
+      {{#if puedeVerOpcionesDeAdmin}}
+        {{#drop-down title='Administracion' tagName='li'}}
+          {{#if puedeAdministrarTiendas}}
+            <li {{action 'quiereAdministarTiendas'}} class="opcionDeNavegacion"><a>Tiendas</a></li>
+          {{/if}}
+          {{#if puedeAdministrarItemsMicros}}
+            <li {{action 'quiereAdministarItemsMicros'}} class="opcionDeNavegacion"><a>Items Micros</a></li>
+          {{/if}}
+          {{#if puedeVisualizarTarjetas}}
+            <li {{action 'quiereAdministarTarjetas'}} class="opcionDeNavegacion"><a>Tarjetas</a></li>
+          {{/if}}
+
+          {{#if puedeVerOpcionesDeEnvioDeMails}}
+            <li class="divider"></li>
+          {{/if}}
+          {{#if puedeAdministrarPlantillas}}
+            <li {{action 'quiereAdministrarPlantillas'}} class="opcionDeNavegacion"><a>Plantillas Mail</a></li>
+          {{/if}}
+          {{#if puedeAdministrarEstadoDeEnvioDeMails}}
+            <li {{action 'quiereVerEstadoEnvioDeMails'}} class="opcionDeNavegacion"><a>Mails Encolados</a></li>
+          {{/if}}
+          {{#if puedeAdministrarAliasDeBeneficios}}
+            <li {{action 'quiereAdministrarAliasDeBeneficios'}} class="opcionDeNavegacion"><a>Alias Beneficios</a></li>
+          {{/if}}
+          {{#if puedeAdministrarCustomerVoide}}
+            <li {{action 'quiereAdministrarCustomerVoice'}} class="opcionDeNavegacion"><a>Customer Voice</a></li>
+          {{/if}}
+
+          {{#if puedeAdministrarUsuariosOSeguridad}}
+            <li class="divider"></li>
+          {{/if}}
+          {{#if puedeAdministrarUsuarios}}
+            <li {{action 'quiereAdministarUsuarios'}} class="opcionDeNavegacion"><a>Usuarios</a></li>
+          {{/if}}
+          {{#if puedeAdministrarSeguridad}}
+            <li {{action 'quiereAdministarGrupos'}} class="opcionDeNavegacion"><a>Grupos</a></li>
+            <li {{action 'quiereAdministarRoles'}} class="opcionDeNavegacion"><a>Roles</a></li>
+            <li {{action 'quiereAdministarPermisos'}} class="opcionDeNavegacion"><a>Permisos</a></li>
+          {{/if}}
+
+          {{#if puedeCorrerProcesosOVerConfigDeLaAplicacion}}
+            <li class="divider"></li>
+          {{/if}}
+          {{#if puedeCorrerProcesos}}
+            <li {{action 'quiereVerProcesos'}} class="opcionDeNavegacion"><a>Procesos</a></li>
+          {{/if}}
+          {{#if puedeVerConfiguracionDeLaAplicacion}}
+            <li {{action 'quiereAdministarConfiguracion'}} class="opcionDeNavegacion"><a>Configuracion</a></li>
+          {{/if}}
+        {{/drop-down}}
+      {{/if}}
+
+      {{#if puedeVerOpcionesDeMonitoreo}}
+        {{#drop-down title='Monitoreo' tagName='li'}}
+          <li {{action 'quiereMonitorearInfo'}} class="opcionDeNavegacion"><a>Info básica</a></li>
+          <li {{action 'quiereMonitorearMetricas'}} class="opcionDeNavegacion"><a>Metricas</a></li>
+          <li {{action 'quiereMonitorearProfiling'}} class="opcionDeNavegacion"><a>Profiling</a></li>
+          <li {{action 'quiereMonitorearCongestion'}} class="opcionDeNavegacion"><a>Congestion</a></li>
+          {{#if puedeVerDebugguear}}
+            <li {{action 'quiereDebugguear'}} class="opcionDeNavegacion"><a>Debugging</a></li>
+          {{/if}}
+          <li {{action 'quiereMonitorearErrores'}} class="opcionDeNavegacion"><a>Errores</a></li>
+          <li {{action 'quiereMonitorearLogs'}} class="opcionDeNavegacion"><a>Logging</a></li>
+        {{/drop-down}}
+      {{/if}}
+
+      {{#if puedeVerOpcionesDeIngresos}}
+        {{#drop-down title='Ingresos' tagName='li'}}
+          {{#if puedeVerSolicitudes}}
+            <li {{action 'verSolicitudes'}} class="opcionDeNavegacion"><a>Solicitudes</a></li>
+          {{/if}}
+          {{#if puedeVerFormulariosDeAlta}}
+            <li {{action 'verFormularios'}} class="opcionDeNavegacion"><a>Formularios</a></li>
+          {{/if}}
+        {{/drop-down}}
+      {{/if}}
+
+      {{#drop-down title='Auditoria' tagName='li'}}
+        {{#if puedeConsultarCuentas}}
+          <li {{action 'verAuditoriaDeCuentas'}} class="opcionDeNavegacion"><a>Cuentas</a></li>
+        {{/if}}
+        <li {{action 'verAuditoriaDeMiembros'}} class="opcionDeNavegacion"><a>Miembros</a></li>
+        <li {{action 'verAuditoriaCambioMasivoDeClaves'}} class="opcionDeNavegacion"><a>Cambio masivo claves</a></li>
+        
+        {{#if puedeVerAuditoriaDeRecargaDeTarjetas}}
+          <li {{action 'verAuditoriaDeRecargaDeTarjetas'}} class="opcionDeNavegacion"><a>Recarga tarjetas</a></li>
+        {{/if}}
+        {{#if puedeVerAuditoriaDeOperaciones}}
+          <li {{action 'verAuditoriaDeOperaciones'}} class="opcionDeNavegacion"><a>Operaciones</a></li>
+        {{/if}}
+        <li {{action 'verCargaTarjetasValuelink'}} class="opcionDeNavegacion"><a>Cargar Tarjetas Valuelink</a></li>
+      {{/drop-down}}
+
+
+      {{#if puedeVerBeneficiosDeNivelPromocionesYResumen}}
+        {{#drop-down title='Beneficios' tagName='li'}}
+          <li {{action 'verBeneficiosDeNivel'}} class="opcionDeNavegacion"><a>Por Nivel</a></li>
+          <li {{action 'verPromociones'}} class="opcionDeNavegacion"><a>Promociones</a></li>
+          <li {{action 'verResumenDeBeneficios'}} class="opcionDeNavegacion"><a>Resumen</a></li>
+          <li {{action 'verSegmentosDeMiembros'}} class="opcionDeNavegacion"><a>Segmentos de Miembros</a></li>
+          <li {{action 'verRedimibles'}} class="opcionDeNavegacion"><a>Redimibles</a></li>
+          {{#if puedeEntregarVouchers}}
+            <li {{action 'verEntregaManualDeBeneficios'}} class="opcionDeNavegacion"><a>Entrega Manual</a></li>
+          {{/if}}
+          {{#if puedeVerLaInformacionDelPrograma}}
+            <li {{action 'verInformacionDelPrograma'}} class="opcionDeNavegacion"><a>Info del Programa</a></li>
+          {{/if}}
+        {{/drop-down}}
+      {{/if}}
+    </ul>
+
+    <ul class="right">
+      {{#drop-down title=currentUser.completeName tagName='li'}}
+        <li {{action 'quiereDesloguearse'}} class="opcionDeNavegacion"><a>Salir</a></li>
+      {{/drop-down}}
+    </ul>
+  </div>
+</nav>

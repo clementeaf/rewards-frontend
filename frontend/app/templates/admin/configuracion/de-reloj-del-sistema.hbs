@@ -1,0 +1,16 @@
+<div class="col s12" id="configuracion-del-reloj-del-sistema">
+  <div class="row msr-form">
+    <div class="card darken-1">
+      <div class="card-content">
+        <div class="card-title">Reloj Fijo</div>
+        <div class="row">
+          <p>Este reloj queda fijo con la hora asignada abajo.</p>
+          {{tenpines/input-datetime value=model.horaDeMentira label='Hora actual' disabled=noPuedeEditarLaConfiguracionDelReloj}}
+          {{#if puedeEditarLaConfiguracionDelReloj}}
+            {{tenpines/material-button label='Cambiar Hora' action='cambiarHora' }}
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

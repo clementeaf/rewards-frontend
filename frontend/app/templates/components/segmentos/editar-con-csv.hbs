@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col s6">
+    {{#segmentos/form-csv-de-miembros model=model csv=model.csvAgregar titulo="Agregar miembros desde archivo" formAction=agregarMiembros as |validar|}}
+      <div>
+        <div class="row section right-align">
+          {{tenpines/material-button label="Agregar miembros" click=validar disabled=noPuedeProcesarArchivo}}
+        </div>
+      </div>
+    {{/segmentos/form-csv-de-miembros}}
+  </div>
+  <div class="col s6">
+    {{#segmentos/form-csv-de-miembros model=model csv=model.csvEliminar titulo="Eliminar miembros desde archivo" formAction=eliminarMiembros as |validar| }}
+      <div>
+        <div class="row section right-align">
+          {{tenpines/material-button label="Eliminar miembros" click=validar disabled=noPuedeProcesarArchivo}}
+        </div>
+      </div>
+    {{/segmentos/form-csv-de-miembros}}
+  </div>
+</div>

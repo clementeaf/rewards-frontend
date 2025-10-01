@@ -1,0 +1,22 @@
+<div class="monitoreo-info">
+  <div class="row">
+    {{tenpines/input-range label=(concat 'Umbral de trazas:' umbralDeTrazasEnTiempo) min=0 max=60000 value=parametrosDeProfile.umbralDeTrazas col="s6"}}
+    {{tenpines/input-range label=(concat 'Umbral de argumentos :' umbralDeArgumentosEnTiempo) min=0 max=60000 value=parametrosDeProfile.umbralDeArgumentos col="s6"}}
+  </div>
+  <div class="row">
+    <div class="col s4">
+      {{tenpines/material-button action='empezarProfiling' icon='flight_takeoff' label='Empezar Profiling'}}
+    </div>
+    <div class="col s4">
+      {{tenpines/material-button action='detenerProfiling' icon='flight_land' label='Detener Profiling'}}
+    </div>
+    <div class="col s4">
+      {{tenpines/material-button action='obtenerArbol' icon='cloud' label='Mostrar el arbol'}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      {{arbol-profiling arbol=arbolDeProfile}}
+    </div>
+  </div>
+</div>

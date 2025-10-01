@@ -1,0 +1,12 @@
+{{#if trace}}
+  <ul class="collapsible" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header">Stacktrace</div>
+      <div class="collapsible-body">
+        {{#each trace as |linea|}}
+          <p>at {{linea.className}}.{{linea.methodName}} ({{linea.fileName}}:{{linea.lineNumber}})</p>
+        {{/each}}
+      </div>
+    </li>
+  </ul>
+{{/if}}

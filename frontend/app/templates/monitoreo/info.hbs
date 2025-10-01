@@ -1,0 +1,23 @@
+<div>
+  {{application-versions}}
+  <div class="row">
+    <div class="col s12">
+      {{tenpines/material-button action='reloadPerformanceData' label='Performance' icon='memory' iconToTheRight=true}}
+      <pre class="col s12 monitoreo-info-pre">{{performanceData.datosTabulados}}</pre>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12">
+      {{tenpines/material-button action='reloadVmData' label='Parametros de la VM' icon='computer' iconToTheRight=true}}
+      <pre class="col s12 monitoreo-info-pre">{{vmParameters.data}}</pre>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12">
+      {{tenpines/material-button action='reloadLastErrorData' label='Ultimo error' icon='error' iconToTheRight=true}}
+      <pre class="col s12 monitoreo-info-pre">{{lastError.data}}</pre>
+    </div>
+  </div>
+</div>

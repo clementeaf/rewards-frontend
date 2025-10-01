@@ -1,0 +1,27 @@
+<form {{action "busquedaNueva" on="submit"}} novalidate>
+  <div class="row msr-filter">
+    <div class="card darken-1">
+      <div class="card-content white-text">
+        <div class="row">
+          {{selector/de-tipo-de-codigo-micros label='Tipo de Código' tipoDeCodigoElegido=filtro.tipoDeCodigo nullElegible=true labelParaNull=' - Sin restriccion -' classNames="col s2"}}
+          {{tenpines/input-text value=filtro.codigo label="Código" col="s2"}}
+          {{autocomplete/de-familia-de-item-micros familiaSeleccionada=filtro.familiaDeItemMicros label="Familia de Item Micros" labelParaNull=' - Sin restriccion -' nullElegible=true col="s2"}}
+          {{tenpines/check-box label="Habilitado" value=filtro.habilitado col="s2" classNames='input-field'}}
+          {{tenpines/input-range value=filtro.limite min=1 max=1000 label="Limite de resultados" col="s2"}}
+        </div>
+      </div>
+      <div class="card-action">
+        <div class="row">
+          {{tenpines/material-button label='Limpiar' action='limpiarFiltro' flat=true}}
+          {{tenpines/material-button label="Filtrar" submit=true }}
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+{{yield}}
+
+
+{{paginado/barra-de-paginado datosDePaginado=datosDePaginado accionDeBusqueda=(action "buscarPagina")}}

@@ -1,0 +1,15 @@
+{{#if restriccion}}
+  <div class="row restriccion">
+    {{tenpines/material-button action='sacarRestriccion' icon='close' floating=true right=true classNames='small close-button' }}
+    <h6>Restricción de períodos de validez</h6>
+    <small><em>Esta restricción permite activar o desactivar el beneficio durante uno o varios períodos de tiempo.</em></small>
+    {{#each restriccion.periodosDeValidez as |periodoDeValidez|}}
+      <div class="row periodo-de-validez">
+        {{tenpines/input-datetime class="datetime-input" name="validezDesde" value=periodoDeValidez.desde label="Desde" required=true }}
+        {{tenpines/input-datetime class="datetime-input" name="validezHasta" value=periodoDeValidez.hasta minValue=periodoDeValidez.desde label="Hasta" required=true }}
+        <a {{action "borrarPeriodoDeValidez" periodoDeValidez}} href="#!" class="close-boton">{{materialize/icon-helper 'close'}}</a>
+      </div>
+    {{/each}}
+    <a {{action "agregarPeriodoDeValidez"}} href="#!" class="secondary-content">{{materialize/icon-helper 'add' }}</a>
+  </div>
+{{/if}}

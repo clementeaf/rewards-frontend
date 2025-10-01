@@ -1,0 +1,10 @@
+<span hidden={{noHayDatosDelReciboX}} class="card-subtitle">Datos del Recibo X</span>
+<div class="row">
+  {{optional-label label='Monto Anterior' value=datosDelReciboX.montoReciboXAnterior col='s3'}}
+  {{optional-label label='Monto Descontado' value=datosDelReciboX.montoReciboXDescontado col='s3'}}
+  {{optional-label label='Monto Posterior' value=datosDelReciboX.montoReciboXPosterior col='s3'}}
+  {{#if (not noHayDatosDelReciboX)}}
+    {{tenpines/boolean-label value=(not datosDelReciboX.huboUnaInconsistenciaX) textoParaTrue='No hubo inconsistencias'
+                             textoParaFalse='Hubo una inconsistencia' }}
+  {{/if}}
+</div>

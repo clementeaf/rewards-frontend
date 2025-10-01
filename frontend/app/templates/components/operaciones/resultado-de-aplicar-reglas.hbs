@@ -1,0 +1,22 @@
+<div class="resultado-de-aplicar-reglas">
+  <span class="resultado-de-aplicar-reglas-title">{{resultado.nombreDeBeneficio}}
+    - Tipo de regla: {{tipo-de-regla resultado.tipoDeRegla}}
+  </span>
+  <br>
+
+  {{#if resultado.starsOtorgadas}}
+    <p><b>Stars extra otorgadas: </b>{{resultado.starsOtorgadas}}</p>
+  {{/if}}
+
+  {{#if (not-empty resultado.vouchersOtorgados)}}
+    <p><b>Vouchers otorgados: </b></p>
+    {{#each resultado.vouchersOtorgados as |voucher|}}
+      <div class="beneficio-box">
+        <p><b>Redimible: </b>{{voucher.nombreDelRedimible}}</p>
+        <p><b>Periodo de validez: </b>{{as-datetime voucher.periodoDeValidez.desde}} - {{as-datetime voucher.periodoDeValidez.hasta}}</p>
+        <p><b>Para consumir en la tienda: </b>{{guion-si-es-nulo voucher.tiendaEnLaQuePuedeSerConsumido}}</p>
+      </div>
+    {{/each}}
+  {{/if}}
+</div>
+<hr/>

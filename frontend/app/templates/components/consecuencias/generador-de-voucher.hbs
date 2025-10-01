@@ -1,0 +1,14 @@
+{{#if generadorDeVoucher}}
+<div class="row restriccion">
+  {{tenpines/material-button action='sacarGeneradorDeVoucher' icon='close' floating=true right=true classNames='small close-button' }}
+  <h6>Redimible</h6>
+  <small><em>Permite configurar el redimible que gana un miembro rewards cuando cumple con la regla, la fecha de vencimiento para canjearla, y la tienda en la que puede redimirla.</em></small>
+  <div class="row">
+    {{autocomplete/de-redimible redimibleSeleccionada=generadorDeVoucher.redimible col="s6" required=true}}
+  </div>
+  {{selector/de-tiempo-de-validez tiempoDeValidez=generadorDeVoucher.tiempoDeValidez classNames="row"}}<br>
+  <div class="row" {{action "restringirPorTienda"}}>
+    {{tenpines/check-box value=generadorDeVoucher.estaRestringidoParaLaTiendaQueLoGenera label='Sólo para ser consumido en la tienda que se adquiere' col="s12"}}
+  </div>
+</div>
+{{/if}}

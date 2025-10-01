@@ -1,0 +1,32 @@
+{{#if model}}
+  <table class="striped bordered">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+    </tr>
+    </thead>
+    <tbody class="linkeable">
+    {{#each model as |item|}}
+      <tr {{action 'editar' item }}>
+        <td>{{item.id}}</td>
+        <td>{{item.nombre}}</td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <div class="row text-center">
+    <em>No se encontraron items</em>
+  </div>
+{{/if}}
+
+{{#if puedeCrearItemMultiopcion}}
+  <a {{action "crearNuevo"}} class="btn-floating btn-medium waves-effect waves-light crud-add-button right">
+    <i class="material-icons">add</i>
+  </a>
+{{/if}}
+
+<div id="itemMultiopcionCrud">
+  {{outlet}}
+</div>

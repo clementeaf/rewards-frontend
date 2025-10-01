@@ -1,0 +1,19 @@
+{{#collapsible-table/-row as |section|}}
+  {{#if section.esTitulo}}
+    {{materialize/icon-helper 'credit_card' }} Tarjetas
+  {{else if section.esCuerpo}}
+    {{#if (not-empty tarjetas)}}
+      <div class="row">
+        <div class="col s8 no-margin"></div>
+        {{tenpines/material-button label='Actualizar saldos con VL' action='actualizarSaldos' classNames='col s4'}}
+      </div>
+      {{#each tarjetas as |tarjeta|}}
+        {{detalle-de-tarjeta tarjeta=tarjeta}}
+      {{/each}}
+    {{else}}
+      <div class="row text-center">
+        <em>No se encontraron tarjetas</em>
+      </div>
+    {{/if}}
+  {{/if}}
+{{/collapsible-table/-row}}

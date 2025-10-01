@@ -1,0 +1,13 @@
+@import "../variables";
+
+.tabs {
+  li {
+    a {
+      color: $green !important;
+    }
+  }
+}
+
+.indicator {
+  background-color: $dark-grey !important;
+}

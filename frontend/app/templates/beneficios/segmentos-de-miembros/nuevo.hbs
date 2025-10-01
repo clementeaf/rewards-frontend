@@ -1,0 +1,16 @@
+<div class="row msr-form">
+  <div class="card darken-1">
+    {{#form-validable configurarCon=opcionesDeValidacion alValidarCorrectamente=(action 'crear') as |validar|}}
+      <div class="card-content">
+        <span class="card-title">Nuevo Segmento</span>
+        <div class="row">
+          {{tenpines/input-text name="nombre" value=model.nombre required=true label="Nombre" col="s12" }}
+        </div>
+      </div>
+      <div class="card-action">
+        {{tenpines/material-button label='Guardar' click=(action validar) }}
+        {{tenpines/material-button label='Borrar' action='reset' }}
+      </div>
+    {{/form-validable}}
+  </div>
+</div>

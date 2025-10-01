@@ -1,0 +1,19 @@
+<div class="col s12" id="configuracion-de-vencimiento-de-saldo">
+  <div class="row msr-form">
+    <div class="card darken-1">
+      <div class="card-content">
+        <span class="card-title">Beneficio de bebida gratis</span>
+        <div class="row">
+          {{selector/de-reglas-de-beneficios-con-restriccion-de-stars-acumuladas 
+            reglaSeleccionada=model.reglaDeBeneficio
+            classNames="col s3" label="Regla de beneficio de bebida gratis"}}
+        </div>
+      </div>
+      {{#if puedeEditarConfiguracionDeBeneficioDeBebidaGratis}}
+        <div class="card-action">
+          {{tenpines/material-button label='Guardar configuracion' click=(action 'guardarConfiguracion') }}
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</div>

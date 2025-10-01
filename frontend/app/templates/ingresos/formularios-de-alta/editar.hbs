@@ -1,0 +1,52 @@
+{{#if puedeEditarDatosPersonales}}
+  <div class="row msr-form">
+    <div class="card darken-1">
+      {{#form-validable configurarCon=opcionesDeValidacion alValidarCorrectamente=(action 'guardar') as |validar|}}
+        <div class="card-content">
+          <span class="card-title">Editar Formulario de Alta</span>
+            <div class="row">
+              {{tenpines/input-text name="nombre" value=model.nombre required=true label="Nombre" col="s3"}}
+              {{tenpines/input-text name="apellido" value=model.apellido required=true label="Apellido" col="s3"}}
+              {{tenpines/input-text name="dni"  value=model.numeroDeDocumento required=true label="Nro Documento" col="s3"}}
+              {{selector/de-estado-civil label="Estado civil" estadoElegido=model.estadoCivil labelParaNull='Seleccionar' nullElegible=false required=true classNames="col s3"}}
+            </div>
+            <div class="row">
+              {{tenpines/input-date name="fechaDeNacimiento" value=model.fechaDeNacimiento required=true label="Fecha Nacimiento" col="s3"}}
+              {{tenpines/input-text name="nacionalidad" value=model.nacionalidad required=true label="Nacionalidad" col="s3"}}
+              {{selector/de-sexo label="Sexo" sexoElegido=model.sexo labelParaNull='Seleccionar' nullElegible=false required=true classNames="col s3"}}
+              {{tenpines/input-text name="telefono" value=model.telefono required=false label="Teléfono" col="s3"}}
+            </div>
+            <div class="row">
+              {{tenpines/input-text name="profesion" value=model.profesion required=false label="Profesión" col="s3"}}
+              {{selector/de-bebida-favorita label="Bebida favorita" bebidaElegida=model.bebidaFavorita labelParaNull='Seleccionar' nullElegible=false required=true classNames="col s3"}}
+              {{tenpines/check-box name="esExtranjero" value=model.esExtranjero required=true label="¿Es extranjero?" col="s3" classNames="input-field"}}
+              {{tenpines/check-box name="deseaRecibirNovedades" value=model.deseaRecibirNovedades required=true label="Desea recibir novedades?" col="s3" classNames="input-field"}}
+            </div>
+        </div>
+        <div class="card-content">
+          <hr/>
+          {{domicilio/editar-domicilio domicilio=model}}
+        </div>
+        <div class="card-content">
+          <hr/>
+          {{politicamente-expuesta/editar-formulario formulario=model}}
+        </div>
+        <div class="card-action">
+          {{tenpines/material-button label='Guardar' click=(action validar) }}
+        </div>
+      {{/form-validable}}
+    </div>
+  </div>
+{{/if}}
+{{#if puedeEditarDatosCuenta}}
+  <div class="row msr-form">
+    <div class="card darken-1">
+      <div class="card-content">
+        <span class="card-title">Editar Cuenta</span>
+        <div class="card-content">
+          {{cuenta/editar-cuenta cuenta=model.cuenta}}
+        </div>
+      </div>
+    </div>
+  </div>
+{{/if}}

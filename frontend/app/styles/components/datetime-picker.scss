@@ -1,0 +1,20 @@
+@import "../variables";
+
+.dtp > .dtp-content > .dtp-date-view > header.dtp-header {
+  background: $black;
+}
+
+.dtp div.dtp-date, .dtp div.dtp-time {
+  background: $green;
+}
+.dtp table.dtp-picker-days tr > td > a.selected{
+  background: $green;
+}
+
+.dtp .p10 > a {
+  color: $black;
+}
+
+.dtp .dtp-actual-meridien a.selected {
+  background: $green;
+}

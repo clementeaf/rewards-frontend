@@ -1,0 +1,10 @@
+{{#if restriccion}}
+  <div class="row restriccion">
+    {{tenpines/material-button action='sacarRestriccion' icon='close' floating=true right=true classNames='small close-button' }}
+    <h6>Restricción de seleccion de tarjeta predeterminada</h6>
+    <small><em>Esta restricción permite que sólo puedan acceder al beneficio aquellos miembros que seleccionen como tarjeta predeterminada para recargas mobile una de los siguientes tipos:</em></small>
+    <div class="row">
+      {{autocomplete/de-tipos-de-tarjetas-de-credito tarjetasDeCreditoSeleccionadas=restriccion.tiposDeTarjetaDeCredito col="s10" required=true}}
+    </div>
+  </div>
+{{/if}}

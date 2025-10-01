@@ -1,0 +1,28 @@
+{{#collapsible-table/-row as |section|}}
+  {{#if section.esTitulo}}
+    {{materialize/icon-helper 'credit_card' }} Métodos de Pago
+  {{else if section.esCuerpo}}
+    {{#if (not-empty metodosDePago)}}
+      {{#each metodosDePago as |metodoDePago|}}
+        <div class="row msr-form">
+          <div class="card darken-1">
+            <div class="card-content">
+              <span class="card-title">Metodo de Pago #{{metodoDePago.id}}</span>
+              <div class="row">
+                {{tenpines/labeled-label label='Número' value=(concat '...' metodoDePago.ultimosCuatroNumeros) col='s2'}}
+                {{tenpines/labeled-label label='Tipo' value=metodoDePago.tipo col='s2'}}
+                {{tenpines/labeled-label label='Alias' value=metodoDePago.alias col='s2'}}
+                {{tenpines/labeled-label label='Default' value=(as-yes-no-string metodoDePago.esDefault) col='s2'}}
+                {{tenpines/labeled-label label='Vencimiento' value=(concat metodoDePago.mesDeVencimiento '/' metodoDePago.anioDeVencimiento) col='s2'}}
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    {{else}}
+      <div class="row text-center">
+        <em>No se encontraron métodos de pago</em>
+      </div>
+    {{/if}}
+  {{/if}}
+{{/collapsible-table/-row}}

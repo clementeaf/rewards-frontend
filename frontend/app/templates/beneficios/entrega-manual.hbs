@@ -1,0 +1,18 @@
+{{bread-crumbs list="Beneficios|Entrega Manual"}}
+
+{{vouchers/creador-de-vouchers voucherEnCreacion=model.voucherEnCreacion}}
+
+<div id="entrega-manual-tabs" class="row">
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s6"><a href="#asignador-a-miembros">Miembros</a></li>
+      <li class="tab col s6"><a href="#asignador-a-segmentos">Segmentos</a></li>
+    </ul>
+  </div>
+
+  {{vouchers/asignador-a-miembros voucherEnCreacion=model.voucherEnCreacion id='asignador-a-miembros'}}
+  {{vouchers/asignador-a-segmentos voucherEnCreacion=model.voucherEnCreacion id='asignador-a-segmentos'}}
+
+  {{outlet}}
+</div>
+

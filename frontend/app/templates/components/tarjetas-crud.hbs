@@ -1,0 +1,31 @@
+<div class="row msr-form">
+  <div class="card darken-1">
+    {{#form-validable configurarCon=opcionesDeValidacion alValidarCorrectamente=(action primaryAction) as |validar|}}
+      <div class="card-content">
+        <span class="card-title">{{title}}</span>
+        <div class="row">
+          {{selector/de-tipo-de-tarjetas disabled=editando name="tipo" tipoDeTarjetaElegida=tarjeta.tipo label="Tipo de tarjeta" classNames="col s3"}}
+          {{tenpines/input-text name="numero" value=tarjeta.numero  disabled=editando label="Numero" col="s3"}}
+          {{tenpines/input-number value=tarjeta.saldo label="Saldo" required=true col="s3 currency-input"}}
+          {{#if editando}}
+            {{estado-tarjeta-toggle estado=tarjeta.estado classNames="col s3"}}
+          {{/if}}
+        </div>
+        <div class="row">
+          {{tenpines/input-date value=tarjeta.fechaDeVencimiento label='Fecha de vencimiento (Gift Card)' classNames="col s3"}}
+        </div>
+      </div>
+      {{#if editando}}
+        <div class="card-content">
+          <div class="row black-text">
+            {{tenpines/text-area value=motivoDeEdicion name="motivoDeEdicion" label="Motivo" col="s12" length=longitudMaximaDeMotivo required=true}}
+          </div>
+        </div>
+      {{/if}}
+      <div class="card-action right-align">
+        {{tenpines/material-button label=primaryButtonLabel click=(action validar) disabled=estaProcesando}}
+        {{tenpines/material-button label=secondaryButtonLabel action=secondaryAction disabled=estaProcesando}}
+      </div>
+    {{/form-validable}}
+  </div>
+</div>

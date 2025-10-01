@@ -1,0 +1,12 @@
+<div class="card">
+  <div>
+    <span>{{titulo}}</span>
+    {{#form-validable configurarCon=opcionesDeValidacion model=model alValidarCorrectamente=formAction as |validar|}}
+      {{tenpines/input-file
+        name="csv" placeholeder=csv.fileName
+        file=csv col='s12' required=true disabled=noPuedeProcesarArchivo
+      }}
+      {{yield validar}}
+    {{/form-validable}}
+  </div>
+</div>

@@ -1,0 +1,18 @@
+{{bread-crumbs list="Administracion|Configuración"}}
+
+<div id="configuration-tabs" class="row">
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s1"><a {{action 'verConfiguracionDeStars'}}>Stars</a></li>
+      <li class="tab col s2"><a {{action 'verConfiguracionDeMontosTotalesDeControl'}}>Controles UIF</a></li>
+      <li class="tab col s2"><a {{action 'verConfiguracionDeLimiteDeMontoPorTarjeta'}}>Limite por tarj.</a></li>
+      <li class="tab col s1"><a {{action 'verConfiguracionDePos'}}>POS</a></li>
+      <li class="tab col s1"><a {{action 'verConfiguracionDelContrato'}}>Contrato</a></li>
+      <li class="tab col s1"><a {{action 'verConfiguracionDeEmail'}}>E-Mail</a></li>
+      <li class="tab col s1"><a {{action 'verConfiguracionDeControlDeFraude'}}>Accertify</a></li>
+      <li class="tab col s1"><a {{action 'verConfiguracionDeVencimientoDeSaldo'}}>Venc. de Saldo</a></li>
+      <li class="tab col s2"><a {{action 'verConfiguracionDeBeneficioDeBebidaGratis'}}>Beneficio de bebida gratis</a></li>
+    </ul>
+  </div>
+  {{outlet}}
+</div>

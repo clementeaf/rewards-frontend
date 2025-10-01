@@ -1,0 +1,11 @@
+{{#if restriccion}}
+  <div class="row restriccion">
+    {{tenpines/material-button action='sacarRestriccion' icon='close' floating=true right=true classNames='small close-button'}}
+    <h6>Restriccion por Actividad</h6>
+    <small><em>Restringe al miembro, para que pueda adquirir el beneficio, solo si tuvo o no tuvo actividad dentro del tiempo indicado</em></small>
+    <div class="row">
+      {{tenpines/toggle-component value=restriccion.tuvoActividad labelParaTrue='Tuvo actividad' labelParaFalse='No tuvo actividad' col="s4" classNames="input-field"}}
+      {{editor/de-tiempo-concreto cantidadDeTiempo=restriccion.cantidadDeTiempoDeGracia classNames="col s6"}}
+    </div>
+  </div>
+{{/if}}

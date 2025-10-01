@@ -1,0 +1,10 @@
+{{#if restriccion}}
+  <div class="row restriccion">
+    {{tenpines/material-button action='sacarRestriccion' icon='close' floating=true right=true classNames='small close-button' }}
+    <h6>Restricción de segmentos de miembros</h6>
+    <small><em>Esta restricción permite que sólo puedan acceder al beneficio aquellos miembros que pertenezcan a alguno de los segmentos indicados en la restriccion.</em></small>
+    <div class="row">
+      {{autocomplete/de-segmentos-de-miembros segmentosSeleccionados=restriccion.segmentos col="s12" required=true}}
+    </div>
+  </div>
+{{/if}}

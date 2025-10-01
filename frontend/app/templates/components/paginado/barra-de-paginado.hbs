@@ -1,0 +1,11 @@
+{{#if esNecesarioPaginar}}
+  <div class="row center-align">
+    <ul class="pagination">
+      {{paginado/flecha-selectora tipoDeFlecha="atras" accionDeCambioDePagina=(action "irAPaginaAnterior") cantidadTotalDePaginas=cantidadTotalDePaginas numeroDePaginaActual=numeroDePaginaActual}}
+      {{#each paginas as |pagina|}}
+        {{paginado/selector-de-pagina pagina=pagina accionDeCambioDePagina=(action "irAPagina") numeroDePaginaActual=numeroDePaginaActual}}
+      {{/each}}
+      {{paginado/flecha-selectora tipoDeFlecha="adelante" accionDeCambioDePagina=(action "irAPaginaSiguiente") cantidadTotalDePaginas=cantidadTotalDePaginas numeroDePaginaActual=numeroDePaginaActual}}
+    </ul>
+  </div>
+{{/if}}

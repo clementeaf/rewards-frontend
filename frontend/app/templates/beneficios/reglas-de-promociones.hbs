@@ -1,0 +1,57 @@
+{{bread-crumbs list="Beneficios|Promociones"}}
+
+<div class="row promociones">
+  <div class="col s12">
+    {{#if model}}
+      <table class="striped bordered">
+        <thead>
+        <tr>
+          <th>Promoción</th>
+          <th class="text-center">Habilitada?</th>
+          <th class="text-center">Vigente?</th>
+          {{#if puedeEditarBeneficios}}
+            <th class="text-center">Editar</th>
+            <th class="text-center">Eliminar</th>
+          {{/if}}
+        </tr>
+        </thead>
+
+        <tbody>
+        {{#each model as |regla|}}
+          <tr class="linkeable" {{action "verDetalles" regla}}>
+            <td>{{regla.beneficio.nombreInterno}}</td>
+            <td class="text-center">{{habilitada-label habilitada=regla.habilitada}}</td>
+            <td class="text-center">{{regla-vigente-label regla=regla}}</td>
+            {{#if puedeEditarBeneficios}}
+              <td class="text-center">{{materialize/icon-component value='mode_edit' click=(sin-burbujear (action "editar" regla)) }}</td>
+              <td class="text-center">{{materialize/icon-component value='delete' click=(sin-burbujear (action "pedirConfirmacionParaBorrar" regla))}}</td>
+            {{/if}}
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    {{else}}
+      <div class="row text-center">
+        <em>No se encontraron promociones</em>
+      </div>
+    {{/if}}
+
+    {{#if puedeEditarBeneficios}}
+      {{tenpines/material-button action='nueva' icon='add' floating=true right=true classNames='btn-medium crud-add-button' }}
+    {{/if}}
+  </div>
+</div>
+
+<div class="row">
+  <div id="promocionesCrud" class="col s12">
+    {{outlet}}
+  </div>
+</div>
+
+<!--modals de la vista-->
+{{tenpines/modal-de-confirmacion
+open=modalAlEliminarUnaRegla
+titulo='Eliminar promocion'
+descripcion=(concat '¿Esta seguro que quiere eliminar la regla de promocion ' '"'reglaSeleccionada.beneficio.nombre '"' '?')
+accionAceptar=(action 'eliminarReglaSeleccionada')
+}}

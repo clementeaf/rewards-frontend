@@ -1,0 +1,43 @@
+@import "variables";
+
+.multiselect-10pines.col {
+  padding: 0;
+}
+
+.msr-form {
+  color: $dark-grey !important;
+  margin-bottom: 40px !important;
+
+  .card {
+    background-color: $light-grey;
+  }
+
+  .card-title {
+    text-transform: uppercase;
+  }
+
+  ul.dropdown-content {
+    top: 45px !important;
+  }
+
+  .collapsible-body {
+    padding: 10px;
+  }
+}
+
+.btn {
+  padding-left: 7px;
+  padding-right: 7px;
+  background-color: $black;
+  color: $light-grey;
+}
+
+.btn:hover, .btn:active {
+  background-color: $light-grey;
+  color: $black;
+}
+
+.crud-add-button {
+  background-color: $green !important;
+  margin-top: -50px;
+}

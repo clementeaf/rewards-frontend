@@ -1,0 +1,30 @@
+<div class="row">
+  <span class="col s11">Envío de mensajes a Valuelink</span>
+  <div class="input-field col s1">
+    {{tenpines/material-button action='obtenerMediciones' label='Actualizar' }}
+  </div>
+</div>
+<table class="striped">
+  <thead>
+  <tr>
+    <th>Muestra</th>
+    <th>Arribos</th>
+    <th>Tiempo de atencion promedio</th>
+    <th>Tiempo de atención más lenta</th>
+    <th>Congestión</th>
+  </tr>
+  </thead>
+  <tbody>
+  {{#each model as |medidaDeCongestion|}}
+    <tr class="linkeable">
+      <td>{{medidaDeCongestion.horaDeLaMuestra}}</td>
+      <td>{{medidaDeCongestion.cantidadDeArribos}}</td>
+      <td>{{medidaDeCongestion.tiempoDeAtencionPromedio}}</td>
+      <td>{{medidaDeCongestion.maximoTiempoDeAtencion}}</td>
+      <td>{{medidaDeCongestion.porcentajeDeCongestion}} %</td>
+    </tr>
+  {{else}}
+    <em>No hay mediciones</em>
+  {{/each}}
+  </tbody>
+</table>

@@ -1,0 +1,37 @@
+<div class="row msr-form">
+  <div class="card darken-1">
+    <div class="card-content">
+      <span class="card-title">{{model.nombre}} {{model.apellido}}</span>
+
+      <div class="row">
+        {{tenpines/labeled-label label='Instante de Ingreso' value=(as-datetime model.instanteDeIngreso) col='s3'}}
+        {{tenpines/labeled-label label='Tienda donde firmo el contrato' value=model.tiendaDondeFirmoElContrato col='s3'}}
+        <div class="input-field col s3">
+          <p>{{status-label status=model.status}}</p>
+          <label class="active">Status</label>
+        </div>
+        {{tenpines/labeled-label label='Instante de actualización de Status' value=(as-datetime model.instanteDelUltimoStatus) col='s3'}}
+        {{tenpines/labeled-label label='DNI' value=model.dni col='s3'}}
+      </div>
+
+      <div class="row">
+        {{tenpines/labeled-label label='E-mail' value=model.email col='s3'}}
+        {{tenpines/labeled-label label='Fecha de Nacimiento' value=model.fechaDeNacimiento col='s3'}}
+        {{tenpines/labeled-label label='Sexo' value=model.sexo col='s3'}}
+        {{tenpines/labeled-label label='Nacionalidad' value=model.nacionalidad col='s3'}}
+      </div>
+
+      <div class="row">
+        {{tenpines/labeled-label label='Telefono' value=model.telefono col='s3'}}
+        {{tenpines/labeled-label label='Profesion' value=model.profesion col='s3'}}
+        {{tenpines/labeled-label label='Estado Civil' value=model.estadoCivil col='s3'}}
+        {{tenpines/labeled-label label='Bebida Favorita' value=model.bebidaFavorita col='s3'}}
+      </div>
+
+      {{domicilio/en-detalle domicilio=model.domicilio classNames='row'}}
+
+      {{solicitudes/direccion-en-adea direccionEnAdea=model.direccionEnAdea classNames='row'}}
+
+    </div>
+  </div>
+</div>

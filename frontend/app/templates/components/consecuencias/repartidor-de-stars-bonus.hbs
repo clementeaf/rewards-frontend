@@ -1,0 +1,10 @@
+{{#if repartidorDeStarsBonus}}
+  <div class="row restriccion">
+    {{tenpines/material-button action='sacarRepartidorDeStarsBonus' icon='close' floating=true right=true classNames='small close-button' }}
+    <h6>Stars bonus</h6>
+    <small><em>Esta consecuencia permite darle al miembro una cantidad de stars bonus.</em></small>
+    <div class="row">
+      {{tenpines/input-number name="starsBonus" required=true value=repartidorDeStarsBonus.cantidadDeStarsBonus label="Cantidad de stars bonus" col="s2"}}
+    </div>
+  </div>
+{{/if}}

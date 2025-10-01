@@ -1,0 +1,35 @@
+{{bread-crumbs list="Administracion|Plantillas de Mail"}}
+
+<div class="row">
+  <div class="col s12">
+    {{#if model}}
+      <table class="striped bordered">
+        <thead>
+        <tr>
+          <th>Tipo De Notificación</th>
+          <th>Nombre</th>
+          <th>Trigger Id</th>
+          <th>Editar</th>
+        </tr>
+        </thead>
+        <tbody class="linkeable">
+        {{#each model as |plantilla|}}
+          <tr>
+            <td>{{plantilla.tipoDeNotificacion}}</td>
+            <td>{{plantilla.nombre}}</td>
+            <td>{{plantilla.triggerId}}</td>
+            <td>{{materialize/icon-component value='mode_edit' click=(sin-burbujear (action "editar" plantilla)) }}</td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    {{else}}
+      <div class="row text-center">
+        <em>No se encontraron Plantillas de Mail</em>
+      </div>
+    {{/if}}
+  </div>
+</div>
+<div id="plantilla-en-edicion">
+  {{outlet}}
+</div>

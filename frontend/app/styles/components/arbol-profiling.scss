@@ -1,0 +1,25 @@
+i.jstree-icon.jstree-themeicon{
+  font-family: 'Material Icons';
+  font-style: normal;
+}
+i.jstree-icon.jstree-themeicon.terminado::after{
+  content: "timer";
+}
+i.jstree-icon.jstree-themeicon.empezado::after{
+  content: "rotate_right";
+}
+i.jstree-icon.jstree-themeicon.abortado::after{
+  content: "error";
+}
+i.jstree-icon.jstree-themeicon.sesion::after{
+  content: "people";
+}
+i.jstree-icon.jstree-themeicon.usuario::after{
+  content: "perm_identity";
+}
+i.jstree-icon.jstree-themeicon.argumento::after{
+  content: "code";
+}
+i.jstree-icon.jstree-themeicon.omitido::after{
+  content: "visibility_off";
+}

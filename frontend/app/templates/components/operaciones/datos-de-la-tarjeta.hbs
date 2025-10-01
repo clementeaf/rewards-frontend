@@ -1,0 +1,18 @@
+<span hidden={{noHayDatosDeTarjeta}} class="card-subtitle">Datos de la tarjeta</span>
+<div id="contenido">
+  <div class="row">
+    {{optional-label label='Numero de tarjeta' value=datosDeLaTarjeta.numeroDeTarjeta col='s3'}}
+    {{optional-label label='Tipo de tarjeta' value=datosDeLaTarjeta.tipoDeTarjetaEnEseInstante col='s3'}}
+  </div>
+  <div class="row">
+    {{optional-label label='Tipo de tarjeta anterior' value=datosDeLaTarjeta.tipoDeTarjetaAnterior col='s3'}}
+    {{optional-label label='Tipo de tarjeta posterior' value=datosDeLaTarjeta.tipoDeTarjetaPosterior col='s3'}}
+    {{optional-label label='Estado anterior de la tarjeta' value=datosDeLaTarjeta.estadoAnteriorDeLaTarjeta col='s3'}}
+    {{optional-label label='Estado posterior de la tarjeta' value=datosDeLaTarjeta.estadoPosteriorDeLaTarjeta col='s3'}}
+    {{optional-label label='Saldo anterior' value=datosDeLaTarjeta.saldoAnteriorDeLaTarjeta currency=true col='s3'}}
+    {{optional-label label='Saldo posterior' value=datosDeLaTarjeta.saldoPosteriorDeLaTarjeta currency=true col='s3'}}
+    {{optional-label label='Fecha de vencimiento anterior' value=datosDeLaTarjeta.vencimientoAnteriorDeLaTarjeta col='s3'}}
+    {{optional-label label='Fecha de vencimiento posterior' value=datosDeLaTarjeta.vencimientoPosteriorDeLaTarjeta col='s3'}}
+    {{optional-label label='Es la primer tarjeta' value=(as-yes-no-string-nullable datosDeLaTarjeta.esLaPrimerTarjeta) col='s3'}}
+  </div>
+</div>

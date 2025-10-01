@@ -1,0 +1,10 @@
+{{bread-crumbs list="Beneficios|Cambio Masivo de Claves"}}
+
+{{#segmentos/form-csv-de-miembros model=model csv=model.csvAgregar titulo="Agregar IDs de miembros para cambiar la clave desde archivo"
+formAction=(action 'cambiarClavesConCsv') as |validar|}}
+<div>
+  <div class="row section right-align">
+    {{tenpines/material-button label="Cambiar Claves" click=validar disabled=noPuedeProcesarArchivo}}
+  </div>
+</div>
+{{/segmentos/form-csv-de-miembros}}

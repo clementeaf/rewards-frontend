@@ -1,0 +1,27 @@
+@import "../variables";
+
+nav.nav-breadcrumbs {
+  background-color: $green;
+  color: $light-grey;
+  position: relative;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.breadcrumbs-bar {
+  padding-left: 10px;
+}
+
+a.breadcrumb {
+  padding: 0;
+  background-color: $green !important;
+  font-size: small !important;
+}
+
+a.breadcrumb:hover, a.breadcrumb:active {
+  background-color: $green !important;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+}

@@ -1,0 +1,28 @@
+<form {{action "filtrarMails" on="submit"}} novalidate>
+  <div class="row msr-filter">
+    <div class="card darken-1">
+      <div class="card-content white-text">
+        <div class="row">
+          {{selector/de-tipos-de-notificacion label="Tipo de notificacion" tipoDeNotificacionElegida=filtro.tipoDeNotificacion nullElegible=true labelParaNull=" - Todas - " col="s3" }}
+          {{tenpines/input-text value=filtro.mail label="Email" col="s3"}}
+          {{tenpines/input-datetime value=filtro.instanteDeIngresoDesde name="desde" label="Instante de Ingreso (desde)" col="s3"}}
+          {{tenpines/input-datetime value=filtro.instanteDeIngresoHasta name="hasta" label="Instante de Ingreso (hasta)" col="s3"}}
+
+          {{tenpines/input-datetime value=filtro.instanteDeEnvioDesde name="desde" label="Instante de Envío (desde)" col="s3"}}
+          {{tenpines/input-datetime value=filtro.instanteDeEnvioHasta name="hasta" label="Instante de Envío (hasta)" col="s3"}}
+          {{tenpines/check-box name="fueEnviado" value=filtro.fueEnviado required=true label="Fue enviado" col="s2" classNames="input-field"}}
+          {{tenpines/check-box name="ocurrioFalla" value=filtro.ocurrioFalla required=true label="Fallo el envio" col="s2" classNames="input-field"}}
+
+          {{tenpines/input-range value=filtro.limite min=1 max=1000 label="Limite de resultados" col="s2"}}
+        </div>
+      </div>
+
+      <div class="card-action">
+        <div class="row">
+          {{tenpines/material-button label='Limpiar' action='limpiarFiltro' flat=true}}
+          {{tenpines/material-button label="Filtrar" submit=true }}
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

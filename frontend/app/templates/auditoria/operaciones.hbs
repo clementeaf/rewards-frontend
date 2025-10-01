@@ -1,0 +1,26 @@
+{{bread-crumbs list="Auditoría|Operaciones"}}
+
+{{filtro/de-operaciones operacionesEncontradas=model datosPredefinidos=datosDeFiltroPredefinido }}
+
+<div class="row">
+  <div class="col s12">
+    {{#if (not-null model)}}
+      {{#if model}}
+        {{operacion-table operaciones=model accionAlClickearUna=(action 'quiereVerDetalles') }}
+      {{else}}
+        <div class="row text-center">
+          <em>No se encontraron operaciones</em>
+        </div>
+      {{/if}}
+    {{else}}
+      <div class="row text-center">
+        <em>Indique el criterio de busqueda</em>
+      </div>
+    {{/if}}
+  </div>
+</div>
+<div class="row">
+  <div id="detalleDeOperacion" class="col s12">
+    {{outlet}}
+  </div>
+</div>

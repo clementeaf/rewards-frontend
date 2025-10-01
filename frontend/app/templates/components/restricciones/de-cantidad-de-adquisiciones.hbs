@@ -1,0 +1,11 @@
+{{#if restriccion}}
+  <div class="row restriccion">
+    {{tenpines/material-button action='sacarRestriccion' icon='close' floating=true right=true classNames='small close-button'}}
+    <h6>Restriccion de Cantidad de Adquisiciones</h6>
+    <small><em>Esta restriccion restringue a que el miembro sólo pueda aplicarle la regla de beneficio una determinada cantidad de veces durante un tiempo específico.</em></small>
+    <div class="row">
+      {{tenpines/input-number value=restriccion.cantidadMaximaDeAdquisiciones min=1 label="Cantidad máxima de adquisiciones" col="s3"}}
+      {{selector/de-duracion-de-limite duracion=restriccion.duracion classNames="col s2" required=true}}
+    </div>
+  </div>
+{{/if}}

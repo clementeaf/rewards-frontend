@@ -1,0 +1,61 @@
+{{bread-crumbs list="Administracion|Tarjetas"}}
+
+{{filtro/de-tarjetas tarjetas=model }}
+
+<div class="row">
+  <div class="col s12">
+    {{#if (not-null model)}}
+      {{#if model}}
+        <table class="striped bordered">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tipo</th>
+            <th>Numero</th>
+            <th>Saldo</th>
+            <th>Habilitacion</th>
+            <th>Vencimiento</th>
+            <th>Ultima Recarga</th>
+            {{#if puedeAdministrarTarjetas}}
+              <th>Editar</th>
+            {{/if}}
+          </tr>
+          </thead>
+          <tbody class="linkeable">
+          {{#each model as |tarjeta|}}
+            <tr {{action "detalle" tarjeta}}>
+              <td>{{tarjeta.id}}</td>
+              <td>{{tarjeta.tipo.nombre}}</td>
+              <td>{{tarjeta.numero}}</td>
+              <td>{{as-currency tarjeta.saldo}}</td>
+              <td>{{estado-tarjeta-label estado=tarjeta.estado}}</td>
+              <td>{{vencimiento-tarjeta-label tarjeta=tarjeta}}</td>
+              <td>{{as-datetime tarjeta.instanteDeLaUltimaRecarga}}</td>
+              {{#if puedeAdministrarTarjetas}}
+                <td>{{materialize/icon-component value='mode_edit' click=(sin-burbujear (action "editar" tarjeta)) }}</td>
+              {{/if}}
+            </tr>
+          {{/each}}
+          </tbody>
+        </table>
+        {{totalizador-de-tarjetas tarjetas=model}}
+      {{else}}
+        <div class="row text-center">
+          <em>No se encontraron tarjetas</em>
+        </div>
+      {{/if}}
+    {{else}}
+      <div class="row text-center">
+        <em>Indique el criterio de busqueda</em>
+      </div>
+    {{/if}}
+  </div>
+</div>
+
+{{#if puedeAdministrarTarjetas}}
+  {{tenpines/material-button action="nueva" icon='add' floating=true right=true classNames='btn-medium crud-add-button'}}
+{{/if}}
+
+<div id="tarjetasCrud">
+  {{outlet}}
+</div>

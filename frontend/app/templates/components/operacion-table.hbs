@@ -1,0 +1,38 @@
+<table class="striped bordered centered">
+  <thead>
+    <tr>
+      <th>Operación</th>
+      <th>Fecha</th>
+      <th>Tipo Tarjeta</th>
+      <th>Nro. Tarjeta</th>
+      <th>Miembro</th>
+      <th>Origen</th>
+      <th>Tienda</th>
+      <th>Nro. POS</th>
+      <th>Nro. Check</th>
+      <th>Total</th>
+      <th>Saldo</th>
+      <th>Stars</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each operaciones as |operacion|}}
+      <tr {{action "alClickearSobre" operacion}} class="linkeable">
+        <td>{{operacion.tipoDeOperacion}}</td>
+        <td>{{as-datetime operacion.instanteEnElQueOcurrio}}</td>
+        <td>{{operacion.tipoDeTarjetaEnEseInstante}}</td>
+        <td><span class="truncate-columna-operaciones">{{operacion.numeroDeTarjeta}}</span></td>
+        <td>{{operacion.nombreDelMiembro}}</td>
+        <td>{{operacion.origenDeLaOperacion}}</td>
+        <td>{{operacion.nombreDeTienda}}</td>
+        <td>{{guion-si-es-nulo operacion.numeroDePos}}</td>
+        <td><span class="truncate-columna-operaciones">{{operacion.numeroDeCheck}}</span></td>
+        <td>$ {{guion-si-es-nulo operacion.total}}</td>
+        <td>$ {{guion-si-es-nulo operacion.saldoPosteriorDeLaTarjeta}}</td>
+        <td>{{guion-si-es-nulo operacion.cantidadDeStarsPosteriorDelMiembro}}</td>
+      </tr>
+    {{else}}
+    <em>No tiene operaciones recientes</em>
+  {{/each}}
+  </tbody>
+</table>

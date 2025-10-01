@@ -1,0 +1,21 @@
+<div class="row msr-form">
+  <div class="card darken-1">
+    <div class="card-content">
+      <span class="card-title">
+        <div class="col s10">Detalles Tarjeta #{{model.numero}}</div>
+      </span>
+      <div class="row">
+        {{tenpines/labeled-label label='Tipo' value=model.tipo.nombre col='s3'}}
+        {{tenpines/labeled-label label='Saldo' value=(as-currency model.saldo) col='s3'}}
+        {{tenpines/labeled-label label='Instante de ultima recarga' value=(as-datetime model.instanteDeLaUltimaRecarga) col='s3'}}
+        <div class="col s3">
+          {{estado-tarjeta-label estado=model.estado}}
+        </div>
+        <div class="col s3">
+            {{vencimiento-tarjeta-label label='vencimiento ' tarjeta=model}}
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>

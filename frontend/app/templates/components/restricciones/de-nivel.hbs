@@ -1,0 +1,10 @@
+{{#if restriccion}}
+  <div class="row restriccion">
+    {{tenpines/material-button action='sacarRestriccion' icon='close' floating=true right=true classNames='small close-button' }}
+    <h6>Restricción de nivel</h6>
+    <small><em>Para aquellos miembros que pertenezcan a alguno de los niveles indicados.</em></small>
+    <div class="row">
+      {{multi-check/de-niveles nivelesElegidos=restriccion.niveles}}
+    </div>
+  </div>
+{{/if}}

@@ -1,0 +1,10 @@
+{{#if multiplicadorDeStars}}
+  <div class="row restriccion">
+    {{tenpines/material-button action='sacarMultiplicadorDeStars' icon='close' floating=true right=true classNames='small close-button' }}
+    <h6>Multiplicador de stars</h6>
+    <small><em>Esta consecuencia permite multiplicar la cantidad de stars adquiridas por un miembro a partir de una compra.</em></small>
+    <div class="row">
+      {{tenpines/input-number name="cantidadAMultiplicar" required=true value=multiplicadorDeStars.multiplicador label="Multiplicador" col="s1"}}
+    </div>
+  </div>
+{{/if}}

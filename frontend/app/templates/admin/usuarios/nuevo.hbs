@@ -1,0 +1,18 @@
+<div class="row msr-form">
+  <div class="card darken-1">
+    {{#form-validable configurarCon=opcionesDeValidacion alValidarCorrectamente=(action 'crearUsuario') as |validar|}}
+      <div class="card-content">
+        <span class="card-title">Nuevo usuario</span>
+        <div class="row">
+          {{tenpines/input-text name="nombreCompleto" value=model.nombreCompleto required=true label="Nombre" col="s3"}}
+          {{tenpines/input-text name="loginId" value=model.loginId required=true label="Login" col="s3"}}
+          {{selector/de-grupos-de-usuarios nombre="userGroup" grupoElegido=model.userGroup classNames="col s6"}}
+        </div>
+      </div>
+      <div class="card-action">
+        {{tenpines/material-button label='Crear' click=(action validar) }}
+        {{tenpines/material-button label='Borrar' action='resetearFormulario' }}
+      </div>
+    {{/form-validable}}
+  </div>
+</div>

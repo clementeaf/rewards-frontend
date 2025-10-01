@@ -1,0 +1,10 @@
+{{#if restriccion}}
+  <div class="row restriccion">
+    {{tenpines/material-button action='sacarRestriccion' icon='close' floating=true right=true classNames='small close-button' }}
+    <h6>Restricción de medios de pago</h6>
+    <small><em>Esta restricción permite que sólo puedan acceder al beneficio aquellos miembros que hayan recargado con los siguientes medios de pago.</em></small>
+    <div class="row">
+      {{autocomplete/de-tipos-de-metodo-de-pago tiposSeleccionados=restriccion.tiposDeMetodoDePago col="s10" required=true}}
+    </div>
+  </div>
+{{/if}}

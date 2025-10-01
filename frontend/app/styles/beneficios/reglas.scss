@@ -1,0 +1,107 @@
+@import "../variables";
+
+.reglas,
+.promociones {
+  table {
+    input {
+      margin: 0;
+      width: 120px;
+      height: auto;
+      outline: none;
+      border-radius: 0;
+      font-size: inherit;
+      text-align: center;
+    }
+
+    input.select-dropdown {
+      outline: none;
+      height: auto;
+      line-height: 0;
+      width: 140px;
+      margin: 0;
+    }
+
+    .input-field {
+      margin: 0;
+    }
+
+    label.active {
+      display: none !important;
+    }
+
+    ul.dropdown-content {
+      top: 20px !important;
+    }
+
+    .col {
+      padding: 0 !important;
+    }
+  }
+}
+
+.selector-de-items-micros,
+.restriccion {
+  margin-top: 20px !important;
+  padding: 10px;
+  background-color: $white;
+  color: $dark-grey;
+  border: 1px solid #e0e0e0;
+
+  .close-button {
+    margin-top: 10px;
+    margin-right: 10px;
+    background-color: #E57373 !important;
+
+    i {
+      font-size: 15px;
+    }
+  }
+
+  .add-button {
+    margin-top: 15px;
+  }
+}
+
+.restricciones-table,
+.consecuencias-table {
+  margin: 30px 0 0;
+}
+
+.restriccion-blocked {
+  font-style: italic;
+  color: $middle-grey !important;
+  background-color: $light-grey !important;
+
+  a {
+    color: $dark-grey !important;
+    cursor: not-allowed;
+  }
+}
+
+.de-compra-de-productos {
+  table {
+    font-size: 12px;
+
+    label {
+      font-size: 12px;
+    }
+
+    td {
+      padding: 5px 5px !important;
+    }
+  }
+}
+
+.periodo-de-validez {
+  display: flex;
+  align-content: center;
+
+  .datetime-input {
+    max-width: 30%;
+    margin-right: 10px;
+  }
+
+  .close-boton {
+    align-self: center;
+  }
+}

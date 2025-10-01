@@ -1,0 +1,11 @@
+{{#if restriccion}}
+  <div class="row restriccion">
+    {{tenpines/material-button action='sacarRestriccion' icon='close' floating=true right=true classNames='small close-button' }}
+    <h6>Restricción de tiendas</h6>
+    <small><em>Esta restricción permite que sólo puedan acceder al beneficio aquellos miembros que hayan comprado en las tiendas requierdas por la restriccion.</em></small>
+    <div class="row">
+      {{selector/de-relaciones-entre-conjuntos name="relacion" relacionEntreConjuntosElejida=restriccion.relacionEntreConjuntos classNames="col s2" required=true}}
+      {{autocomplete/de-tiendas tiendasSeleccionadas=restriccion.tiendas col="s10" required=true}}
+    </div>
+  </div>
+{{/if}}

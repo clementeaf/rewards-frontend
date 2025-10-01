@@ -1,0 +1,64 @@
+{{#if restriccion}}
+  <div class="row restriccion de-compra-de-productos">
+    {{tenpines/material-button action='sacarRestriccion' icon='close' floating=true right=true classNames='small close-button' }}
+    <h6>Restricción de compra de productos</h6>
+    <small><em>Esta restricción permite acceder al beneficio sólo si el miembro compra alguno de los productos indicados. Si no se indica ningún nivel, entonces cualquier nivel aplica para el producto</em></small>
+    <div class="row">
+      <div class="row">
+        {{autocomplete/de-item-micros itemSeleccionado=itemSeleccionado col="s6"}}
+      </div>
+      <small>{{restriccion.itemsRestringidos.length}} productos seleccionados</small>
+      <div class="row">
+        <table>
+          <thead>
+            <tr>
+              <th>Item Micros</th>
+              <th>Niveles Micros</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each restriccion.itemsRestringidos as |itemRestringido|}}
+              <tr>
+                <td>{{itemRestringido.itemMicros.nombre}}</td>
+                <td>{{multi-check/de-niveles-micros nivelesMicrosElegidos=itemRestringido.nivelesMicros opcionCol='s2'}}</td>
+                <td>{{materialize/icon-component value='delete' click=(sin-burbujear (action "eliminarRestriccionDeItemMicros" itemRestringido)) }}</td>
+              </tr>
+            {{else}}
+              <em>No hay productos restringidos</em>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <hr/>
+    <div class="row">
+      <div class="row">
+        {{autocomplete/de-familia-de-item-micros-habilitada familiaSeleccionada=familiaSeleccionada col="s6"}}
+      </div>
+      <small>{{restriccion.familiasRestringidas.length}} familias seleccionadas</small>
+      <div class="row">
+        <table>
+          <thead>
+            <tr>
+              <th>Familia Micros</th>
+              <th>Niveles Micros</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each restriccion.familiasRestringidas as |familiaRestringida|}}
+              <tr>
+                <td>{{familiaRestringida.familia.nombre}}</td>
+                <td>{{multi-check/de-niveles-micros nivelesMicrosElegidos=familiaRestringida.niveles opcionCol='s2'}}</td>
+                <td>{{materialize/icon-component value='delete' click=(sin-burbujear (action "eliminarRestriccionDeFamiliaDeItemMicros" familiaRestringida)) }}</td>
+              </tr>
+            {{else}}
+              <em>No hay familias micros restringidas</em>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{{/if}}

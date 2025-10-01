@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col s12">
+
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">Espiar log</span>
+        <div class="row">
+          <pre class="tipo_consola">
+            {{logEspiado}}
+          </pre>
+        </div>
+        <div class="row">
+          {{tenpines/material-button icon="replay" label=" " action='actualizarLog' col="offset-s11 s1" }}
+        </div>
+      </div>
+      <div class="card-action">
+        <div class="row">
+          {{tenpines/input-text label="Logger espiado" value=loggerEspiado col="s10"}}
+          {{tenpines/material-button label="Instalar" action='instalarEspia' col="offset-s10 s1" disabled=loggerNoDefinido}}
+          {{tenpines/material-button label="Quitar" action='quitarEspia' col="s1" disabled=loggerNoDefinido}}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+{{#collapsible-table}}
+  {{#collapsible-table/-row as |section|}}
+    {{#if section.esTitulo}}
+      {{materialize/icon-helper 'settings' }} Configurar niveles
+    {{else if section.esCuerpo}}
+      {{ajustador-de-log}}
+    {{/if}}
+  {{/collapsible-table/-row}}
+{{/collapsible-table}}
+

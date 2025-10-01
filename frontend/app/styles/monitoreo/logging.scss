@@ -1,0 +1,10 @@
+@import "../variables";
+
+.tipo_consola {
+  font-size: x-small;
+}
+.tipo_consola:hover {
+  position: relative;
+  width: 1500px;
+  z-index: 99;
+}

@@ -1,0 +1,17 @@
+<div class="row msr-form">
+  <div class="card darken-1">
+    {{#form-validable configurarCon=opcionesDeValidacion alValidarCorrectamente=(action 'crearRol') as |validar|}}
+      <div class="card-content">
+        <span class="card-title">Nuevo rol</span>
+        <div class="row">
+          {{tenpines/input-text name="nombre" value=model.nombre required=true label="nombre" col="s4"}}
+          {{autocomplete/de-permisos permisosElegidos=model.permisos col="s8"}}
+        </div>
+      </div>
+      <div class="card-action">
+        {{tenpines/material-button label='Crear' click=(action validar) }}
+        {{tenpines/material-button label='Borrar' action='resetearFormulario' }}
+      </div>
+    {{/form-validable}}
+  </div>
+</div>

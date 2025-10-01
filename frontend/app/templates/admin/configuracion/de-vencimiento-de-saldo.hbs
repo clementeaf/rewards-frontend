@@ -1,0 +1,18 @@
+<div class="col s12" id="configuracion-de-vencimiento-de-saldo">
+  <div class="row msr-form">
+    <div class="card darken-1">
+      <div class="card-content">
+        <span class="card-title">Vencimiento del Saldo</span>
+        <div class="row">
+          {{tenpines/input-number value=model.mesesTrasLosCualesVenceElSaldo min=1 required=true label="Meses tras los cuales vence el saldo de un miembro rewards" col="s4"
+                                  disabled=noPuedeEditarVencimientoDeSaldo}}
+        </div>
+      </div>
+      {{#if puedeEditarVencimientoDeSaldo}}
+        <div class="card-action">
+          {{tenpines/material-button label='Guardar configuracion' click=(action 'guardarConfiguracion') }}
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</div>

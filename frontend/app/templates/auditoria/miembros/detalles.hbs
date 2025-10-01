@@ -1,0 +1,85 @@
+<div class="row msr-form">
+  <div class="card darken-1">
+    <div class="card-content">
+      <span class="card-title">
+        <div class="col s10 no-margin">{{model.miembro.nombre}}</div>
+        {{habilitado-label value=model.miembro.habilitado classNames='col s2'}}
+      </span>
+      <div class="row">
+        <div class="input-field col s3">
+          <p>{{nivel-label nivel=model.miembro.periodo.nivel}}</p>
+          <label class="active">Nivel</label>
+        </div>
+        {{tenpines/labeled-label label='Bebida Favorita' value=model.miembro.bebidaFavorita col='s3'}}
+        {{tenpines/labeled-label label='Fecha de nacimiento' value=model.miembro.datosPersonales.fechaDeNacimiento col='s3'}}
+        {{tenpines/labeled-label label='Fecha de inscripcion' value=(as-datetime model.miembro.instanteDeInscripcion) col='s3'}}
+      </div>
+      <div class="row">
+        {{tenpines/labeled-label label='Ultima actividad' value=(as-datetime model.miembro.ultimaActividad) col='s3'}}
+        {{tenpines/labeled-label label='Ultima compra' value=(guion-si-es-nulo (as-datetime-nullable model.miembro.ultimaCompra)) col='s3'}}
+        {{tenpines/labeled-label label='Ultima recarga' value=(guion-si-es-nulo (as-datetime-nullable model.miembro.ultimaRecarga)) col='s3'}}
+        {{tenpines/labeled-label label='Monto Total de Recargas' value=model.miembro.montoTotalDeRecargasAnuales col='s3'}}
+      </div>
+      <div class="row">
+        {{tenpines/labeled-label label="Desea recibir novedades sobre productos y promociones" value=(as-yes-no-string model.miembro.deseaRecibirNovedades) col="s6" }}
+      </div>
+      <div class="row">
+        {{tenpines/labeled-label label="Instante de ultimo rechazo del controlador de fraude" value=(guion-si-es-nulo (as-datetime-nullable model.miembro.instanteDeUltimaTransaccionBloqueadaPorAccertify)) col="s6" }}
+        {{tenpines/labeled-label label="Ultima operacion rechazada" value=(guion-si-es-nulo model.miembro.tipoDeUltimaTransaccionBloqueadaPorAccertify) col="s3" }}
+      </div>
+    </div>
+    <div class="card-content">
+      <hr/>
+      <span class="card-title">Datos del periodo</span>
+      <div class="row">
+        {{tenpines/labeled-label label='Fecha de Aniversario' value=(as-datetime model.miembro.periodo.instanteDeAniversario) col='s3'}}
+        {{tenpines/labeled-label label='Stars del período' value=model.miembro.periodo.cantidadDeStars col='s3'}}
+        {{tenpines/labeled-label label='Stars para pasar de nivel' value=model.miembro.periodo.cantidadDeStarsParaPasarDeNivel col='s3'}}
+        {{tenpines/labeled-label label='Stars totales' value=model.miembro.periodo.cantidadDeStarsTotales col='s3'}}
+      </div>
+    </div>
+    <div class="card-content">
+      <hr/>
+      {{cuenta/en-detalle cuenta=model.miembro.cuenta}}
+    </div>
+    <div class="card-content">
+      <hr/>
+      <span class="card-title">Datos personales</span>
+      <div class="row">
+        {{tenpines/labeled-label label='DNI' value=model.miembro.datosPersonales.dni col='s3'}}
+        {{tenpines/labeled-label label='Sexo' value=model.miembro.datosPersonales.sexo col='s3'}}
+        {{tenpines/labeled-label label='Nacionalidad' value=model.miembro.datosPersonales.nacionalidad col='s3'}}
+        {{tenpines/labeled-label label='Estado civil' value=model.miembro.datosPersonales.estadoCivil col='s3'}}
+      </div>
+      <div class="row">
+        {{tenpines/labeled-label label='Profesion' value=model.miembro.datosPersonales.profesion col='s3'}}
+        {{tenpines/labeled-label label='Telefono' value=model.miembro.datosPersonales.telefono col='s3'}}
+      </div>
+    </div>
+    <div class="card-content">
+      <hr/>
+      {{domicilio/en-detalle domicilio=model.miembro.datosPersonales.domicilio classNames='row'}}
+    </div>
+    <div class="card-content">
+      <hr/>
+      <span class="card-title">Datos politicos</span>
+      <div class="row">
+        {{tenpines/labeled-label label="¿Es politicamente expuesta?" value=(as-yes-no-string model.miembro.politicamenteExpuesta) col="s3"}}
+        {{#if model.miembro.politicamenteExpuesta}}
+          {{politicamente-expuesta/ver-datos-politicos datosPoliticos=model.miembro.datosPoliticos}}
+        {{/if}}
+      </div>
+    </div>
+    <div class="card-action">
+      {{#collapsible-table}}
+        {{detalle-de-tarjetas tarjetas=model.tarjetas miembroId=model.miembro.id tagName=""}}
+        {{detalle-de-metodos-de-pago metodosDePago=model.metodosDePago tagName=""}}
+        {{detalle-de-beneficios-consumibles vouchersPorRedimibles=model.beneficios.vouchersPorRedimibles tagName=""}}
+        {{detalle-de-beneficios-consumidos vouchersPorRedimibles=model.beneficios.vouchersPorRedimiblesConsumidos tagName=""}}
+        {{detalle-de-beneficios-vencidos   vouchersPorRedimibles=model.beneficios.vouchersPorRedimiblesVencidos tagName=""}}
+        {{detalle-de-beneficios-no-consumibles beneficios=model.beneficios.beneficiosNoConsumibles tagName=""}}
+        {{detalle-de-ultimas-operaciones ultimasOperaciones=model.ultimasOperaciones tagName="" accionAlClickearOperacion=(action 'quiereVerDetallesDeOperacion')}}
+      {{/collapsible-table}}
+    </div>
+  </div>
+</div>

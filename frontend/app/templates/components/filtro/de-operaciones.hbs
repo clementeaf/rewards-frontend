@@ -1,0 +1,36 @@
+<form {{action "filtrar" on="submit"}} novalidate>
+  <div class="row msr-filter">
+    <div class="card darken-1">
+        <div class="card-content white-text">
+          <div class="row">
+            {{selector/de-tipo-de-operacion label='Tipo de operación' tipoDeOperacionElegida=filtro.tipoDeOperacion classNames="col s2"}}
+            {{#if puedeFiltrarPorNombre}}
+              {{tenpines/input-text value=filtro.nombreABuscar label="Nombre y/o apellido" col="s2"}}
+            {{/if}}
+            {{tenpines/input-text value=filtro.dni label="DNI" col="s2"}}
+            {{tenpines/input-text value=filtro.numeroDeTarjeta label="Numero de tarjeta" col="s2"}}
+            {{selector/de-tipo-de-tarjetas label="Tipo de tarjeta" tipoDeTarjetaElegida=filtro.tipoDeTarjeta labelParaNull=' - Sin restriccion -' nullElegible=true classNames="col s2"}}
+            {{autocomplete/de-usuario label="Usuario" usuarioSeleccionado=filtro.usuarioFiltrado col="s2"}}
+          </div>
+          <div class="row">
+            {{selector/de-tienda label='Tienda' tiendaElegida=filtro.tiendaFiltrada labelParaNull=' - Sin restriccion -' classNames="col s2"}}
+            {{tenpines/input-datetime value=filtro.desde label="Fecha desde" col="s2" }}
+            {{tenpines/input-datetime value=filtro.hasta label="hasta" col="s2" }}
+            {{selector/de-comparador-de-dinero comparadorElegido=filtro.comparadorDeMonto labelComparador="Comparador de monto" classNames="col s2"}}
+            {{tenpines/input-number value=filtro.valorMonto label="Monto a comparar" col="s2" min=0}}
+            {{tenpines/input-range value=filtro.limite min=1 max=1000 label="Limite de resultados" col="s2"}}
+          </div>
+      </div>
+      <div class="card-action">
+        <div class="row">
+          {{tenpines/material-button label='Limpiar' action='limpiar' flat=true}}
+          {{tenpines/material-button label="Buscar recientes" submit=true}}
+          {{tenpines/material-button label="Buscar en historico" action='historico'}}
+          {{#if showDownloadButton}}
+            {{tenpines/material-button label="Descargar CSV" action='downloadCSV' icon='file_download'}}
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,19 @@
+<div class="row msr-form">
+  <div class="card darken-1">
+    <div class="card-content">
+      <span class="card-title">
+        <div class="col s12 no-margin">Mail Encolado #{{model.id}}</div>
+      </span>
+      <div class="row">
+        {{tenpines/labeled-label label='Plantilla' value=model.plantilla.tipoDeNotificacion col='s3'}}
+        {{tenpines/labeled-label label='Email' value=model.datosDelDestinatario.email col='s3'}}
+        {{tenpines/labeled-label label='Instante de Encolado' value=(as-datetime model.instanteDeIngreso) col='s2'}}
+        {{tenpines/labeled-label label='Instante de Envío' value=(as-datetime model.instanteDeEnvio) col='s2'}}
+        {{tenpines/labeled-label label='Intentos' value=model.intentos col='s2'}}
+        {{#if model.mensajeDeError}}
+          {{tenpines/labeled-label label='Error ocurrido' value=model.mensajeDeError col='s12'}}
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="row msr-form">
+  <div class="card darken-1">
+    {{#form-validable configurarCon=opcionesDeValidacion alValidarCorrectamente=(action 'guardarPlantilla') as |validar|}}
+      <div class="card-content">
+        <span class="card-title">Editar</span>
+        <div class="row">
+          {{tenpines/input-text name="tipoDeNotificacion" value=model.tipoDeNotificacion.nombre disabled=true label="Tipo de Notificación" col="s4" }}
+          {{tenpines/input-text name="nombre" value=model.nombre required=true label="Nombre" col="s4" }}
+          {{tenpines/input-text name="triggerId" value=model.triggerId required=true label="Trigger Id" col="s2" }}
+          {{editor-relevancia-notificacion value=model.relevancia label="Es Life-Cycle" col="s2" }}
+        </div>
+      </div>
+      <div class="card-action">
+        {{tenpines/material-button label='Guardar' click=(action validar) }}
+        {{tenpines/material-button label='Cancelar' action='cancelar' }}
+      </div>
+    {{/form-validable}}
+  </div>
+</div>

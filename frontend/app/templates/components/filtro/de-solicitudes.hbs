@@ -1,0 +1,26 @@
+<form {{action "filtrarSolicitudes" on="submit"}} novalidate>
+  <div class="row msr-filter">
+    <div class="card darken-1">
+      <div class="card-content white-text">
+        <div class="row">
+          {{tenpines/input-text value=filtro.dni label="DNI" col="s2"}}
+          {{selector/de-sexo label="Sexo" sexoElegido=filtro.sexo labelParaNull=' - Sin restriccion -' nullElegible=true classNames="col s2"}}
+          {{selector/de-tienda label='Tienda' tiendaElegida=filtro.tienda labelParaNull=' - Sin restriccion -' nullElegible=true classNames="col s2"}}
+          {{selector/de-status-de-solicitud label='Estado' estadoElegido=filtro.status classNames="col s2"}}
+          {{tenpines/input-datetime value=filtro.instanteDeIngresoDesde name="desde" label="Instante de Ingreso (desde)" col="s2"}}
+          {{tenpines/input-datetime value=filtro.instanteDeIngresoHasta name="hasta" label="Instante de Ingreso (hasta)" col="s2"}}
+        </div>
+        <div class="row">
+          {{tenpines/input-range value=filtro.limite min=1 max=1000 label="Limite de resultados" col="s2"}}
+        </div>
+      </div>
+      <div class="card-action">
+        <div class="row valign-wrapper">
+          {{solicitudes/totalizador-de-solicitudes solicitudes=solicitudesEncontradas class="col s9"}}
+          {{tenpines/material-button label='Limpiar' action='limpiarFiltro' flat=true}}
+          {{tenpines/material-button label="Filtrar" submit=true }}
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

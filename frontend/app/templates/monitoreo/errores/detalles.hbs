@@ -1,0 +1,50 @@
+<div class="card darken-1">
+  <div class="card-content">
+    <span class="card-title">
+      <div class="col s10 no-margin">{{model.codigoDeError}}</div>
+    </span>
+    <div class="row">
+      {{tenpines/labeled-label label='Ocurrencias totales' value=model.cantidadTotalDeOcurrencias col='s3'}}
+      {{tenpines/labeled-label label='Primera ocurrencia' value=(as-datetime model.primeraOcurrencia) col='s3'}}
+      {{tenpines/labeled-label label='Ultima ocurrencia' value=(as-datetime model.ultimaOcurrencia) col='s3'}}
+      {{tenpines/labeled-label label='Contextos registrados' value=model.ultimosContextos.length col='s3'}}
+    </div>
+  </div>
+  <div class="card-content">
+    <span class="card-title">Datos del contexto {{indiceElegido}}</span>
+    <hr/>
+    <div class="row center-align">
+      <ul class="pagination">
+        {{#if puedeVerAnterior}}
+          <li {{action "quiereVerAnterior" }} class="waves-effect"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+        {{else}}
+          <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+        {{/if}}
+
+        {{#each model.ultimosContextos as |contexto index|}}
+          <li {{action "quiereVerContexto" index}} class="waves-effect"><a href="#!">{{index}}</a></li>
+        {{/each}}
+
+        {{#if puedeVerSiguiente}}
+          <li {{action "quiereVerSiguiente" }} class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+        {{else}}
+          <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+        {{/if}}
+      </ul>
+    </div>
+    <div class="row">
+      {{tenpines/labeled-label label='Ocurrencias del contexto' value=contextoElegido.cantidadDeOcurrencias col='s3'}}
+      {{tenpines/labeled-label label='Primera del contexto' value=(as-datetime contextoElegido.primeraOcurrencia)
+                               col='s3'}}
+      {{tenpines/labeled-label label='Ultima del contexto' value=(as-datetime contextoElegido.ultimaOcurrencia)
+                               col='s3'}}
+    </div>
+    <div class="row">
+      <label class="active">Descripcion / Stacktrace</label>
+      <pre id="contenedorDeDescripcion" {{action 'quiereCopiarContenido'}}>
+        {{contextoElegido.descripcionDelContexto}}
+      </pre>
+    </div>
+
+  </div>
+</div>

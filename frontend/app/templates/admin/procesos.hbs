@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col s12">
+    {{#if model}}
+      <table class="striped bordered">
+        <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Descripcion</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each model as |tarea|}}
+          <tr id="{{tarea.id}}">
+            <td><b>{{tarea.nombre}}</b></td>
+            <td><em>{{tarea.descripcion}}</em></td>
+            <td>
+              <a class="linkeable green-text" title="ejectuar" {{action 'ejecutarTarea' tarea}}>
+                {{materialize/icon-component value='play_circle_filled'}}
+              </a>
+            </td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    {{else}}
+      <div class="row text-center">
+        <em>No se encontraron tareas</em>
+      </div>
+    {{/if}}
+  </div>
+</div>

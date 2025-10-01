@@ -1,0 +1,36 @@
+{{bread-crumbs list="Administracion|Roles"}}
+
+{{#if model}}
+  <table class="striped bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre de Rol</th>
+        <th>Permisos</th>
+      </tr>
+    </thead>
+    <tbody class="linkeable">
+      {{#each model as |rol|}}
+        <tr {{action "quiereEditar" rol}}>
+          <td>{{rol.id}}</td>
+          <td>{{rol.nombre}}</td>
+          <td>
+            {{#each rol.permisos as |permiso|}}
+              {{permiso.nombrePublico}}&#44;
+            {{/each}}
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <div class="row text-center">
+    <em>No se encontraron roles</em>
+  </div>
+{{/if}}
+
+{{tenpines/material-button action="quiereCrearNuevo" icon='add' floating=true right=true classNames='btn-medium crud-add-button'}}
+
+<div id="rolesCrud">
+  {{outlet}}
+</div>

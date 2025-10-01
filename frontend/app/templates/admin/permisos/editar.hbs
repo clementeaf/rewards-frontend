@@ -1,0 +1,16 @@
+<div class="row msr-form">
+  <div class="card darken-1">
+    {{#form-validable configurarCon=opcionesDeValidacion alValidarCorrectamente=(action 'guardarPermiso') as |validar|}}
+      <div class="card-content">
+        <span class="card-title">Permiso {{model.id}} - {{model.nombreInterno}}</span>
+        <div class="row">
+          {{tenpines/input-text name="nombrePublico" value=model.nombrePublico label="Nombre publico" required=true col="s5"}}
+          {{tenpines/input-text name="descripcion" value=model.descripcion label="Descripcion" required=true col="s7"}}
+        </div>
+      </div>
+      <div class="card-action">
+        {{tenpines/material-button label='Guardar' click=(action validar) }}
+      </div>
+    {{/form-validable}}
+  </div>
+</div>

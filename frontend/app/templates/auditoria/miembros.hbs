@@ -1,0 +1,53 @@
+{{bread-crumbs list="Auditoría|Miembros"}}
+
+{{filtro/de-miembros miembrosEncontrados=model }}
+
+<div class="row">
+  <div class="col s12">
+    {{#if (not-null model)}}
+      {{#if model}}
+        <table class="striped bordered">
+          <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Fecha de nacimiento</th>
+            <th>Nivel</th>
+            <th>Stars</th>
+            <th>Bebida favorita</th>
+            {{#if puedeEditarMiembros}}
+              <th>Editar</th>
+            {{/if}}
+          </tr>
+          </thead>
+          <tbody class="linkeable">
+          {{#each model as |miembro|}}
+            <tr {{action "quiereVerDetalles" miembro}}>
+              <td>{{miembro.nombre}}</td>
+              <td>{{miembro.fechaDeNacimiento}}</td>
+              <td>{{nivel-label nivel=miembro.nivel}}</td>
+              <td>{{miembro.cantidadDeStarsEnElPeriodo}}</td>
+              <td>{{miembro.bebidaFavorita}}</td>
+            {{#if puedeEditarMiembros}}
+              <td>{{materialize/icon-component value='mode_edit' click=(sin-burbujear (action "quiereEditar" miembro))}}</td>
+            {{/if}}
+            </tr>
+          {{/each}}
+          </tbody>
+        </table>
+      {{else}}
+        <div class="row text-center">
+          <em>No se encontraron miembros</em>
+        </div>
+      {{/if}}
+    {{else}}
+      <div class="row text-center">
+        <em>Indique el criterio de busqueda</em>
+      </div>
+    {{/if}}
+  </div>
+</div>
+<div class="row">
+  <div id="detallesDelMiembro" class="col s12">
+    {{outlet}}
+  </div>
+</div>

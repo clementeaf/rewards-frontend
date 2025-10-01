@@ -1,0 +1,7 @@
+<span class="card-title">Datos politicos</span>
+<div class="row">
+  {{tenpines/check-box name="politicamenteExpuesta" value=formulario.politicamenteExpuesta required=true label="¿Es politicamente expuesta?" col="s3" classNames="input-field"}}
+  {{#if formulario.politicamenteExpuesta}}
+    {{politicamente-expuesta/editar-datos-politicos datosPoliticos=formulario.datosPoliticos}}
+  {{/if}}
+</div>

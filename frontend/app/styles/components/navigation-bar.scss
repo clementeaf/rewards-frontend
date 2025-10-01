@@ -1,0 +1,70 @@
+@import "../variables";
+
+nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+  height: 70px;
+  line-height: 70px;
+  color: $dark-grey;
+}
+nav, nav a.button-collapse {
+  background-color: $light-grey;
+}
+
+nav {
+  position: relative;
+}
+
+nav ul a {
+  color: $dark-grey;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 1em;
+
+  .material-icons {
+    font-size: 1.5em;
+    margin-left: 0;
+  }
+}
+
+nav ul a:hover, nav ul a.active {
+  color: $green;
+  text-decoration: none;
+}
+
+.nav-wrapper .dropdown-button .material-icons {
+  background-color: transparent;
+}
+
+ul.dropdown-content a {
+  color: $dark-grey;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 1em;
+}
+
+ul.dropdown-content a:hover, ul.dropdown-content a.active {
+  color: $green;
+  text-decoration: none;
+}
+
+ul.dropdown-content a:hover i {
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color .3s;
+}
+
+ul.dropdown-content {
+  top: 70px !important;
+}
+
+.brand-logo {
+  position: static !important;
+  margin-top: 5px;
+  height: 60px;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    display: block;
+  }
+}
+

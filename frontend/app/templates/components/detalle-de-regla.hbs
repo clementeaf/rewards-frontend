@@ -1,0 +1,81 @@
+<div class="card-content">
+  <span class="card-title">
+    <div class="col s10 no-margin">{{regla.beneficio.nombre}}</div>
+    {{habilitada-label habilitada=regla.habilitada classNames='col s2'}}
+  </span>
+  <p><em>{{regla.beneficio.descripcion}}</em></p><br>
+
+  <hr/>
+  <span class="card-title">Consecuencias</span>
+  {{#if regla.tieneConsecuencias}}
+    <div class="row">
+      {{#if regla.multiplicadorDeStars}}{{tenpines/labeled-label label='Multiplicador de stars' value=regla.multiplicadorDeStars col='s3'}}{{/if}}
+      {{#if regla.starsBonus}}{{tenpines/labeled-label label='Stars bonus' value=regla.starsBonus col='s3'}}{{/if}}
+    </div>
+    {{#each regla.detalleDeGeneradoresDeVouchers as |detalleDeGeneradorDeVoucher|}}
+      <span class="card-subtitle">{{detalleDeGeneradorDeVoucher.nombreDelRedimible}}</span>
+      <div class="row">
+        {{tenpines/labeled-label label='Tiempo de validez' value=detalleDeGeneradorDeVoucher.tiempoDeValidez col='s3'}}
+        {{tenpines/labeled-label label='Restringido a la tienda que lo genera' value=(as-yes-no-string detalleDeGeneradorDeVoucher.estaRestringidoParaLaTiendaQueLoGenera) col='s3'}}
+      </div>
+    {{/each}}
+  {{else}}
+    <div class="row">
+      <em>Este beneficio no tiene consecuencias</em>
+    </div>
+  {{/if}}
+
+  <hr/>
+  <span class="card-title">Restricciones</span>
+  {{#if regla.tieneRestricciones}}
+    <div class="row">
+      <div class="input-field col s3">
+        <label class="active">Niveles restringidos</label>
+        <p>
+          {{#each regla.nivelesRestringidos as |nivel| }}
+            {{nivel-label nivel=nivel tagName=''}}
+          {{else}}
+            Cualquier nivel
+          {{/each}}
+        </p>
+      </div>
+      {{tenpines/labeled-label label='Restringido a cambio de nivel' value=(as-yes-no-string regla.restringidoACambioDeNivel) col='s3'}}
+      {{tenpines/labeled-label label='Restringido a mes de cumpleaños' value=(as-yes-no-string regla.restringidoAMesDeCumpleanios) col='s3'}}
+      {{tenpines/labeled-label label='Restringido a firma de contrato' value=(as-yes-no-string regla.restringidoAFirmaDeContrato) col='s3'}}
+
+      {{tenpines/labeled-label label='Stars acumuladas' value=regla.starsAcumuladas col='s3'}}
+      {{tenpines/labeled-label label='Restricción de dinero' value=regla.detalleDeRestriccionDeDinero col='s3'}}
+      {{tenpines/labeled-label label='Restricción de actividad' value=regla.detalleDeRestriccionDeActividad col='s3'}}
+      {{tenpines/labeled-label label='Restricción de adquisiciones' value=regla.detalleDeRestriccionDeCantidadDeAdquisiciones col='s3'}}
+
+      {{tenpines/labeled-label label='Restricción de tipo de transacción' value=regla.detalleDeRestriccionDeTipoDeTransaccion col='s3'}}
+
+      <div class="input-field col s12">
+        <label class="active">Periodos de validez</label>
+        {{#each regla.periodosDeValidez as |periodoDeValidez|}}
+          <p>{{periodoDeValidez}}</p>
+        {{else}}
+          <p>Este beneficio no tiene vencimiento</p>
+        {{/each}}
+      </div>
+
+      {{tenpines/labeled-label label='Restricción de tiendas' value=regla.detalleDeRestriccionDeTiendas col='s12'}}
+      {{tenpines/labeled-label label='Restricción de segmentos' value=regla.detalleDeRestriccionDeSegmentos col='s12'}}
+      {{tenpines/labeled-label label='Restricción de medios de pago' value=regla.detalleDeRestriccionDeMediosDePago col='s12'}}
+      {{tenpines/labeled-label label='Restricción de seleccion de tarjeta predeterminada' value=regla.detalleDeRestriccionDeSeleccionDeTarjetaPredeterminada col='s12'}}
+
+      <div class="input-field col s12">
+        <label class="active">Restriccion de productos</label>
+        {{#each regla.detallesDeProductosRestringidos as |detalleDeProductoRestringidos|}}
+          <p>- {{detalleDeProductoRestringidos}}</p>
+        {{else}}
+          <p>Este beneficio no está restringido a ningún producto</p>
+        {{/each}}
+      </div>
+    </div>
+  {{else}}
+    <div class="row">
+      <em>Este beneficio no tiene restricciones</em>
+    </div>
+  {{/if}}
+</div>

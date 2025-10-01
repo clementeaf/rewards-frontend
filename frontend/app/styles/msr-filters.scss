@@ -1,0 +1,60 @@
+@import "variables";
+
+.multiselect-10pines.col {
+  padding: 0;
+}
+
+.msr-filter {
+  font-size: 12px !important;
+  margin-bottom: 40px !important;
+
+  input, input.select-dropdown {
+    font-size: 12px !important;
+    height: 20px !important;
+  }
+
+  label {
+    top: 0.2rem;
+    font-size: 12px;
+  }
+
+  .select-wrapper {
+    .dropdown-content {
+      top: 20px !important;
+
+      li {
+        font-size: 12px;
+        min-height: 30px;
+
+        span {
+          padding-top: 2px;
+          padding-bottom: 2px;
+        }
+      }
+    }
+
+    span.caret {
+      top: 0 !important;
+      right: 10px !important;
+    }
+  }
+
+  .card {
+    background-color: $middle-grey;
+  }
+
+  .card-action {
+    padding: 5px;
+    text-align: right;
+  }
+
+  .btn {
+    font-size: 12px;
+    margin: 0 3px;
+    padding: 0 30px;
+  }
+
+  .card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+    margin: 0 3px !important;
+  }
+}

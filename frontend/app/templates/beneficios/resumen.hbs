@@ -1,0 +1,13 @@
+{{bread-crumbs list="Beneficios|Resumen"}}
+
+{{#each model as |nivel|}}
+  {{beneficios-por-nivel nombreDelNivel=nivel.nombre
+                         cantidadParaAlcanzar=nivel.cantidadDeStarsNecesariasParaAlcanzarNivel
+                         cantidadParaPermanecer=nivel.cantidadDeStarsNecesariasParaPermanecerEnNivel
+                         beneficios=nivel.beneficios
+  }}
+{{else}}
+  <div class="row text-center">
+    <em>No se encontraron beneficios</em>
+  </div>
+{{/each}}

@@ -1,0 +1,17 @@
+<div class="row selector-de-items-micros col s12">
+  <span class="valign-wrapper">
+    {{materialize/icon-helper 'label' }}
+    Cantidad de Vouchers
+  </span>
+  <div class="row">
+    {{mailing/cantidad-de-vouchers-por-beneficio-table items=cantidadesDeVouchersPorBeneficioSeleccionadas classNames="col s12"}}
+  </div>
+  <div class="row bordered-top">
+    {{autocomplete/de-alias-de-beneficios label="Alias del Beneficio" aliasSeleccionado=aliasEnSeleccion col="s7" required=true}}
+    {{tenpines/input-number value=cantidadEnSeleccion min=0 label="Cantidad de vouchers del beneficio" col="s3"}}
+    <div class="col s1">
+      {{tenpines/material-button action='agregarCantidadDeVouchers' floating=true right=true icon='add' classNames='add-button btn-medium crud-add-button'}}
+    </div>
+  </div>
+  {{mensaje-de-error texto=mensajeDeError}}
+</div>

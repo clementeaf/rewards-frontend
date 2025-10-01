@@ -1,0 +1,11 @@
+{{#if (not-null value)}}
+  {{#if currency}}
+    {{tenpines/labeled-label label=label value=(as-currency value) col=col}}
+  {{else}}
+    {{#if datetime}}
+      {{tenpines/labeled-label label=label value=(as-datetime value) col=col}}
+    {{else}}
+      {{tenpines/labeled-label label=label value=value col=col}}
+    {{/if}}
+  {{/if}}
+{{/if}}

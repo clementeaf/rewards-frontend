@@ -1,0 +1,34 @@
+<span hidden={{noHayDatosDelMiembro}} class="card-subtitle">Datos del miembro</span>
+<div class="row">
+  {{optional-label label='Nombre del miembro' value=datosDelMiembro.nombreDelMiembro col='s3'}}
+</div>
+<div class="row">
+  {{optional-label label='Nombre anterior' value=datosDelMiembro.nombreAnteriorDelMiembro col='s3'}}
+  {{optional-label label='Nombre posterior' value=datosDelMiembro.nombrePosteriorDelMiembro col='s3'}}
+  {{optional-label label='Apellido anterior' value=datosDelMiembro.apellidoAnteriorDelMiembro col='s3'}}
+  {{optional-label label='Apellido posterior' value=datosDelMiembro.apellidoPosteriorDelMiembro col='s3'}}
+  {{optional-label label='Email anterior' value=datosDelMiembro.emailAnteriorDelMiembro col='s3'}}
+  {{optional-label label='Email posterior' value=datosDelMiembro.emailPosteriorDelMiembro col='s3'}}
+  {{optional-label label='Fecha de nacimiento anterior' value=datosDelMiembro.fechaDeNacimientoAnteriorDelMiembro col='s3'}}
+  {{optional-label label='Fecha de nacimiento posterior' value=datosDelMiembro.fechaDeNacimientoPosteriorDelMiembro col='s3'}}
+  {{optional-label label='Bebida favorita anterior' value=datosDelMiembro.bebidaFavoritaAnteriorDelMiembro col='s3'}}
+  {{optional-label label='Bebida favorita posterior' value=datosDelMiembro.bebidafavoritaPosteriorDelMiembro col='s3'}}
+  {{optional-label label='Cantidad de stars anterior' value=datosDelMiembro.cantidadDeStarsAnteriorDelMiembro col='s3'}}
+  {{optional-label label='Cantidad de stars posterior' value=datosDelMiembro.cantidadDeStarsPosteriorDelMiembro col='s3'}}
+  {{optional-label label='Nivel anterior' value=datosDelMiembro.nivelAnteriorDelMiembro col='s3'}}
+  {{optional-label label='Nivel posterior' value=datosDelMiembro.nivelPosteriorDelMiembro col='s3'}}
+  {{optional-label label='Habilitado para reposición antes' value=(as-yes-no-string-nullable datosDelMiembro.miembroHabilitadoParaReposicionAnterior) col='s3'}}
+  {{optional-label label='Habilitado para reposición después' value=(as-yes-no-string-nullable datosDelMiembro.miembroHabilitadoParaReposicionPosterior) col='s3'}}
+  {{#unless (is-null datosDelMiembro.estadoDeHabilitacionAnteriorDelMiembro)}}
+    <div class="col s3">
+      <label class="active">Estado anterior del miembro</label>
+      <p>{{habilitado-label value=datosDelMiembro.estadoDeHabilitacionAnteriorDelMiembro}}</p>
+    </div>
+  {{/unless}}
+  {{#unless (is-null datosDelMiembro.estadoDeHabilitacionPosteriorDelMiembro)}}
+    <div class="col s3">
+      <label class="active">Estado posterior del miembro</label>
+      <p>{{habilitado-label value=datosDelMiembro.estadoDeHabilitacionPosteriorDelMiembro}}</p>
+    </div>
+  {{/unless}}
+</div>

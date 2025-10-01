@@ -1,0 +1,5 @@
+<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+<p><b>{{error.message}}</b></p>
+{{#if error.stacktrace}}
+  {{stack-trace trace=error.stacktrace}}
+{{/if}}

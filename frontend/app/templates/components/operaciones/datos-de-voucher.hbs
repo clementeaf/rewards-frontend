@@ -1,0 +1,13 @@
+{{#if model.voucher}}
+  <div class="card-content row">
+    <div class="col s6 no-margin">
+      <span class="card-subtitle">Beneficio redimido</span>
+      <ul class="col s12">
+          <li>
+            {{materialize/icon-component value='label_outline' sizeClass='tiny'}} {{model.voucher.nombreDelRedimible}} ({{model.voucher.nombreDelBeneficio}})
+          </li>
+      </ul>
+    </div>
+  </div>
+{{/if}}
+

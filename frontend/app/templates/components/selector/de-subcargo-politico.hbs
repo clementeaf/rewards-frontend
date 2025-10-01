@@ -1,0 +1,10 @@
+{{#if (not-empty subcargosPoliticosDisponibles)}}
+  {{tenpines/single-select
+    optionLabelProperty="descripcion"
+    opciones=subcargosPoliticosDisponibles
+    elegido=subcargoPoliticoElegido
+    label=label
+    nullElegible=nullElegible
+    labelParaNull=labelParaNull
+  }}
+{{/if}}

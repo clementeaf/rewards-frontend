@@ -1,0 +1,29 @@
+{{#collapsible-table/-row as |section|}}
+  {{#if section.esTitulo}}
+    {{materialize/icon-helper 'redeem' }} Beneficios consumidos en los últimos 90 días
+  {{else if section.esCuerpo}}
+    <div class="row">
+      <ul class="col s12">
+        {{#if (not-empty vouchersPorRedimibles)}}
+          {{#each vouchersPorRedimibles as |vouchersPorRedimible|}}
+            <div class="row">
+              <br>
+              <span class="card-subtitle">{{vouchersPorRedimible.nombreDelRedimible}} ({{vouchersPorRedimible.cantidadDeVouchers}})</span><br>
+              {{#each vouchersPorRedimible.vouchers as |voucher|}}
+                <div class="beneficio-box">
+                  <p><b>Otorgado por el beneficio: </b>{{voucher.nombreDelBeneficio}}</p>
+                  <p><b>Periodo de validez: </b>{{as-datetime voucher.periodoDeTiempo.desde}} - {{as-datetime voucher.periodoDeTiempo.hasta}}</p>
+                  <p><b>Consumido en el instante: </b>{{as-datetime voucher.instanteDeConsumo}}</p>
+                  <p><b>En la tienda: </b>{{voucher.tiendaEnLaQueFueConsumido}}</p>
+                </div>
+              {{/each}}
+              <br>
+            </div>
+          {{/each}}
+        {{else}}
+          <em>El miembro no ha realizado consumiciones en los últimos 90 días</em>
+        {{/if}}
+      </ul>
+    </div>
+  {{/if}}
+{{/collapsible-table/-row}}

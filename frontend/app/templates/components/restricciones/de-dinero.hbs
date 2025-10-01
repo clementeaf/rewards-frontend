@@ -1,0 +1,11 @@
+{{#if restriccion}}
+  <div class="row restriccion">
+    {{tenpines/material-button action='sacarRestriccion' icon='close' floating=true right=true classNames='small close-button'}}
+    <h6>Restriccion de Dinero</h6>
+    <small><em>Esta restriccion permite acceder al beneficio sólo si el miembro realiza una transaccion por una cantidad de dinero dentro del rango indicado. Los extremos del rango son inclusivos.</em></small>
+    <div class="row">
+      {{tenpines/input-number name="dineroMinimo" required=true value=restriccion.minimaCantidadDeDinero max=restriccion.maximaCantidadDeDinero label="Cantidad de dinero mínima" col="s3"}}
+      {{tenpines/input-number value=restriccion.maximaCantidadDeDinero min=restriccion.minimaCantidadDeDinero label="Cantidad de dinero máxima" col="s3"}}
+    </div>
+  </div>
+{{/if}}

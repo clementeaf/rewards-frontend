@@ -1,0 +1,24 @@
+<div class="row msr-form">
+  <div class="card darken-1">
+    {{#form-validable configurarCon=opcionesDeValidacion alValidarCorrectamente=(action 'crearRedimible') as |validar|}}
+      <div class="card-content">
+        <span class="card-title">
+          <div class="col s12">Nuevo Redimible</div>
+        </span>
+        <div class="row">
+          {{tenpines/input-text value=model.nombre label="Nombre" required=true col="s6"}}
+          {{tenpines/toggle-component value=model.ticketCompleto labelParaTrue='Ticket Completo' labelParaFalse='Item Único' required=true col="s3" classNames="input-field"}}
+        </div>
+        <div class="row">
+          {{autocomplete/de-item-multiopcion itemSeleccionado=model.itemMultiopcion  label="Item Multiopcion" col="s12"}}
+        </div>
+
+        {{redimibles/selector-de-items-micros-con-nivel itemsConNivelAgregados=model.itemsGanados nombre="Items Ganados"}}
+      </div>
+      <div class="card-action text-right">
+        {{tenpines/material-button label='Crear' click=(action validar) }}
+        {{tenpines/material-button label='Borrar' action='resetearFormulario' }}
+      </div>
+    {{/form-validable}}
+  </div>
+</div>

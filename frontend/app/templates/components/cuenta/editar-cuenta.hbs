@@ -1,0 +1,16 @@
+<div class="row">
+  {{#form-validable configurarCon=opcionesDeValidacion alValidarCorrectamente=(action 'actualizarEmail') as |validar|}}
+    {{tenpines/input-text name="email" value=cuenta.email required=true label="Email" col="s3"}}
+    {{tenpines/input-text value=motivoDeEdicion name="motivoDeEdicion" label="Motivo" col="s6" required=modificoEmail}}
+    <div class="col s3">{{tenpines/material-button flat=true label='Actualizar email' click=(action validar) classNames="btn-secondary input-field"}}</div>
+  {{/form-validable}}
+</div>
+<br>
+<div class="row">
+  {{tenpines/input-password name="password" value=cuenta.password label="Password" col="s3"}}
+  <div class="col s3">{{tenpines/material-button flat=true label='Actualizar password' click=(action "actualizarPassword") classNames="btn-secondary input-field"}}</div>
+  {{tenpines/input-text name="estado" value=cuenta.estado.nombre disabled=true label="Estado" col="s3"}}
+  {{#if cuenta.verificacionPendiente}}
+    <div class="col s3">{{tenpines/material-button flat=true label='Verificar' click=(action "verificar") classNames="btn-secondary input-field"}}</div>
+  {{/if}}
+</div>

@@ -1,0 +1,20 @@
+<div class="row msr-form">
+  <div class="card darken-1">
+    {{#form-validable configurarCon=opcionesDeValidacion alValidarCorrectamente=(action 'recargar') as |validar|}}
+      <div class="card-content">
+        <span class="card-title">{{model.tipo}} numero #{{model.numero}}</span>
+        <div class="col s12 no-margin">Miembro: {{model.nombreDelMiembro}} - DNI: {{model.dniDelMiembro}}</div><br><br>
+        <div class="card-content">
+          <div class="row black-text">
+            {{tenpines/input-number value=model.monto label="Monto a recargar" required=true col="s4 currency-input"}}
+            {{selector/de-tienda name="tienda" tiendaElegida=model.tienda labelParaNull='Seleccione una tienda' required=true label="Tienda de la recarga" classNames="col s7"}}
+            {{tenpines/text-area value=model.motivo name="motivo" label="Motivo" col="s12" required=true}}
+          </div>
+        </div>
+      </div>
+      <div class="card-action">
+        {{tenpines/material-button label='Recargar' click=(action validar) }}
+      </div>
+    {{/form-validable}}
+  </div>
+</div>

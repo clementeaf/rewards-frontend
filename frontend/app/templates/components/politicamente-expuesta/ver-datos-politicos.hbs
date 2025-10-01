@@ -1,0 +1,15 @@
+<div class="row">
+  {{tenpines/labeled-label name="inciso" label='Inciso' value=datosPoliticos.inciso.descripcion disabled=true classNames="col s9"}}
+  {{#if esIncisoBoI}}
+    {{tenpines/labeled-label name="nombre" value=datosPoliticos.nombre label="Nombre" col="s3"}}
+    {{tenpines/labeled-label name="apellido" value=datosPoliticos.apellido label="Apellido" col="s3"}}
+    {{tenpines/labeled-label name="tipoDocumento"  value=datosPoliticos.tipoDocumento.descripcion label="Tipo Documento" col="s3"}}
+    {{tenpines/labeled-label name="numeroDocumento"  value=datosPoliticos.numeroDocumento label="Nro Documento" col="s3"}}
+  {{/if}}
+  <div class="row">
+    {{tenpines/labeled-label name="cargoPolitico" label='Inciso Resolucion 11/2011' value=datosPoliticos.cargoPolitico.descripcion required=true classNames="col s6"}}
+    {{optional-label label='Subcargo politico' name="subcargoPolitico" value=datosPoliticos.subcargoPolitico.descripcion classNames="col s6"}}
+  </div>
+  {{tenpines/labeled-label name="tipoIdentificacionFiscal"  value=datosPoliticos.tipoIdentificacionFiscal.descripcion label='Tipo Indentificacion Fiscal' col="s3"}}
+  {{tenpines/labeled-label name="numeroIdentificacionFiscal"  value=datosPoliticos.numeroIdentificacionFiscal label='Nro Identificacion Fiscal' col="s3"}}
+</div>

@@ -1,0 +1,44 @@
+<div class="row msr-form">
+  <div class="card darken-1">
+    <div class="card-content">
+      <span class="card-title">Formulario de Alta</span>
+      <div class="row">
+        {{tenpines/labeled-label label='Nombre' value=model.nombre  col='s3'}}
+        {{tenpines/labeled-label label='Apellido' value=model.apellido  col='s3'}}
+        {{tenpines/labeled-label label='Nro. Documento' value=model.numeroDeDocumento  col='s3'}}
+        {{tenpines/labeled-label label='Estado Civil' value=model.estadoCivil.descripcion col='s3'}}
+      </div>
+      <div class="row">
+        {{tenpines/labeled-label label='Fecha de Nacimiento' value=model.fechaDeNacimiento  col='s3'}}
+        {{tenpines/labeled-label label='Nacionalidad' value=model.nacionalidad  col='s3'}}
+        {{tenpines/labeled-label label='Sexo' value=model.sexo.descripcion  col='s3'}}
+        {{tenpines/labeled-label label='Teléfono' value=model.telefono  col='s3'}}
+      </div>
+      <div class="row">
+        {{tenpines/labeled-label label='Profesión' value=model.profesion  col='s3'}}
+        {{tenpines/labeled-label label='Bebida Favorita' value=model.bebidaFavorita.descripcion col='s3'}}
+        {{tenpines/labeled-label label="Extranjero" value=(as-yes-no-string model.esExtranjero) col="s3"}}
+        {{tenpines/labeled-label label="Desea recibir novedades?" value=(as-yes-no-string model.deseaRecibirNovedades) col="s3" }}
+      </div>
+    </div>
+    <div class="card-content">
+      <hr/>
+      {{domicilio/en-detalle domicilio=model classNames='row'}}
+    </div>
+    <div class="card-content">
+      <hr/>
+      {{cuenta/en-detalle cuenta=model.cuenta classNames='row'}}
+    </div>
+    <div class="card-content">
+      <hr/>
+      <span class="card-title">Datos politicos</span>
+      <div class="row">
+        {{tenpines/labeled-label label="¿Es politicamente expuesta?" value=(as-yes-no-string model.politicamenteExpuesta) col="s3"}}
+        {{#if model.politicamenteExpuesta}}
+          {{politicamente-expuesta/ver-datos-politicos datosPoliticos=model.datosPoliticos}}
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
+

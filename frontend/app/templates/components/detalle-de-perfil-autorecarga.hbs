@@ -1,0 +1,12 @@
+{{#if (not-null perfil)}}
+  <span class="card-subtitle">Datos de autorecarga configurada</span><br>
+  <p><b>Estado: </b>{{perfil.estado}}</p>
+  <p><b>Monto a recargar: </b>{{as-currency perfil.monto}}</p>
+  {{#if perfil.umbralDeSaldo}}
+    <p><b>Cuando: </b>Saldo inferior a {{as-currency perfil.umbralDeSaldo}}</p>
+  {{/if}}
+  {{#if perfil.diaDeMes}}
+    <p><b>Cuando: </b>Todos los dias {{perfil.diaDeMes}} de cada mes</p>
+  {{/if}}
+  <p><b>Ultimos 4 números de la tarjeta utilizada: </b>{{perfil.ultimosCuatroNumerosTarjeta}}</p>
+{{/if}}

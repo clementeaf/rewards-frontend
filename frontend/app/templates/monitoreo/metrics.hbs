@@ -1,0 +1,19 @@
+<div class="row">
+  <form class="col s12">
+    <div class="row">
+      {{autocomplete/de-variables-de-metricas label='Metricas' variablesElegidas=filtro.variablesIncluidas col="s12"}}
+      {{tenpines/input-datetime label="Desde" value=filtro.instanteMinimo col="s3"}}
+      {{tenpines/input-datetime label="Hasta" value=filtro.instanteMaximo col="s3"}}
+      {{tenpines/check-box label='Porcentual' value=filtro.expresarEnPorcentaje col="s2"}}
+      <div class="input-field col s4">
+        {{tenpines/material-button action='getSnapshot' label='Actualizar' }}
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="row metrics-chart">
+  <div class="col s12">
+    {{line-chart series=snapshotSeries}}
+  </div>
+</div>

@@ -1,0 +1,17 @@
+{{bread-crumbs list="Administracion|Items Micros"}}
+
+{{#filtro/de-items-micros itemsMicrosEncontrados=model}}
+
+  <a {{action "crearNuevo"}} class="btn-floating btn-medium waves-effect waves-light crud-add-button right">
+    <i class="material-icons">add</i>
+  </a>
+
+  {{items-micros-en-listado items=model editAction=(action "editar")}}
+
+{{/filtro/de-items-micros}}
+
+<div class="row">
+  <div class="col s12">
+    {{tenpines/material-button label="Sincronizar manualmente" click=(action 'iniciarSincronizacion') }}
+  </div>
+</div>

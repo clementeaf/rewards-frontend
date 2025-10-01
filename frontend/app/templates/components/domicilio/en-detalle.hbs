@@ -1,0 +1,13 @@
+<span class="card-title">Datos del domicilio</span>
+<div class="row">
+  {{tenpines/labeled-label label='Pais' value=domicilio.pais col='s3'}}
+  {{tenpines/labeled-label label='Provincia' value=domicilio.provincia col='s3'}}
+  {{tenpines/labeled-label label='Localidad' value=domicilio.localidad col='s3'}}
+  {{tenpines/labeled-label label='Codigo Postal' value=domicilio.codigoPostal col='s3'}}
+</div>
+<div class="row">
+  {{tenpines/labeled-label label='Calle' value=domicilio.calle col='s3'}}
+  {{tenpines/labeled-label label='Altura' value=domicilio.altura col='s3'}}
+  {{tenpines/labeled-label label='Piso' value=(guion-si-es-nulo domicilio.piso) col='s3'}}
+  {{tenpines/labeled-label label='Departamento' value=(guion-si-es-nulo domicilio.departamento) col='s3'}}
+</div>

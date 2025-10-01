@@ -1,0 +1,57 @@
+@import "../../node_modules/tenpines-material-components/app/styles/app";
+@import "variables";
+
+html {
+  font-family: Roboto;
+  background-color: $white;
+  color: $dark-grey;
+}
+
+main {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+main > .container {
+  min-height: -webkit-calc(#{$screen-height} - #{$footer-height});
+  min-height: -moz-calc(#{$screen-height} - #{$footer-height});
+  min-height: calc(#{$screen-height} - #{$footer-height});
+}
+
+/* COMPONENTES */
+@import "components/navigation-bar";
+@import "components/application-versions";
+@import "components/footer-bar";
+@import "components/bread-crumbs";
+@import "components/arbol-profiling";
+@import "components/tags-selector";
+@import "components/button-";
+@import "components/star-rating";
+@import "components/datetime-picker";
+@import "components/tabs";
+@import "components/stack-trace";
+@import "components/toast-container";
+@import "components/input-range";
+@import "operaciones";
+
+/* FORMS */
+@import "msr-forms";
+
+/* FILTROS */
+@import "msr-filters";
+
+/* MONITOREO */
+@import "monitoreo/info";
+@import "monitoreo/metrics";
+@import "monitoreo/logging";
+
+/* BENEFICIOS */
+@import "beneficios/reglas";
+@import "beneficios/beneficios";
+
+/* OPERACIONES */
+@import "operaciones/detalle";
+
+/* COMMONS */
+@import "alerts";
+@import "commons";

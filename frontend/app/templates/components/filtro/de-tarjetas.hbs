@@ -1,0 +1,27 @@
+<form {{action "filtrar" on="submit"}} novalidate>
+  <div class="row msr-filter">
+    <div class="card darken-1">
+      <div class="card-content white-text">
+        <div class="row">
+          {{selector/de-tipo-de-tarjetas tipoDeTarjetaElegida=filtro.tipoDeTarjeta label="Tipo de tarjeta" labelParaNull=' - Sin restriccion -' nullElegible=true classNames="col s2"}}
+          {{tenpines/input-text value=filtro.numeroDeTarjeta label="Numero de Tarjeta" col="s2"}}
+          {{selector/de-estado-de-tarjeta label='Estado' estadoElegido=filtro.estadoDeTarjeta classNames="col s2"}}
+          {{selector/de-comparador-de-dinero comparadorElegido=filtro.comparadorDeSaldo labelComparador="Comparador de saldo" classNames="col s2"}}
+          {{tenpines/input-number value=filtro.saldo label="Saldo a comparar" col="s2" min=0}}
+          {{tenpines/input-range value=filtro.limite min=1 max=1000 label="Limite de resultados" col="s2"}}
+        </div>
+        <div class="row">
+          {{#if mostrarNombreDelMiembro}}
+            {{tenpines/input-text value=filtro.nombreDelMiembro label="Nombre del Miembro" col="s2"}}
+          {{/if}}
+        </div>
+      </div>
+      <div class="card-action">
+        <div class="row">
+          {{tenpines/material-button label='Limpiar' action='limpiar' flat=true}}
+          {{tenpines/material-button label="Filtrar" submit=true }}
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

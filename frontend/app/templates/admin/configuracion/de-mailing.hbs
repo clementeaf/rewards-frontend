@@ -1,0 +1,93 @@
+<div class="col s12" id="configuracion-de-mailing">
+  <div class="row msr-form">
+    <div class="card darken-1">
+      {{#form-validable}}
+        <div class="card-content">
+          <span class="card-title">Autenticar con Emblue</span>
+          <p>Envía un mensaje de autenticación a Emblue para obtener un token dinámico</p>
+          <div class="row">
+            {{tenpines/input-text name="urlCredenciales" value=model.credenciales.url  label='URL' required=false col="s5"}}
+            {{tenpines/input-text name="tokenCredenciales" value=model.credenciales.token required=false label="Token" col="s3"}}
+            {{tenpines/input-text name="emailCredenciales" value=model.credenciales.email required=false label="Email" col="s2"}}
+            {{tenpines/input-password name="passwordCredenciales" value=model.credenciales.password required=false label="Password" col="s2"}}
+          </div>
+        </div>
+        <div class="card-action">
+          <div class="row">
+            {{tenpines/input-text name="tokenDinamico" value=model.tokenDinamico  label='Token Dinámico' required=true col="s3"}}
+            {{tenpines/material-button label='Autenticar' click=(action 'autenticarConCredencialesIngresadasManualmente') col="s2 offset-s2" classNames="input-field"}}
+            {{#if false}}
+                {{tenpines/material-button label='Autenticar con credenciales del ambiente' click=(action 'autenticarSegunAmbiente') col="s4 offset-s1" classNames="input-field"}}
+            {{/if}}
+          </div>
+        </div>
+      {{/form-validable}}
+    </div>
+  </div>
+
+  <div class="row msr-form">
+    <div class="card darken-1">
+      {{#form-validable configurarCon=opcionesDeValidacionContacto alValidarCorrectamente=(action 'crearOActualizarContacto') as |validar|}}
+        <div class="card-content">
+          <span class="card-title">Crear/Actualizar contacto</span>
+          <p>Envía un mensaje de creación o actualización de contacto a Emblue</p>
+          <div class="row">
+            {{tenpines/input-text name="tokenContactoInput" value=model.tokenDinamico  label='Token Dinámico' required=true col="s2"}}
+            {{tenpines/input-text name="emailInput" value=model.contacto.email required=true label="Email" col="s2"}}
+            {{tenpines/input-text name="nombre" value=model.contacto.nombre required=false label="Nombre" col="s2"}}
+            {{tenpines/input-text name="apellido" value=model.contacto.apellido required=false label="Apellido" col="s2"}}
+            {{tenpines/input-text value=model.contacto.nacionalidad label="Nacionalidad" col="s2"}}
+            {{selector/de-sexo label="Sexo" sexoElegido=model.contacto.sexo labelParaNull=' - Sin Sexo -' nullElegible=true col="s2"}}
+          </div>
+          <div class="row">
+            {{tenpines/input-date name="fechaDeNacimiento" value=model.contacto.fechaDeNacimiento label="Fecha de Nacimiento" col="s2" required=false}}
+            {{selector/de-bebida-favorita name="bebida" label='Bebida favorita' labelParaNull='Seleccionar'bebidaElegida=model.contacto.bebidaFavorita classNames="col s2"}}
+            {{tenpines/input-number name="saldoTotal" value=model.contacto.saldoTotal required=false label="Saldo total" col="s2"}}
+            {{tenpines/input-text name="tokenParaRecuperarPassword" value=model.contacto.tokenParaRecuperarPassword required=false label="Token password" col="s2"}}
+            {{tenpines/input-text name="tokenParaVerificarCuenta" value=model.contacto.tokenParaVerificarCuenta required=false label="Token email" col="s2"}}
+            {{tenpines/check-box name="firmoContrato" value=model.contacto.firmoContrato required=true label="Firmó contrato?" col="s2" classNames="input-field"}}
+          </div>
+          <div class="row">
+            {{tenpines/input-number name="stars" value=model.contacto.stars required=false label="Stars" col="s2"}}
+            {{selector/de-nivel name="nivel" label='Nivel' labelParaNull='- Sin Nivel -' nivelElegido=model.contacto.nivel classNames="col s2"}}
+            {{tenpines/input-datetime name="instanteDeInscripcion" value=model.contacto.instanteDeInscripcion label="Instante de Inscripción" col="s2" required=false}}
+            {{tenpines/input-datetime name="instanteDeCambioDeNivel" value=model.contacto.instanteDeCambioDeNivel label="Instante de Cambio de Nivel" col="s2" required=false}}
+            {{tenpines/input-datetime name="instanteDeUltimaRecarga" value=model.contacto.instanteDeUltimaRecarga label="Instante de Última Recarga" col="s2" required=false}}
+            {{tenpines/check-box name="deseaRecibirNovedades" value=model.contacto.deseaRecibirNovedades required=true label="Desea recibir novedades?" col="s2" classNames="input-field"}}
+          </div>
+          <div class="row">
+            {{selector/de-cantidad-de-vouchers-por-beneficio cantidadesDeVouchersPorBeneficioSeleccionadas=model.cantidadesDeVouchers col="s12"}}
+          </div>
+        </div>
+        <div class="card-action">
+          <div class="row">
+            {{tenpines/text-area name="respuestaActualizacionContacto" value=model.respuestaActualizacionContactoString label="Respuesta de Emblue" col="s9"}}
+            {{tenpines/material-button label='Crear o Actualizar contacto' click=(action validar) col="s3"}}
+          </div>
+        </div>
+      {{/form-validable}}
+    </div>
+  </div>
+
+  <div class="row msr-form">
+    <div class="card darken-1">
+      {{#form-validable configurarCon=opcionesDeValidacionEnvioMail alValidarCorrectamente=(action 'enviarMail') as |validar|}}
+        <div class="card-content">
+          <span class="card-title">Enviar Mail a Contacto</span>
+          <p>Envía un pedido de envío de mail a un contacto de Emblue</p>
+          <div class="row">
+            {{tenpines/input-text name="tokenContactoInput" value=model.tokenDinamico  required=true label='Token Dinámico' col="s4"}}
+            {{tenpines/input-text name="emailIdInput" value=model.emailId required=true label="Email ID" col="s4"}}
+            {{tenpines/input-text name="triggerIdInput" value=model.triggerId required=true label="Trigger ID" col="s4"}}
+          </div>
+        </div>
+        <div class="card-action">
+          <div class="row">
+            {{tenpines/text-area name="respuestaEnvioMail" value=model.respuestaEnvioMail label="Respuesta de Emblue"  col="s9"}}
+            {{tenpines/material-button label='Enviar mail a contacto' click=(action validar) col="s3"}}
+          </div>
+        </div>
+      {{/form-validable}}
+    </div>
+  </div>
+</div>

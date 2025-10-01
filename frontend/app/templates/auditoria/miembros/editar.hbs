@@ -1,0 +1,101 @@
+<div class="row msr-form">
+  <div class="card darken-1">
+    {{#form-validable configurarCon=opcionesDeValidacion alValidarCorrectamente=(action 'guardarMiembro') as |validar|}}
+      <div class="card-content">
+        <span class="card-title">
+          <div class="col s9 no-margin">Editar Miembro</div>
+          {{#if puedeEditarHabilitacionMiembros}}
+            {{tenpines/toggle-component value=model.habilitado labelParaTrue='HABILITADO' labelParaFalse='INHABILITADO' col="s3"}}
+          {{/if}}
+        </span>
+        <div class="row">
+          {{#if puedeEditarNombreYApellidosDeMiembros}}
+            {{tenpines/input-text name="nombre" value=model.nombre required=true label="Nombre" col="s2"}}
+            {{tenpines/input-text name="apellido" value=model.apellido required=true label="Apellido" col="s2"}}
+          {{/if}}
+          {{#if puedeEditarFechaDeNacimientoDeMiembro}}
+            {{tenpines/input-date name="fechaDeNacimiento" value=model.fechaDeNacimiento required=true label='Fecha de nacimiento' classNames="col s2"}}
+          {{/if}}
+          {{#if puedeEditarBebidaFavoritaDeMiembros}}
+            {{selector/de-bebida-favorita name="bebida" label='Bebida favorita' bebidaElegida=model.bebidaFavorita classNames="col s2"}}
+          {{/if}}
+          {{#if puedeEditarCantidadStarsYNivelDeMiembros}}
+            {{tenpines/input-number name="stars" value=model.cantidadDeStars required=true label="Stars del periodo" col="s2"}}
+            {{selector/de-nivel name="nivel" label='Nivel' nivelElegido=model.nivel classNames="col s2"}}
+          {{/if}}
+          {{#if puedeEditarReposicionDeTarjeta}}
+            {{tenpines/toggle-component value=model.miembroHabilitadoParaReposicion labelParaTrue='Habilitado para reposición' col="s12" labelParaFalse=''}}
+          {{/if}}
+        </div>
+      </div>
+      <div class="card-content">
+        <div class="row black-text">
+          {{editor-de-tarjetas tarjetas=model.tarjetas}}
+        </div>
+      </div>
+      <div class="card-content">
+        <div class="row black-text">
+          {{tenpines/text-area value=motivoDeEdicion name="motivoDeEdicion" label="Motivo" col="s12" length=longitudMaximaDeMotivo required=tieneQueIndicarUnMotivo}}
+        </div>
+      </div>
+      <div class="card-action">
+        {{tenpines/material-button label='Guardar' click=(action validar) disabled=estaProcesando}}
+      </div>
+    {{/form-validable}}
+  </div>
+</div>
+{{#if puedeEditarMailDeMiembros}}
+  <div class="row msr-form">
+    <div class="card darken-1">
+      <div class="card-content">
+        <span class="card-title">Editar Cuenta</span>
+        <div class="card-content">
+          {{cuenta/editar-cuenta cuenta=model.cuenta}}
+        </div>
+      </div>
+    </div>
+  </div>
+{{/if}}
+
+{{#if puedeEliminarMiembros}}
+<div class="row msr-form">
+  <div class="card darken-1">
+    {{#form-validable configurarCon=opcionesDeValidacion alValidarCorrectamente=(action 'eliminarMiembro') as
+    |eliminar|}}
+    <div class="card-content">
+      <span class="card-title">Eliminar Miembro</span>
+      <div class="row">
+        {{tenpines/input-text name="confirmar" required=true value=model.confirmarEliminar required=true label="Escriba
+        'Eliminar' para confirmar" col="s3"}}
+      </div>
+    </div>
+    {{#if model.habilitado}}
+    <div class="card-action">
+      {{tenpines/material-button label='Eliminar' click=(action eliminar) }}
+    </div>
+    {{else}}
+    <div class="card-action">
+      {{tenpines/material-button disabled=true label='Eliminar' click=(action eliminar) }}
+    </div>
+    {{/if}}
+    {{/form-validable}}
+  </div>
+</div>
+{{/if}}
+
+<div class="row msr-form">
+  <div class="card darken-1">
+    {{#form-validable configurarCon=opcionesDeValidacion alValidarCorrectamente=(action 'altaTarjeta') as
+    |guardar|}}
+    <div class="card-content">
+      <span class="card-title">Alta Tarjeta</span>
+      <div class="row">
+
+      </div>
+    </div>
+    <div class="card-action">
+      {{tenpines/material-button label='Asignar' click=(action guardar) }}
+    </div>
+    {{/form-validable}}
+  </div>
+</div>

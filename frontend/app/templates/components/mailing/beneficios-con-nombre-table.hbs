@@ -1,0 +1,20 @@
+<table class="striped">
+  <thead>
+  <tr>
+    <th>Beneficio</th>
+    <th>Nombre en Emblue</th>
+    <th>Borrar</th>
+  </tr>
+  </thead>
+  <tbody>
+  {{#each items as |aliasDeBeneficio|}}
+    <tr class="linkeable">
+      <td>{{aliasDeBeneficio.beneficio.nombreInterno}}</td>
+      <td>{{aliasDeBeneficio.nombreEnEmblue}}</td>
+      <td>{{materialize/icon-component value='delete' click=(action "borrarItem" aliasDeBeneficio bubbles=false)}}</td>
+    </tr>
+  {{else}}
+    <em>No hay beneficios con nombres configurados</em>
+  {{/each}}
+  </tbody>
+</table>

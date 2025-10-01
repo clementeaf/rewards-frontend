@@ -1,0 +1,29 @@
+<div class="row msr-form">
+  <div class="card darken-1">
+    <div class="card-content">
+      <span class="card-title">
+        <div class="text-uppercase col s4">{{nombreDelNivel}}</div>
+        <div class="col s4 valign-wrapper">
+          Alcanzable con: {{cantidadParaAlcanzar}} {{colored-star nombreDelNivel=nombreDelNivel}}
+        </div>
+        <div class="col s4 valign-wrapper">
+          Mantiene con: {{cantidadParaPermanecer}} {{colored-star nombreDelNivel=nombreDelNivel}}
+        </div>
+      </span>
+      <hr>
+      <div class="row">
+        {{#each beneficios as |beneficio|}}
+          <div class="input-field col s6">
+            <div class="col s1">{{materialize/icon-helper 'star_rate' }}</div>
+            <h6 class="col s11">{{beneficio.nombre}}</h6>
+            <small class="col s12"><em>{{beneficio.descripcion}}</em></small>
+          </div>
+        {{else}}
+          <div class="row text-center">
+            <em>No se encontraron beneficios para el nivel {{nombreDelNivel}}</em>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>

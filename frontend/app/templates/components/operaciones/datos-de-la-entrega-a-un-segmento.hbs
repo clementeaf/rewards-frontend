@@ -1,0 +1,18 @@
+{{#if (not-empty model.segmentoDeMiembros)}}
+  <span class="card-subtitle">Datos de la Entrega a un Segmento</span>
+  <div id="contenido">
+    <div class="row">
+      {{optional-label label='Segmento' value=model.segmentoDeMiembros col='s3'}}
+      {{optional-label label='Cantidad de entregas exitosas' value=model.cantidadDeEntregasExitosasAlSegmento col='s3'}}
+      {{optional-label label='Cantidad de entregas fallidas' value=model.cantidadDeEntregasFallidasAlSegmento col='s3'}}
+    </div>
+    <div class="row">
+      {{optional-label label='Beneficio' value=model.beneficioEntregadoAlSegmento col='s3'}}
+      {{optional-label label='Redimible entregado' value=model.redimibleEntregadoAlSegmento col='s3'}}
+      {{operaciones/tiempo-de-validez-label label='Tiempo de validez del redimible' tiempoDeValidez=model.tiempoDeValidezDelRedimibleEntregadoAlSegmento col='s3'}}
+    </div>
+  </div>
+{{/if}}
+
+
+

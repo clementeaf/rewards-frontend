@@ -1,0 +1,41 @@
+{{bread-crumbs list="Beneficios|Segmentos de Miembros"}}
+
+<div class="row segmentos-de-miembros">
+  <div class="col s12">
+    {{#if model}}
+      <table class="striped bordered">
+        <thead>
+        <tr>
+          <th>Segmento</th>
+          <th class="text-center">Acciones</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {{#each model as |segmento|}}
+          <tr class="linkeable" {{action "verDetalle" segmento}}>
+            <td>{{segmento.nombre}}</td>
+            <td class="text-center">
+              {{materialize/icon-component value='mode_edit' click=(sin-burbujear (action "editar" segmento))}}
+              {{materialize/icon-component value='delete' click=(sin-burbujear (action "eliminar" segmento))}}
+              {{materialize/icon-component value='person_add' click=(sin-burbujear (action "modificarMiembros" segmento))}}
+            </td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    {{else}}
+      <div class="row text-center">
+        <em>No se encontraron segmentos de miembros</em>
+      </div>
+    {{/if}}
+  </div>
+</div>
+
+{{tenpines/material-button action='nuevo' icon='add' floating=true right=true classNames='btn-medium crud-add-button'}}
+
+<div class="row">
+  <div id="segmentos-de-miembros-crud" class="col s12">
+    {{outlet}}
+  </div>
+</div>

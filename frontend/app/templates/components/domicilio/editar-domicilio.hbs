@@ -1,0 +1,13 @@
+<span class="card-title">Datos del domicilio</span>
+<div class="row">
+  {{tenpines/input-text name="pais" value=domicilio.pais required=true label="País" col="s3"}}
+  {{tenpines/input-text name="provincia" value=domicilio.provincia required=true label="Provincia" col="s3"}}
+  {{tenpines/input-text name="localidad" value=domicilio.localidad required=true label="Localidad" col="s3"}}
+  {{tenpines/input-text name="codigoPostal" value=domicilio.codigoPostal required=true label="Código postal" col="s3"}}
+</div>
+<div class="row">
+  {{tenpines/input-text name="calle" value=domicilio.calle required=true label="Calle" col="s3"}}
+  {{tenpines/input-text name="altura" value=domicilio.altura required=true label="Altura" col="s3"}}
+  {{tenpines/input-text name="piso" value=domicilio.piso required=false label="Piso" col="s3"}}
+  {{tenpines/input-text name="departamento" value=domicilio.departamento required=false label="Departamento" col="s3"}}
+</div>

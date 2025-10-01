@@ -1,0 +1,13 @@
+import Ember from "ember";
+
+/**
+ * Este mixin permite tener el items micros con nivel service como colaborador interno
+ * para evitar la repeticion de codigo de declararlo cada vez, pero tampoco
+ * forzar a que todos los componentes lo tenga
+ */
+export default Ember.Mixin.create({
+  _itemsMicrosConNivelService: Ember.inject.service('items-micros-con-nivel-service'),
+  itemsMicrosConNivelService(){
+    return this.get('_itemsMicrosConNivelService');
+  },
+});

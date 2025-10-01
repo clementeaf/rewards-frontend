@@ -1,0 +1,58 @@
+<div class="row msr-form">
+  <div class="card darken-1">
+    <div class="card-content">
+      <span class="card-title">Segmento #{{model.segmento.id}}</span>
+      <div class="row">
+        {{tenpines/labeled-label label='Nombre' value=model.segmento.nombre col='s12'}}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{segmentos/editar-con-csv model=model agregarMiembros=(action 'agregarMiembrosListadosEnCsv') eliminarMiembros=(action 'eliminarMiembrosListadosEnCsv') noPuedeProcesarArchivo=noPuedeProcesarArchivo}}
+
+{{#filtro/de-miembros-en-segmento miembrosEncontrados=model.miembros segmento=model.segmento repetirBusqueda=repetirBusquead}}
+
+  <div class="row">
+    <div class="col s12">
+      {{#if (not-null model.miembros)}}
+        {{#if model.miembros}}
+          <table class="striped bordered">
+            <thead>
+            <tr>
+              <th {{action 'seleccionarComoSeaMenester'}}>
+                {{tenpines/check-box value=seleccionarTodosCheckBoxLabel col="s1"}}
+              </th>
+              <th>Nombre</th>
+              <th>DNI</th>
+              <th>Nivel</th>
+              <th>Stars</th>
+            </tr>
+            </thead>
+            <tbody class="linkeable">
+            {{#each model.miembros as |miembro|}}
+              <tr>
+                <td {{action "modificarMiembro" miembro}}>{{tenpines/check-box value=miembro.pertenece col="s1" valueEsNull=false}}</td>
+                <td>{{miembro.nombre}}</td>
+                <td>{{miembro.numeroDeDocumento}}</td>
+                <td>{{nivel-label nivel=miembro.nivel}}</td>
+                <td>{{miembro.cantidadDeStars}}</td>
+              </tr>
+            {{/each}}
+            </tbody>
+          </table>
+
+        {{else}}
+          <div class="row text-center">
+            <em>No se encontraron miembros</em>
+          </div>
+        {{/if}}
+      {{else}}
+        <div class="row text-center">
+          <em>Indique el criterio de busqueda</em>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+{{/filtro/de-miembros-en-segmento}}

@@ -1,0 +1,15 @@
+{{#if restriccion}}
+  <div class="row restriccion">
+    {{tenpines/material-button action='sacarRestriccion' icon='close' floating=true right=true classNames='small close-button'}}
+    <h6>Restricción por tipo de transacción</h6>
+    <small><em>Esta restricción permite que sólo puedan acceder al beneficio aquellos miembros que hayan realizado este tipo de transaccion.</em></small>
+    <div class="row">
+      {{tenpines/check-box value=restriccion.aplicaComprasConTarjetaRewards name="compra_tarjeta" label="Compra con tarjeta rewards" col="s6"}}
+      {{tenpines/check-box value=restriccion.aplicaComprasConApp name="compra_app" label="Compra usando la App" col="s6"}}
+    </div>
+    <div class="row">
+      {{tenpines/check-box value=restriccion.aplicaRecargasEnTienda name="recarga_tienda" label="Recarga Tienda" col="s6"}}
+      {{tenpines/check-box value=restriccion.aplicaRecargasMobile name="recarga_mobile" label="Recarga Mobile" col="s6"}}
+    </div>
+  </div>
+{{/if}}

@@ -1,0 +1,33 @@
+<form {{action "filtrarMiembros" on="submit"}} novalidate>
+  <div class="row msr-filter">
+    <div class="card darken-1">
+      <div class="card-content white-text">
+        <div class="row">
+          {{tenpines/input-text value=filtro.email label="Email" col="s2"}}
+          {{#if puedeFiltrarPorNombre}}
+            {{tenpines/input-text value=filtro.nombreYApellido label="Nombre y/o apellido" col="s2"}}
+          {{/if}}
+          {{tenpines/input-text value=filtro.numeroDeTarjeta label="Numero de Tarjeta" col="s2"}}
+          {{tenpines/input-text value=filtro.dni label="DNI" col="s2"}}
+          {{selector/de-sexo label="Sexo" sexoElegido=filtro.sexo labelParaNull=' - Sin restriccion -' nullElegible=true classNames="col s2"}}
+          {{selector/de-nivel label='Nivel' nivelElegido=filtro.nivel nullElegible=true labelParaNull=' - Sin restriccion -' classNames="col s2"}}
+        </div>
+        <div class="row">
+          {{selector/de-bebida-favorita label="Bebida Favorita" bebidaElegida=filtro.bebidaFavorita labelParaNull=' - Sin restriccion -' nullElegible=true classNames="col s2"}}
+          {{tenpines/input-date value=filtro.fechaDeNacimientoDesde name="desde" label="Fecha Nacimiento (desde)" col="s2"}}
+          {{tenpines/input-date value=filtro.fechaDeNacimientoHasta name="hasta" label="Fecha Nacimiento (hasta)" col="s2"}}
+          {{tenpines/input-number value=filtro.starsMinimas label="Stars (min)" col="s1"}}
+          {{tenpines/input-number value=filtro.starsMaximas label="Stars (max)" col="s1"}}
+          {{tenpines/input-datetime value=filtro.ultimaActividad name="ultimaActividad" label="Ultima actividad desde" col="s2"}}
+          {{tenpines/input-range value=filtro.limite min=1 max=1000 label="Limite de resultados" col="s2"}}
+        </div>
+      </div>
+      <div class="card-action">
+        <div class="row">
+          {{tenpines/material-button label='Limpiar' action='limpiarFiltro' flat=true}}
+          {{tenpines/material-button label="Filtrar" submit=true }}
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

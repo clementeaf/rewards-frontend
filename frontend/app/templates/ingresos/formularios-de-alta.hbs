@@ -1,0 +1,70 @@
+{{bread-crumbs list="Administracion|Formularios"}}
+
+{{filtro/de-formularios-de-alta formulariosEncontrados=model }}
+
+<div class="row">
+  <div class="col s12">
+    {{#if (not-null model)}}
+      {{#if model}}
+        <table class="striped bordered">
+          <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Nro. Documento</th>
+            <th>Nacionalidad</th>
+            <th>Sexo</th>
+            <th>Acciones</th>
+          </tr>
+          </thead>
+          <tbody class="linkeable">
+          {{#each model as |formulario|}}
+            <tr {{action "verDetalles" formulario}}>
+              <td>{{formulario.nombre}}</td>
+              <td>{{formulario.apellido}}</td>
+              <td>{{formulario.numeroDeDocumento}}</td>
+              <td>{{formulario.nacionalidad}}</td>
+              <td>{{formulario.sexo}}</td>
+              <td>
+                {{#if formulario.estaFirmado}}
+                  <em>Este contrato ya fue firmado</em>
+                {{else}}
+                  {{#if puedeEditarFormulario}}
+                    {{materialize/icon-component value='mode_edit' click=(sin-burbujear (action "editar" formulario)) }}
+                  {{/if}}
+                  {{#if puedeBorrarFormulario}}
+                    {{materialize/icon-component value='delete' click=(sin-burbujear (action "pedirConfirmacionParaBorrar" formulario)) }}
+                  {{/if}}
+                {{/if}}
+              </td>
+            </tr>
+          {{/each}}
+          </tbody>
+        </table>
+      {{else}}
+        <div class="row text-center">
+          <em>No se encontraron Formularios</em>
+        </div>
+      {{/if}}
+    {{else}}
+      <div class="row text-center">
+        <em>Indique el criterio de busqueda</em>
+      </div>
+    {{/if}}
+    {{#if puedeCrearFormulario}}
+      {{tenpines/material-button action="crearNuevo" icon='add' floating=true right=true classNames='btn-medium crud-add-button'}}
+    {{/if}}
+  </div>
+</div>
+<div id="formularios-crud">
+  {{outlet}}
+</div>
+
+
+<!--modals de la vista-->
+{{tenpines/modal-de-confirmacion
+open=modalAlEliminarUnFormulario
+titulo='Eliminar Formulario'
+descripcion=(concat '¿Esta seguro que quiere eliminar el formulario seleccionado?')
+accionAceptar=(action 'eliminar')
+}}

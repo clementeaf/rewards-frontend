@@ -1,0 +1,25 @@
+@import "../variables";
+
+.btn {
+  padding-left: 7px;
+  padding-right: 7px;
+  background-color: $middle-grey;
+  color: $light-grey;
+}
+
+.btn:hover, .btn:active, .btn:focus {
+  background-color: $black;
+  color: $light-grey;
+}
+
+.btn-secondary {
+  color: #ffab40 !important;
+  box-shadow: none;
+  width: auto !important;
+  background-color: $middle-grey;
+}
+
+.btn-secondary:hover, .btn-secondary:active, .btn-secondary:focus {
+  text-decoration: underline !important;
+  background-color: $middle-grey;
+}

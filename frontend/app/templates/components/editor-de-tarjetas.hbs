@@ -1,0 +1,40 @@
+{{#collapsible-table}}
+  {{#collapsible-table/-row as |section|}}
+    {{#if section.esTitulo}}
+      {{materialize/icon-helper 'credit_card' }} Tarjetas
+    {{else if section.esCuerpo}}
+      {{#if tarjetas}}
+        <table class="striped bordered no-margin">
+          <thead>
+          <tr>
+            <th>Número de Tarjeta</th>
+            {{#if puedeEditarSaldoDeTarjeta}}
+              <th>Saldo en Pesos</th>
+            {{/if}}
+            {{#if puedeEditarBloqueoDesbloqueoDeTarjeta}}
+              <th>Habilitada</th>
+            {{/if}}
+          </tr>
+          </thead>
+          <tbody>
+          {{#each tarjetas as |tarjeta|}}
+            <tr>
+              <td class="no-padding">{{tarjeta.numero}}</td>
+              {{#if puedeEditarSaldoDeTarjeta}}
+                <td class="no-padding">{{tenpines/input-number value=tarjeta.saldo min=0 required=true col="s3 currency-input"}}</td>
+              {{/if}}
+              {{#if puedeEditarBloqueoDesbloqueoDeTarjeta}}
+                <td class="no-padding">{{estado-tarjeta-toggle estado=tarjeta.estado}}</td>
+              {{/if}}
+            </tr>
+          {{/each}}
+          </tbody>
+        </table>
+      {{else}}
+        <div class="row text-center">
+          <em>No se encontraron tarjetas</em>
+        </div>
+      {{/if}}
+    {{/if}}
+  {{/collapsible-table/-row}}
+{{/collapsible-table}}

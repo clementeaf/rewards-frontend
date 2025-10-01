@@ -1,0 +1,5 @@
+{{#if laSolicitudEstaMarcadaParaReimprimir}}
+  <a class="grey-text" title="reimprimir">{{materialize/icon-helper 'print' }}</a>
+{{else}}
+  <a class="red-text" title="reimprimir" {{action "reimprimir" solicitud}}>{{materialize/icon-helper 'print' }}</a>
+{{/if}}

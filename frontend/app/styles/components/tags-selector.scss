@@ -1,0 +1,61 @@
+@import "../variables";
+
+.materialize-tags .tt-menu {
+  width: auto;
+  max-width: 500px;
+  max-height: 200px;
+  overflow-x: hidden;
+  margin-top: 2px;
+  padding: 10px 0px 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background: #ffffff;
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+}
+
+.materialize-tags .tt-dataset {
+  width: auto;
+}
+
+.materialize-tags .twitter-typeahead {
+  width: auto !important;
+  max-width: 300px;
+  text-overflow: ellipsis;
+
+  input {
+    margin-bottom: 0 !important;
+  }
+}
+
+.materialize-tags .tt-menu .tt-suggestion {
+  line-height: 1.1rem !important;
+  padding: 5px 20px !important;
+  display: inline-block;
+  clear: both;
+  float: left;
+}
+
+.materialize-tags .tt-menu .tt-cursor {
+  color: $green;
+  text-decoration: underline;
+}
+
+.materialize-tags .tt-menu .tt-suggestion:hover {
+  color: $green;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.materialize-tags .tt-input {
+  border: none;
+}
+
+.materialize-tags .tt-hint {
+  display: inline-block;
+  color: rgba(91, 91, 94, 0.55);
+  text-overflow: ellipsis;
+  width: 100% !important;
+}

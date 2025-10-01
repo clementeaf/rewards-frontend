@@ -1,0 +1,7 @@
+{{#collapsible-table/-row as |section|}}
+  {{#if section.esTitulo}}
+    {{materialize/icon-helper 'replay_10' }} Últimas operaciones
+  {{else if section.esCuerpo}}
+    {{operacion-table operaciones=ultimasOperaciones accionAlClickearUna=accionAlClickearOperacion}}
+  {{/if}}
+{{/collapsible-table/-row}}

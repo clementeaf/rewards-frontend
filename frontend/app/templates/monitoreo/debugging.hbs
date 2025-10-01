@@ -1,0 +1,24 @@
+{{bread-crumbs list="Monitoreo|Debugging"}}
+
+<form {{action "ejecutarSnippet" on="submit"}} novalidate>
+  <div class="row msr-filter">
+    <div class="card darken-1">
+      <div class="card-content white-text">
+        <div class="row">
+          {{tenpines/text-area value=parametros.snippetGroovy label="Codigo Groovy" required=true col="s12"}}
+        </div>
+      </div>
+      <div class="card-action">
+        <div class="row">
+          {{tenpines/material-button label="Ejecutar" submit=true col="s1 offset-s11"}}
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+{{#if respuesta}}
+  <div class="row">
+    {{tenpines/text-area label='Respuesta' value=respuesta col='s12'}}
+  </div>
+{{/if}}

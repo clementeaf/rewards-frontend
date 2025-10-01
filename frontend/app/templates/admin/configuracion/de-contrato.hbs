@@ -1,0 +1,51 @@
+<div id="configuracion-de-contrato">
+  <div class="row msr-form col s6">
+    <div class="card darken-1">
+      <div class="card-content">
+        <span class="card-title">Contrato Default</span>
+        {{#if puedeEditarConfiguracionDeContrato}}
+          <div class="row">
+            Variables disponibles:
+            {{#each model.configuracionDefault.variables as |variable|}}
+              {{tenpines/material-button label=variable click=(action "insertarVariableDefault" variable) }}
+            {{/each}}
+          </div>
+        {{/if}}
+        <div class="row">
+          {{tenpines/text-area value=model.configuracionDefault.textoDelContrato label="Texto del contrato" length=longitudMaximaDeContrato col="s8"
+                               disabled=noPuedeEditarConfiguracionDeContrato}}
+        </div>
+      </div>
+
+      {{#if puedeEditarConfiguracionDeContrato}}
+        <div class="card-action">
+          {{tenpines/material-button label='Guardar cambios' action='guardarContratoDefault' }}
+        </div>
+      {{/if}}
+    </div>
+  </div>
+  <div class="row msr-form col s6">
+    <div class="card darken-1">
+      <div class="card-content">
+        <span class="card-title">Contrato Para Politicamente expuestos</span>
+        {{#if puedeEditarConfiguracionDeContrato}}
+          <div class="row">
+            Variables disponibles:
+            {{#each model.configuracionParaPoliticamenteExpuestos.variables as |variable|}}
+              {{tenpines/material-button label=variable click=(action "insertarVariableParaPoliticamenteExpuestos" variable) }}
+            {{/each}}
+          </div>
+        {{/if}}
+        <div class="row">
+          {{tenpines/text-area value=model.configuracionParaPoliticamenteExpuestos.textoDelContrato label="Texto del contrato" length=longitudMaximaDeContrato col="s8"
+                               disabled=noPuedeEditarConfiguracionDeContrato}}
+        </div>
+      </div>
+      {{#if puedeEditarConfiguracionDeContrato}}
+        <div class="card-action">
+          {{tenpines/material-button label='Guardar cambios' action='guardarContratoParaPoliticamenteExpuestos' }}
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</div>

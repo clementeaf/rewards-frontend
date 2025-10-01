@@ -1,0 +1,117 @@
+{{#form-validable configurarCon=opcionesDeValidacion alValidarCorrectamente=(action 'submit') as |validar|}}
+  <div class="card-content">
+    <div class="card-title">
+      <div class="row">
+        <div class="col s9">Beneficio</div>
+        {{tenpines/toggle-component value=regla.habilitada labelParaTrue='HABILITADO' labelParaFalse='INHABILITADO' col="s3" }}
+      </div>
+    </div>
+
+    <div class="row">
+      {{tenpines/input-text name="nombreInternoBeneficio" value=regla.beneficio.nombreInterno required=true label="Nombre Interno" col="s9"}}
+    </div>
+
+    <div class="row">
+      {{tenpines/input-text name="nombreParaMiembroBeneficio" value=regla.beneficio.nombreParaMiembro required=true label="Nombre para Miembro" col="s9"}}
+    </div>
+
+    <div class="row">
+      {{tenpines/input-text name="descripcionBeneficio" value=regla.beneficio.descripcion required=true label="Descripcion" col="s12"}}
+    </div>
+
+    <div class="row">
+      {{selector/de-codigo-cupon name="codigoBeneficio" codigoElegido=regla.beneficio.codigo nullElegible=true required=true label='Codigo' classNames="col s4"}}
+    </div>
+
+    <div class="row">
+      <ul class="consecuencias-table collection with-header black-text">
+        <li class="collection-header"><h5>Consecuencias</h5></li>
+        {{generador-de-voucher-table-row generadoresDeVoucher=regla.generadoresDeVoucher title="Redimible" description="Permite agregar una redimible para el miembro si las restricciones se cumplen"}}
+        {{multiplicador-de-stars-table-row multiplicadorDeStars=regla.multiplicadorDeStars title="Multiplicador de stars" description="Permite multiplicar las stars adquiridas en una compra"}}
+        {{repartidor-de-stars-bonus-table-row repartidorDeStarsBonus=regla.repartidorDeStarsBonus title="Stars bonus" description="Permite entregar stars bonus si las restricciones aplican"}}
+      </ul>
+    </div>
+
+    <div class="row">
+      {{#each regla.generadoresDeVoucher as |generadorDeVoucher|}}
+        {{consecuencias/generador-de-voucher generadoresDeVoucher=regla.generadoresDeVoucher generadorDeVoucher=generadorDeVoucher}}
+      {{/each}}
+      {{consecuencias/multiplicador-de-stars multiplicadorDeStars=regla.multiplicadorDeStars}}
+      {{consecuencias/repartidor-de-stars-bonus repartidorDeStarsBonus=regla.repartidorDeStarsBonus}}
+    </div>
+
+    <div class="row">
+      <ul class="restricciones-table collection with-header black-text">
+        <li class="collection-header"><h5>Restricciones</h5></li>
+        {{restricciones-table-row restriccion=regla.restriccionDePeriodoDeValidez title="Periodos de validez"
+          description="Uno o más periodos desde una fecha y horas hasta otra fecha y hora"
+          buildRestriccion=(action "buildRestriccionDePeriodoDeValidez")}}
+        {{restricciones-table-row restriccion=regla.restriccionDeNivel title="Nivel"
+          description="Para todos aquellos miembros con nivel"
+          buildRestriccion=(action "buildRestriccionDeNivel")}}
+        {{restricciones-table-row restriccion=regla.restriccionDeCompraDeProductos title="Compra de productos"
+          description="Si la compra contiene alguno de los productos indicados"
+          buildRestriccion=(action "buildRestriccionDeCompraDeProductos")}}
+        {{restricciones-table-row restriccion=regla.restriccionDeCantidadDeStarsAcumuladas title="Stars acumuladas"
+          description="Para los miembros que hayan acumulado la cantidad de stars indicadas"
+          buildRestriccion=(action "buildRestriccionDeCantidadDeStarsAcumuladas")}}
+        {{restricciones-table-row restriccion=regla.restriccionDeCambioDeNivel title="Cambio de nivel"
+          description="Para los miembros que hayan logrado cambiar de nivel"
+          buildRestriccion=(action "buildRestriccionDeCambioDeNivel")}}
+        {{restricciones-table-row restriccion=regla.restriccionDeFirmaDeContrato title="Firma de contrato"
+          description="Cuando un miembro firma el contrato"
+          buildRestriccion=(action "buildRestriccionDeFirmaDeContrato")}}
+        {{restricciones-table-row restriccion=regla.restriccionDeMesDeCumpleanios title="Mes de cumpleaños"
+          description="Para todos los miembros que cumplan años en el mes"
+          buildRestriccion=(action "buildRestriccionDeMesDeCumpleanios")}}
+        {{restricciones-table-row restriccion=regla.restriccionDeTiendas title="Tiendas"
+          description="Sólo comprando en las tiendas..."
+          buildRestriccion=(action "buildRestriccionDeTiendas")}}
+        {{restricciones-table-row restriccion=regla.restriccionDeDineroGastado title="Monto de dinero"
+          description="Al realizar una transaccion por un monto de dinero igual o superior a ..."
+          buildRestriccion=(action "buildRestriccionDeDineroGastado")}}
+        {{restricciones-table-row restriccion=regla.restriccionDeMedioDePago title="Medio de pago"
+          description="Para todos aquellas recargas efectuadas con el medio de pago ..."
+          buildRestriccion=(action "buildRestriccionDeMedioDePago")}}
+        {{restricciones-table-row restriccion=regla.restriccionDeActividad title="Actividad"
+          description="Para aquellos miembros que tuvieron o no tuvieron actividad hace ..."
+          buildRestriccion=(action "buildRestriccionDeActividad")}}
+        {{restricciones-table-row restriccion=regla.restriccionDeSegmento title="Segmentos de miembros"
+          description="Para aquellos miembros que pertenezcan a alguno de los segmentos..."
+          buildRestriccion=(action "buildRestriccionDeSegmento")}}
+        {{restricciones-table-row restriccion=regla.restriccionDeCantidadDeAdquisiciones title="Cantidad de adquisiciones"
+          description="Cantidad de veces que se puede aplicar la regla para un miembro durante ..."
+          buildRestriccion=(action "buildRestriccionDeCantidadDeAdquisiciones")}}
+        {{restricciones-table-row restriccion=regla.restriccionDeTipoDeTransaccion title="Tipo de transaccion"
+          description="Sólo para los tipo de transacción seleccionados..."
+          buildRestriccion=(action "buildRestriccionDeTipoDeTransaccion")}}
+        {{restricciones-table-row restriccion=regla.restriccionDeSeleccionDeTarjetaPredeterminada title="Seleccion de tarjeta predeterminada"
+          description="Cuando un miembro selecciona como tarjeta de credito predeterminada..."
+          buildRestriccion=(action "buildRestriccionDeSeleccionDeTarjetaPredeterminada")}}
+      </ul>
+    </div>
+
+    <div class="row">
+      {{restricciones/de-periodo-de-validez restriccion=regla.restriccionDePeriodoDeValidez}}
+      {{restricciones/de-nivel restriccion=regla.restriccionDeNivel}}
+      {{restricciones/de-compra-de-productos restriccion=regla.restriccionDeCompraDeProductos}}
+      {{restricciones/de-cantidad-de-stars-acumuladas restriccion=regla.restriccionDeCantidadDeStarsAcumuladas}}
+      {{restricciones/de-cambio-de-nivel restriccion=regla.restriccionDeCambioDeNivel}}
+      {{restricciones/de-firma-de-contrato restriccion=regla.restriccionDeFirmaDeContrato}}
+      {{restricciones/de-mes-de-cumpleanios restriccion=regla.restriccionDeMesDeCumpleanios}}
+      {{restricciones/de-tiendas restriccion=regla.restriccionDeTiendas}}
+      {{restricciones/de-dinero restriccion=regla.restriccionDeDineroGastado}}
+      {{restricciones/de-medios-de-pago restriccion=regla.restriccionDeMedioDePago}}
+      {{restricciones/de-actividad restriccion=regla.restriccionDeActividad}}
+      {{restricciones/de-segmentos restriccion=regla.restriccionDeSegmento}}
+      {{restricciones/de-cantidad-de-adquisiciones restriccion=regla.restriccionDeCantidadDeAdquisiciones}}
+      {{restricciones/de-tipo-de-transaccion restriccion=regla.restriccionDeTipoDeTransaccion}}
+      {{restricciones/de-seleccion-de-tarjeta-predeterminada restriccion=regla.restriccionDeSeleccionDeTarjetaPredeterminada}}
+    </div>
+  </div>
+
+  <div class="card-action text-right">
+    {{tenpines/material-button label='Guardar' click=(action validar) }}
+    {{tenpines/material-button label='Cancelar' action='cancelar' }}
+  </div>
+{{/form-validable}}

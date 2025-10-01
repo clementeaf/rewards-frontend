@@ -1,0 +1,9 @@
+{{#if laSolicitudEstaAprobada}}
+  <a class="green-text" title="postergar">{{materialize/icon-helper 'done' }}</a>
+{{else}}
+  {{#if laSolicitudEstaPendiente}}
+    <a class="blue-text" title="postergar" {{action "postergar" solicitud}}>{{materialize/icon-helper 'pause_circle_filled' }}</a>
+  {{else}}
+    <a class="grey-text" title="postergar">{{materialize/icon-helper 'pause_circle_outline' }}</a>
+  {{/if}}
+{{/if}}

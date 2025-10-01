@@ -1,0 +1,22 @@
+<form {{action "filtrarCuentas" on="submit"}} novalidate>
+  <div class="row msr-filter">
+    <div class="card darken-1">
+      <div class="card-content white-text">
+        <div class="row">
+          {{tenpines/input-text value=filtro.email label="Email" col="s2"}}
+          {{selector/de-estados-de-cuenta label="Estado" estadoElegido=filtro.estado labelParaNull='Seleccionar' nullElegible=true classNames="col s2"}}
+          {{tenpines/input-date value=filtro.fechaDesde name="desde" label="Fecha de creación (desde)" col="s2"}}
+          {{tenpines/input-date value=filtro.fechaHasta name="hasta" label="Fecha de creación (hasta)" col="s2"}}
+          {{tenpines/check-box value=filtro.rechazadaPorEmblue name="ocurrioFalla" label="Rechazada por EmBlue" col="s2" classNames="input-field"}}
+          {{tenpines/input-range value=filtro.limite min=1 max=1000 label="Limite de resultados" col="s2"}}
+        </div>
+      </div>
+      <div class="card-action">
+        <div class="row">
+          {{tenpines/material-button label='Limpiar' action='limpiarFiltro' flat=true}}
+          {{tenpines/material-button label="Filtrar" submit=true }}
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

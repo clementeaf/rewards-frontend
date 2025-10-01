@@ -1,0 +1,31 @@
+<div class="row msr-form">
+  <div class="card darken-1">
+      <div class="card-content">
+        <span class="card-title row">
+          <div class="col s12">Beneficios para Emblue</div>
+        </span>
+
+        <div class="row selector-de-items-micros">
+          <div class="row">
+            {{mailing/beneficios-con-nombre-table items=listadoDeAlias.alias classNames="col s12"}}
+          </div>
+          <div class="row bordered-top">
+            {{autocomplete/de-beneficios label="Beneficios" beneficioSeleccionado=beneficioEnSeleccion col="s7" required=true}}
+            {{tenpines/input-text name="nombre" label="Nombre" length=20 value=nombreEnEmblueDelBeneficioEnSeleccion col="s4" required=true}}
+            <div class="col s1">
+              {{tenpines/material-button action='agregarBeneficioConNombre' floating=true right=true icon='add' classNames='add-button btn-medium crud-add-button'}}
+            </div>
+          </div>
+          {{mensaje-de-error texto=mensajeDeError}}
+        </div>
+
+      </div>
+      <div class="card-action">
+        <div class="row">
+          {{tenpines/material-button label='Guardar' click=(action 'guardarAliasDeBeneficios') classNames='col offset-s10 s2'}}
+        </div>
+      </div>
+  </div>
+</div>
+
+

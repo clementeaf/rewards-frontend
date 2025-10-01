@@ -1,0 +1,17 @@
+<div class="row selector-de-items-micros">
+  <span class="valign-wrapper">
+    {{materialize/icon-helper 'label' }}
+    {{nombre}}
+  </span>
+  <div class="row">
+    {{redimibles/item-micros-con-nivel-table items=itemsConNivelAgregados classNames="col s12"}}
+  </div>
+  {{mensaje-de-error texto=mensajeDeError}}
+  <div class="row bordered-top">
+    {{autocomplete/de-item-micros label="Item Micros" itemSeleccionado=itemEnSeleccion col="s8" required=true}}
+    {{selector/de-nivel-micros label='Nivel Micros' nivelElegido=nivelEnSeleccion classNames="col s3"}}
+    <div class="col s1">
+      {{tenpines/material-button action='agregarItem' floating=true right=true icon='add' classNames='add-button btn-medium crud-add-button'}}
+    </div>
+  </div>
+</div>

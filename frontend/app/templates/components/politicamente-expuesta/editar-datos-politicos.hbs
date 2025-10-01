@@ -1,0 +1,19 @@
+<div class="row">
+  {{selector/de-inciso name="inciso" label='Indique si usted esta incluido en los Incisos "B" o "I"' incisoElegido=datosPoliticos.inciso classNames="col s9"}}
+  {{#if hayUnIncisoSeleccionado}}
+    {{#if esIncisoBoI}}
+      {{tenpines/input-text name="nombre" value=datosPoliticos.nombre required=true label="Nombre" col="s3"}}
+      {{tenpines/input-text name="apellido" value=datosPoliticos.apellido required=true label="Apellido" col="s3"}}
+      {{selector/de-tipos-documento name="tipoDocumento" label="Tipo de documento" tipoDeDocumentoElegido=datosPoliticos.tipoDocumento labelParaNull="Seleccione un tipo" classNames=" col s3"}}
+      {{tenpines/input-text name="numeroDocumento"  value=datosPoliticos.numeroDocumento required=true label="Nro Documento" col="s3"}}
+    {{/if}}
+    <div class="row">
+      {{selector/de-cargo-politico name="cargoPolitico" label='Inciso Resolucion 11/2011' cargoPoliticoElegido=datosPoliticos.cargoPolitico labelParaNull="Seleccione Cargo Politico" classNames="col s6"}}
+      {{#if hayUnCargoSeleccionado}}
+        {{selector/de-subcargo-politico cargoPolitico=datosPoliticos.cargoPolitico name="subcargoPolitico" label='Subcargo politico' subcargoPoliticoElegido=datosPoliticos.subcargoPolitico labelParaNull="Seleccione Subcargo Politico" classNames="col s6"}}
+      {{/if}}
+    </div>
+    {{selector/de-tipos-identificacion-fiscal name="tipoIdentificacionFiscal" label="Tipo Indentificacion Fiscal" tipoDeIdentificacionFiscalElegido=datosPoliticos.tipoIdentificacionFiscal labelParaNull="Seleccione un tipo" classNames="col s3"}}
+    {{tenpines/input-text name="numeroIdentificacionFiscal"  value=datosPoliticos.numeroIdentificacionFiscal required=true label="Nro Identificacion Fiscal" col="s3"}}
+  {{/if}}
+</div>

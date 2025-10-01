@@ -1,0 +1,42 @@
+{{bread-crumbs list="Auditoría|Cuentas"}}
+
+{{filtro/de-cuentas cuentasEncontradas=model }}
+
+<div class="row">
+  <div class="col s12">
+    {{#if (not-null model)}}
+      {{#if model}}
+        <table class="striped bordered">
+          <thead>
+          <tr>
+            <th>Email</th>
+            <th>Estado</th>
+            <th>Rechazado por EmBlue</th>
+            <th>Motivo de Rechazo</th>
+            <th>Fecha de creación</th>
+          </tr>
+          </thead>
+          <tbody class="linkeable">
+          {{#each model as |cuenta|}}
+            <tr>
+              <td>{{cuenta.email}}</td>
+              <td>{{cuenta.estado.nombre}}</td>
+              <td>{{cuenta-rechazada rechazada=cuenta.rechazadaPorEmblue}}</td>
+              <td>{{cuenta.motivoDeRechazoEnEmblue}}</td>
+              <td>{{as-datetime cuenta.momentoDeCreacion}}</td>
+            </tr>
+          {{/each}}
+          </tbody>
+        </table>
+      {{else}}
+        <div class="row text-center">
+          <em>No se encontraron cuentas</em>
+        </div>
+      {{/if}}
+    {{else}}
+      <div class="row text-center">
+        <em>Indique el criterio de busqueda</em>
+      </div>
+    {{/if}}
+  </div>
+</div>

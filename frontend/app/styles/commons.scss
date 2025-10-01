@@ -1,0 +1,46 @@
+@import "variables";
+
+.container .row {
+  margin: 0;
+}
+
+.container {
+  width: 80% !important;
+}
+
+.no-margin {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.linkeable {
+  cursor: pointer;
+}
+
+.not-linkeable {
+  cursor: default;
+  pointer-events: none;
+  color: grey;
+}
+
+ul.bulleted-list{
+  list-style-type: circle;
+
+  li{
+    list-style-type: inherit;
+  }
+}
+
+table.striped.bordered {
+  margin-bottom: 80px;
+}
+
+span.caret {
+  border: none;
+}
+
+.bordered-top {
+  margin-top: 25px !important;
+  padding-top: 10px !important;
+  border-top: 1px solid rgba(160, 160, 160, 0.2);
+}

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>ar.com.tenpines</groupId>
+    <artifactId>root-pom</artifactId>
+    <version>0.2.2</version>
+  </parent>
+
+  <groupId>com.tenpines.msr</groupId>
+  <artifactId>backoffice-frontend</artifactId>
+  <version>1.5.34</version>
+  <packaging>pom</packaging>
+
+  <name>Alsea MSR Backoffice Frontend</name>
+  <description>Ember frontend para el backoffice de administracion de Starbucks Rewards</description>
+
+  <properties>
+    <version-plugin-release>2.5.3</version-plugin-release>
+    <version.plugin.assembly>2.4</version.plugin.assembly>
+    <version.frontend-maven-plugin>1.10.0</version.frontend-maven-plugin>
+  </properties>
+
+  <build>
+    <plugins>
+
+
+      <!-- Genera el release del proyecto en el repo, tagueando y subiendo el war -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>${version-plugin-release}</version>
+        <configuration>
+          <!-- Forzar a que el tag tenga el artifact como parte del nombre -->
+          <tagNameFormat>@{project.artifactId}-v@{project.version}</tagNameFormat>
+          <localCheckout>true</localCheckout>
+        </configuration>
+      </plugin>
+
+
+      <!-- Una vez que se genera la salida en dist. Empaquetar todo en un zip -->
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>${version.plugin.assembly}</version>
+        <executions>
+          <execution>
+            <id>generate-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <descriptors>
+            <descriptor>maven-assembly-descriptor.xml</descriptor>
+          </descriptors>
+          <finalName>${project.artifactId}</finalName>
+          <appendAssemblyId>false</appendAssemblyId>
+          <outputDirectory>target</outputDirectory>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.0.0</version>
+        <executions>
+          <execution>
+            <id>run-maven-script</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>bash</executable>
+              <commandlineArgs>${basedir}/run-nvm.sh</commandlineArgs>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>

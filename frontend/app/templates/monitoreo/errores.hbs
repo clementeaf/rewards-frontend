@@ -1,0 +1,39 @@
+{{bread-crumbs list="Monitoreo|Errores"}}
+
+<div class="row">
+  <div class="col s12">
+    {{#if model}}
+      <table class="striped bordered">
+        <thead>
+        <tr>
+          <th>Ocurrencias</th>
+          <th>Primera</th>
+          <th>Ultima</th>
+          <th>Codigo de error</th>
+          <th>Variantes</th>
+        </tr>
+        </thead>
+        <tbody class="linkeable">
+        {{#each model as |error|}}
+          <tr {{action "quiereVerDetalles" error}}>
+            <td>{{error.cantidadDeOccurrencias}}</td>
+            <td>{{as-datetime error.primeraOcurrencia}}</td>
+            <td>{{as-datetime error.ultimaOcurrencia}}</td>
+            <td>{{error.codigoDeError}}</td>
+            <td>{{error.cantidadDeContextos}}</td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    {{else}}
+      <div class="row text-center">
+        <em>Sin errores registrados</em>
+      </div>
+    {{/if}}
+  </div>
+</div>
+<div class="row">
+  <div id="detallesDelError" class="col s12">
+    {{outlet}}
+  </div>
+</div>

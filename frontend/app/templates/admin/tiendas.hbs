@@ -1,0 +1,55 @@
+{{bread-crumbs list="Administracion|Tiendas"}}
+
+
+{{#if model}}
+
+  <table class="striped bordered">
+    <thead>
+    <tr>
+      <th>Codigo</th>
+      <th>Nombre</th>
+      <th>Centro de costo</th>
+      <th>Ip</th>
+      <th>Cant. Pos</th>
+    </tr>
+    </thead>
+    <tbody class="linkeable">
+    {{#each model as |tienda|}}
+      <tr {{action 'quiereEditar' tienda }}>
+        <td>{{tienda.codigo}}</td>
+        <td>{{tienda.nombre}}</td>
+        <td>{{tienda.centroDeCosto}}</td>
+        <td>{{tienda.ip}}</td>
+        <td>{{tienda.poses.length}}</td>
+      </tr>
+
+      <!-- Permitir edicion in-line-->
+      {{#if (equal-id tienda tiendaEditada)}}
+        <tr>
+          <td colspan="4">
+            <div id="tiendaCrud">
+              {{outlet}}
+            </div>
+          </td>
+        </tr>
+      {{/if}}
+
+    {{/each}}
+    </tbody>
+  </table>
+
+{{else}}
+
+  <div class="row text-center">
+    <em>No se encontraron tiendas</em>
+  </div>
+
+{{/if}}
+{{#if puedeCrearTiendas}}
+  {{tenpines/material-button action="quiereCrearNuevo" icon='add' floating=true right=true classNames='btn-medium crud-add-button'}}
+{{/if}}
+{{#if editandoTiendaNueva}}
+  <div id="tiendaCrud">
+    {{outlet}}
+  </div>
+{{/if}}

@@ -1,0 +1,36 @@
+{{#if (not-null items)}}
+  {{#if items}}
+    <table class="striped bordered">
+      <thead>
+      <tr>
+        <th>Código Micros</th>
+        <th>Nombre</th>
+        <th>Habilitado</th>
+        <th>Familia</th>
+      </tr>
+      </thead>
+      <tbody class="linkeable">
+      {{#each items as |item|}}
+        <tr {{action editAction item }}>
+          <td>{{item.codigo}}</td>
+          <td>{{item.nombre}}</td>
+          <td>{{tenpines/check-box value=item.habilitado}}</td>
+          <td>{{familia-de-item-micros-label familia=item.familia}}</td>
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  {{else}}
+    <div class="row text-center">
+      <em>No se encontraron items</em>
+    </div>
+  {{/if}}
+{{else}}
+  <div class="row text-center">
+    <em>Indique el criterio de busqueda</em>
+  </div>
+{{/if}}
+
+<div id="itemMicrosCrud">
+  {{outlet}}
+</div>
