@@ -50,30 +50,8 @@ public class ApiController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/configuraciones")
-    public ResponseEntity<Map<String, Object>> getConfig() {
-        Map<String, Object> response = new HashMap<>();
-        response.put("success", true);
-
-        Map<String, Object> configuraciones = new HashMap<>();
-        configuraciones.put("app_name", "MSR Backoffice");
-        configuraciones.put("version", "1.0.0");
-
-        response.put("configuraciones", configuraciones);
-        return ResponseEntity.ok(response);
-    }
-
     @GetMapping("/home")
     public String home() {
         return "forward:/index.html";
     }
-
-    // Comentado temporalmente para permitir que Spring Boot sirva archivos estáticos
-    // @GetMapping("/**")
-    // public ResponseEntity<Map<String, Object>> handleAllOtherRequests() {
-    //     Map<String, Object> response = new HashMap<>();
-    //     response.put("success", true);
-    //     response.put("data", new HashMap<>());
-    //     return ResponseEntity.ok(response);
-    // }
 }
