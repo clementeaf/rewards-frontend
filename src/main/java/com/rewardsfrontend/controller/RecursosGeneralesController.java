@@ -1,9 +1,13 @@
 package com.rewardsfrontend.controller;
 
+import com.rewardsfrontend.service.RecursosGeneralesService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import javax.servlet.http.HttpSession;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Controlador que maneja recursos CRUD genéricos
@@ -12,263 +16,187 @@ import java.util.*;
 @RequestMapping("/msr-backoffice/api")
 public class RecursosGeneralesController {
 
+    @Autowired
+    private RecursosGeneralesService recursosService;
+
     // ========== TIENDAS ==========
 
     @GetMapping("/tiendas")
-    public ResponseEntity<List<Map<String, Object>>> listarTiendas() {
-        return ResponseEntity.ok(crearListaGenericaMock("Tienda Central"));
+    public ResponseEntity<List> listarTiendas(HttpSession session) {
+        return recursosService.listarTiendas(session);
     }
 
     @GetMapping("/tiendas/{id}")
-    public ResponseEntity<Map<String, Object>> getTienda(@PathVariable Long id) {
-        return ResponseEntity.ok(crearRecursoMock(id, "Tienda Central"));
+    public ResponseEntity<Map> getTienda(@PathVariable Long id, HttpSession session) {
+        return recursosService.getTienda(id, session);
     }
 
     @PostMapping("/tiendas")
-    public ResponseEntity<Map<String, Object>> crearTienda(@RequestBody Map<String, Object> tienda) {
-        return ResponseEntity.ok(crearRespuestaExito("Tienda creada correctamente"));
+    public ResponseEntity<Map> crearTienda(@RequestBody Map<String, Object> tienda, HttpSession session) {
+        return recursosService.crearTienda(tienda, session);
     }
 
     @PutMapping("/tiendas/{id}")
-    public ResponseEntity<Map<String, Object>> actualizarTienda(@PathVariable Long id, @RequestBody Map<String, Object> tienda) {
-        return ResponseEntity.ok(crearRespuestaExito("Tienda actualizada correctamente"));
+    public ResponseEntity<Map> actualizarTienda(@PathVariable Long id, @RequestBody Map<String, Object> tienda, HttpSession session) {
+        return recursosService.actualizarTienda(id, tienda, session);
     }
 
     @DeleteMapping("/tiendas/{id}")
-    public ResponseEntity<Map<String, Object>> eliminarTienda(@PathVariable Long id) {
-        return ResponseEntity.ok(crearRespuestaExito("Tienda eliminada correctamente"));
+    public ResponseEntity<Map> eliminarTienda(@PathVariable Long id, HttpSession session) {
+        return recursosService.eliminarTienda(id, session);
     }
 
     // ========== ROLES ==========
 
     @GetMapping("/roles")
-    public ResponseEntity<List<Map<String, Object>>> listarRoles() {
-        return ResponseEntity.ok(crearListaGenericaMock("Administrador"));
+    public ResponseEntity<List> listarRoles(HttpSession session) {
+        return recursosService.listarRoles(session);
     }
 
     @GetMapping("/roles/{id}")
-    public ResponseEntity<Map<String, Object>> getRol(@PathVariable Long id) {
-        return ResponseEntity.ok(crearRecursoMock(id, "Administrador"));
+    public ResponseEntity<Map> getRol(@PathVariable Long id, HttpSession session) {
+        return recursosService.getRol(id, session);
     }
 
     @PostMapping("/roles")
-    public ResponseEntity<Map<String, Object>> crearRol(@RequestBody Map<String, Object> rol) {
-        return ResponseEntity.ok(crearRespuestaExito("Rol creado correctamente"));
+    public ResponseEntity<Map> crearRol(@RequestBody Map<String, Object> rol, HttpSession session) {
+        return recursosService.crearRol(rol, session);
     }
 
     @PutMapping("/roles/{id}")
-    public ResponseEntity<Map<String, Object>> actualizarRol(@PathVariable Long id, @RequestBody Map<String, Object> rol) {
-        return ResponseEntity.ok(crearRespuestaExito("Rol actualizado correctamente"));
+    public ResponseEntity<Map> actualizarRol(@PathVariable Long id, @RequestBody Map<String, Object> rol, HttpSession session) {
+        return recursosService.actualizarRol(id, rol, session);
     }
 
     @DeleteMapping("/roles/{id}")
-    public ResponseEntity<Map<String, Object>> eliminarRol(@PathVariable Long id) {
-        return ResponseEntity.ok(crearRespuestaExito("Rol eliminado correctamente"));
+    public ResponseEntity<Map> eliminarRol(@PathVariable Long id, HttpSession session) {
+        return recursosService.eliminarRol(id, session);
     }
 
     // ========== PERMISOS ==========
 
     @GetMapping("/permisos")
-    public ResponseEntity<List<Map<String, Object>>> listarPermisos() {
-        return ResponseEntity.ok(crearListaGenericaMock("CONSULTAR_CUENTAS"));
+    public ResponseEntity<List> listarPermisos(HttpSession session) {
+        return recursosService.listarPermisos(session);
     }
 
     @GetMapping("/permisos/{id}")
-    public ResponseEntity<Map<String, Object>> getPermiso(@PathVariable Long id) {
-        return ResponseEntity.ok(crearRecursoMock(id, "CONSULTAR_CUENTAS"));
+    public ResponseEntity<Map> getPermiso(@PathVariable Long id, HttpSession session) {
+        return recursosService.getPermiso(id, session);
     }
 
     @PostMapping("/permisos")
-    public ResponseEntity<Map<String, Object>> crearPermiso(@RequestBody Map<String, Object> permiso) {
-        return ResponseEntity.ok(crearRespuestaExito("Permiso creado correctamente"));
+    public ResponseEntity<Map> crearPermiso(@RequestBody Map<String, Object> permiso, HttpSession session) {
+        return recursosService.crearPermiso(permiso, session);
     }
 
     @PutMapping("/permisos/{id}")
-    public ResponseEntity<Map<String, Object>> actualizarPermiso(@PathVariable Long id, @RequestBody Map<String, Object> permiso) {
-        return ResponseEntity.ok(crearRespuestaExito("Permiso actualizado correctamente"));
+    public ResponseEntity<Map> actualizarPermiso(@PathVariable Long id, @RequestBody Map<String, Object> permiso, HttpSession session) {
+        return recursosService.actualizarPermiso(id, permiso, session);
     }
 
     @DeleteMapping("/permisos/{id}")
-    public ResponseEntity<Map<String, Object>> eliminarPermiso(@PathVariable Long id) {
-        return ResponseEntity.ok(crearRespuestaExito("Permiso eliminado correctamente"));
+    public ResponseEntity<Map> eliminarPermiso(@PathVariable Long id, HttpSession session) {
+        return recursosService.eliminarPermiso(id, session);
     }
 
     // ========== GRUPOS DE CREDENCIALES ==========
 
     @GetMapping("/grupos-de-credenciales")
-    public ResponseEntity<List<Map<String, Object>>> listarGrupos() {
-        return ResponseEntity.ok(crearListaGenericaMock("Supervisores"));
+    public ResponseEntity<List> listarGrupos(HttpSession session) {
+        return recursosService.listarGrupos(session);
     }
 
     @GetMapping("/grupos-de-credenciales/{id}")
-    public ResponseEntity<Map<String, Object>> getGrupo(@PathVariable Long id) {
-        return ResponseEntity.ok(crearRecursoMock(id, "Supervisores"));
+    public ResponseEntity<Map> getGrupo(@PathVariable Long id, HttpSession session) {
+        return recursosService.getGrupo(id, session);
     }
 
     @PostMapping("/grupos-de-credenciales")
-    public ResponseEntity<Map<String, Object>> crearGrupo(@RequestBody Map<String, Object> grupo) {
-        return ResponseEntity.ok(crearRespuestaExito("Grupo creado correctamente"));
+    public ResponseEntity<Map> crearGrupo(@RequestBody Map<String, Object> grupo, HttpSession session) {
+        return recursosService.crearGrupo(grupo, session);
     }
 
     @PutMapping("/grupos-de-credenciales/{id}")
-    public ResponseEntity<Map<String, Object>> actualizarGrupo(@PathVariable Long id, @RequestBody Map<String, Object> grupo) {
-        return ResponseEntity.ok(crearRespuestaExito("Grupo actualizado correctamente"));
+    public ResponseEntity<Map> actualizarGrupo(@PathVariable Long id, @RequestBody Map<String, Object> grupo, HttpSession session) {
+        return recursosService.actualizarGrupo(id, grupo, session);
     }
 
     @DeleteMapping("/grupos-de-credenciales/{id}")
-    public ResponseEntity<Map<String, Object>> eliminarGrupo(@PathVariable Long id) {
-        return ResponseEntity.ok(crearRespuestaExito("Grupo eliminado correctamente"));
+    public ResponseEntity<Map> eliminarGrupo(@PathVariable Long id, HttpSession session) {
+        return recursosService.eliminarGrupo(id, session);
     }
 
     // ========== ITEMS MICROS ==========
 
     @GetMapping("/items-micros")
-    public ResponseEntity<List<Map<String, Object>>> listarItemsMicros() {
-        return ResponseEntity.ok(crearListaGenericaMock("Café Latte"));
+    public ResponseEntity<List> listarItemsMicros(HttpSession session) {
+        return recursosService.listarItemsMicros(session);
     }
 
     @GetMapping("/items-micros/{id}")
-    public ResponseEntity<Map<String, Object>> getItemMicros(@PathVariable Long id) {
-        return ResponseEntity.ok(crearRecursoMock(id, "Café Latte"));
+    public ResponseEntity<Map> getItemMicros(@PathVariable Long id, HttpSession session) {
+        return recursosService.getItemMicros(id, session);
     }
 
     @PostMapping("/items-micros/nuevo")
-    public ResponseEntity<Map<String, Object>> crearItemMicros(@RequestBody Map<String, Object> item) {
-        return ResponseEntity.ok(crearRespuestaExito("Item creado correctamente"));
+    public ResponseEntity<Map> crearItemMicros(@RequestBody Map<String, Object> item, HttpSession session) {
+        return recursosService.crearItemMicros(item, session);
     }
 
     @PutMapping("/items-micros/{id}")
-    public ResponseEntity<Map<String, Object>> actualizarItemMicros(@PathVariable Long id, @RequestBody Map<String, Object> item) {
-        return ResponseEntity.ok(crearRespuestaExito("Item actualizado correctamente"));
+    public ResponseEntity<Map> actualizarItemMicros(@PathVariable Long id, @RequestBody Map<String, Object> item, HttpSession session) {
+        return recursosService.actualizarItemMicros(id, item, session);
     }
 
     @DeleteMapping("/items-micros/{id}")
-    public ResponseEntity<Map<String, Object>> eliminarItemMicros(@PathVariable Long id) {
-        return ResponseEntity.ok(crearRespuestaExito("Item eliminado correctamente"));
-    }
-
-    // ========== ITEMS MULTIOPCIÓN ==========
-
-    @GetMapping("/items-multiopcion")
-    public ResponseEntity<List<Map<String, Object>>> listarItemsMultiopcion() {
-        return ResponseEntity.ok(crearListaGenericaMock("Bebida del mes"));
-    }
-
-    @GetMapping("/items-multiopcion/{id}")
-    public ResponseEntity<Map<String, Object>> getItemMultiopcion(@PathVariable Long id) {
-        return ResponseEntity.ok(crearRecursoMock(id, "Bebida del mes"));
-    }
-
-    @PostMapping("/items-multiopcion")
-    public ResponseEntity<Map<String, Object>> crearItemMultiopcion(@RequestBody Map<String, Object> item) {
-        return ResponseEntity.ok(crearRespuestaExito("Item multiopción creado correctamente"));
-    }
-
-    @PutMapping("/items-multiopcion/{id}")
-    public ResponseEntity<Map<String, Object>> actualizarItemMultiopcion(@PathVariable Long id, @RequestBody Map<String, Object> item) {
-        return ResponseEntity.ok(crearRespuestaExito("Item multiopción actualizado correctamente"));
-    }
-
-    @DeleteMapping("/items-multiopcion/{id}")
-    public ResponseEntity<Map<String, Object>> eliminarItemMultiopcion(@PathVariable Long id) {
-        return ResponseEntity.ok(crearRespuestaExito("Item multiopción eliminado correctamente"));
+    public ResponseEntity<Map> eliminarItemMicros(@PathVariable Long id, HttpSession session) {
+        return recursosService.eliminarItemMicros(id, session);
     }
 
     // ========== REDIMIBLES ==========
 
     @GetMapping("/redimibles")
-    public ResponseEntity<List<Map<String, Object>>> listarRedimibles() {
-        return ResponseEntity.ok(crearListaGenericaMock("Producto Redimible"));
+    public ResponseEntity<List> listarRedimibles(HttpSession session) {
+        return recursosService.listarRedimibles(session);
     }
 
     @GetMapping("/redimibles/{id}")
-    public ResponseEntity<Map<String, Object>> getRedimible(@PathVariable Long id) {
-        return ResponseEntity.ok(crearRecursoMock(id, "Producto Redimible"));
+    public ResponseEntity<Map> getRedimible(@PathVariable Long id, HttpSession session) {
+        return recursosService.getRedimible(id, session);
     }
 
     @PostMapping("/redimibles")
-    public ResponseEntity<Map<String, Object>> crearRedimible(@RequestBody Map<String, Object> redimible) {
-        return ResponseEntity.ok(crearRespuestaExito("Redimible creado correctamente"));
+    public ResponseEntity<Map> crearRedimible(@RequestBody Map<String, Object> redimible, HttpSession session) {
+        return recursosService.crearRedimible(redimible, session);
     }
 
     @PutMapping("/redimibles/{id}")
-    public ResponseEntity<Map<String, Object>> actualizarRedimible(@PathVariable Long id, @RequestBody Map<String, Object> redimible) {
-        return ResponseEntity.ok(crearRespuestaExito("Redimible actualizado correctamente"));
+    public ResponseEntity<Map> actualizarRedimible(@PathVariable Long id, @RequestBody Map<String, Object> redimible, HttpSession session) {
+        return recursosService.actualizarRedimible(id, redimible, session);
     }
 
     @DeleteMapping("/redimibles/{id}")
-    public ResponseEntity<Map<String, Object>> eliminarRedimible(@PathVariable Long id) {
-        return ResponseEntity.ok(crearRespuestaExito("Redimible eliminado correctamente"));
+    public ResponseEntity<Map> eliminarRedimible(@PathVariable Long id, HttpSession session) {
+        return recursosService.eliminarRedimible(id, session);
     }
 
     // ========== ERRORES ==========
 
     @GetMapping("/errores")
-    public ResponseEntity<List<Map<String, Object>>> listarErrores() {
-        List<Map<String, Object>> errores = new ArrayList<>();
-        Map<String, Object> error = new HashMap<>();
-        error.put("id", 1);
-        error.put("mensaje", "Error de conexión");
-        error.put("fecha", "2024-10-01T10:00:00");
-        error.put("nivel", "ERROR");
-        errores.add(error);
-
-        return ResponseEntity.ok(errores);
+    public ResponseEntity<List> listarErrores(HttpSession session) {
+        return recursosService.listarErrores(session);
     }
 
     @GetMapping("/errores/{id}")
-    public ResponseEntity<Map<String, Object>> getError(@PathVariable Long id) {
-        Map<String, Object> error = new HashMap<>();
-        error.put("id", id);
-        error.put("mensaje", "Error de conexión");
-        error.put("fecha", "2024-10-01T10:00:00");
-        error.put("nivel", "ERROR");
-        error.put("stackTrace", "java.lang.Exception at ...");
-
-        return ResponseEntity.ok(error);
+    public ResponseEntity<Map> getError(@PathVariable Long id, HttpSession session) {
+        return recursosService.getError(id, session);
     }
 
     // ========== COMBOS ==========
 
     @GetMapping("/combos/{action}")
-    public ResponseEntity<List<Map<String, Object>>> getCombos(@PathVariable String action) {
-        List<Map<String, Object>> opciones = new ArrayList<>();
-
-        Map<String, Object> opcion = new HashMap<>();
-        opcion.put("id", 1);
-        opcion.put("label", "Opción 1");
-        opcion.put("value", "opcion1");
-        opciones.add(opcion);
-
-        return ResponseEntity.ok(opciones);
-    }
-
-    // ========== MÉTODOS AUXILIARES ==========
-
-    private List<Map<String, Object>> crearListaGenericaMock(String nombre) {
-        List<Map<String, Object>> lista = new ArrayList<>();
-        Map<String, Object> item = new HashMap<>();
-        item.put("id", 1);
-        item.put("nombre", nombre);
-        lista.add(item);
-
-        return lista;
-    }
-
-    private Map<String, Object> crearRecursoMock(Long id, String nombre) {
-        Map<String, Object> recurso = new HashMap<>();
-        recurso.put("id", id);
-        recurso.put("nombre", nombre);
-
-        return recurso;
-    }
-
-    private Map<String, Object> crearRespuestaExito(String mensaje) {
-        Map<String, Object> response = new HashMap<>();
-        response.put("success", true);
-        response.put("message", mensaje);
-        response.put("id", 999);
-
-        return response;
+    public ResponseEntity<List> getCombos(@PathVariable String action, HttpSession session) {
+        return recursosService.getCombos(action, session);
     }
 }
