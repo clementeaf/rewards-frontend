@@ -8,6 +8,7 @@ Este documento describe la capa de servicios del BFF (Backend For Frontend).
 com.rewardsfrontend.service/
 ├── BaseProxyService.java          # Servicio base con métodos proxy
 ├── LoginService.java               # Autenticación (ya existente)
+├── AboutService.java               # Info del usuario y sistema
 ├── MiembrosService.java           # Gestión de miembros
 ├── CuentasService.java            # Gestión de cuentas
 ├── TarjetasService.java           # Gestión de tarjetas
@@ -58,7 +59,23 @@ public class MiembrosService extends BaseProxyService {
 
 ---
 
-### 2. MiembrosService
+### 2. AboutService
+**Propósito:** Información del usuario logueado y monitoreo del sistema
+
+**Métodos:**
+- `getLoggedUser(session)` - Obtener usuario actual logueado
+- `heartbeat(session)` - Mantener sesión viva
+- `ejecutarComando(comando, session)` - Ejecutar comando/script
+- `getLogs(session)` - Obtener logs del sistema
+- `adjustLogs(config, session)` - Ajustar configuración de logs
+- `spyLogger(logger, session)` - Espiar un logger específico
+- `unspyLogger(logger, session)` - Dejar de espiar un logger
+- `getSpiedLoggers(session)` - Listar loggers espiados
+- `aboutAction(action, session)` - Acción genérica de about
+
+---
+
+### 3. MiembrosService
 **Propósito:** Gestión de miembros del programa de lealtad
 
 **Métodos:**
@@ -73,7 +90,7 @@ public class MiembrosService extends BaseProxyService {
 
 ---
 
-### 3. CuentasService
+### 4. CuentasService
 **Propósito:** Gestión de cuentas de usuario
 
 **Métodos:**
@@ -84,7 +101,7 @@ public class MiembrosService extends BaseProxyService {
 
 ---
 
-### 4. TarjetasService
+### 5. TarjetasService
 **Propósito:** Gestión de tarjetas de regalo/lealtad
 
 **Métodos:**
@@ -99,7 +116,7 @@ public class MiembrosService extends BaseProxyService {
 
 ---
 
-### 5. OperacionesService
+### 6. OperacionesService
 **Propósito:** Auditoría de operaciones del sistema
 
 **Métodos:**
@@ -110,7 +127,7 @@ public class MiembrosService extends BaseProxyService {
 
 ---
 
-### 6. SegmentosDeMiembrosService
+### 7. SegmentosDeMiembrosService
 **Propósito:** Gestión de segmentos de clientes
 
 **Métodos:**
@@ -130,7 +147,7 @@ public class MiembrosService extends BaseProxyService {
 
 ---
 
-### 7. BeneficiosService
+### 8. BeneficiosService
 **Propósito:** Gestión de beneficios y reglas de promociones
 
 **Métodos:**
@@ -148,7 +165,7 @@ public class MiembrosService extends BaseProxyService {
 
 ---
 
-### 8. ConfiguracionService
+### 9. ConfiguracionService
 **Propósito:** Configuraciones del sistema
 
 **Métodos:**
@@ -169,7 +186,7 @@ public class MiembrosService extends BaseProxyService {
 
 ---
 
-### 9. RecursosGeneralesService
+### 10. RecursosGeneralesService
 **Propósito:** CRUD genérico para múltiples recursos
 
 **Recursos gestionados:**
