@@ -225,8 +225,12 @@ export default Ember.Service.extend(UsuarioServiceInjected, {
     },
 
   _elUsuarioActualTieneElPermiso(idDePermiso){
-    // Bypass all permission checks to allow rendering without backend
-    return true;
+    var usuario = this.usuarioService().getCurrentUser();
+    if (!usuario) {
+      return false;
+    }
+    var permisos = usuario.get('permisos');
+    return permisos && permisos.contains(idDePermiso);
   },
 
 });

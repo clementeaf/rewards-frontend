@@ -129,4 +129,33 @@ public class BaseProxyService {
         String backendSessionCookie = (String) session.getAttribute("backendSessionCookie");
         return backendSessionCookie != null && !backendSessionCookie.isEmpty();
     }
+
+    /**
+     * Método genérico para forwardear cualquier request al backend
+     */
+    public ResponseEntity<Object> forward(String path, HttpMethod method, Object body, HttpSession session) {
+        String url = BACKEND_BASE_URL + path;
+        System.out.println("=== PROXY REQUEST ===");
+        System.out.println("URL: " + url);
+        System.out.println("Method: " + method);
+        System.out.println("Body: " + body);
+        System.out.println("Has session: " + hasActiveSession(session));
+
+        try {
+            HttpHeaders headers = createHeadersWithSession(session);
+            HttpEntity<?> entity = new HttpEntity<>(body, headers);
+
+            ResponseEntity<String> response = restTemplate.exchange(url, method, entity, String.class);
+
+            System.out.println("Response status: " + response.getStatusCode());
+            System.out.println("Response body: " + response.getBody());
+
+            return ResponseEntity.status(response.getStatusCode())
+                    .headers(response.getHeaders())
+                    .body((Object) response.getBody());
+        } catch (Exception e) {
+            System.err.println("ERROR en forward: " + e.getClass().getName() + " - " + e.getMessage());
+            return handleError(e, Object.class);
+        }
+    }
 }

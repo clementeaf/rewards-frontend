@@ -96,12 +96,6 @@ export default Ember.Service.extend(ErrorMessagesService, {
   },
   _wrappingWithErrorAwarePromise: function( promise ) {
     var errorHandler = (response) => {
-      // Verificar si es un error de conexión y usar datos mock (solo si está habilitado)
-      if (ENV.enableMockFallback && this._isConnectionError(response)) {
-        console.warn('Backend no disponible, usando datos mock para:', response.url || 'unknown');
-        return this._useMockData(response);
-      }
-
       var message;
       var stackTrace;
       if(response.responseJSON) {
@@ -119,33 +113,6 @@ export default Ember.Service.extend(ErrorMessagesService, {
       return Ember.RSVP.reject(...arguments);
     };
     return promise.catch(errorHandler);
-  },
-
-  _isConnectionError(response) {
-    // Detectar errores de conexión (sin backend disponible)
-    return response.status === 0 ||
-           response.status === 404 ||
-           response.status === 500 ||
-           response.status === 502 ||
-           response.status === 503 ||
-           response.readyState === 0 ||
-           (response.statusText && response.statusText.includes('error'));
-  },
-
-  _useMockData(response) {
-    // Extraer path de la URL para determinar qué datos mock usar
-    const url = response.url || '';
-    const apiPath = this._extractApiPath(url);
-
-    return this.get('mockDataService').getMockData(apiPath, response.type);
-  },
-
-  _extractApiPath(url) {
-    const apiRoot = ENV.apiRootUrl;
-    if (url.includes(apiRoot)) {
-      return url.substring(url.indexOf(apiRoot) + apiRoot.length);
-    }
-    return url;
   },
 
   _emberizer(){

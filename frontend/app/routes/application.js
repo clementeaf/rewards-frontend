@@ -6,7 +6,7 @@ export default Ember.Route.extend(UsuarioServiceInjected, {
     this._heartbeat().start();
   },
   model(){
-    return this.usuarioService().getCurrentUser();
+    return this.usuarioService().findAndLoadCurrentUser();
   },
 
   heartbeatService: Ember.inject.service('heartbeat-service'),

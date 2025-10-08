@@ -47,7 +47,7 @@ module.exports = function(environment) {
     /**
      * Habilita el modo mock cuando el backend no está disponible
      */
-    ENV.enableMockFallback = true;
+    ENV.enableMockFallback = false;
   }
 
   if (environment === 'test') {
